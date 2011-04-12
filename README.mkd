@@ -1,6 +1,6 @@
-The Twitter Ruby Gem
+The Assistly Ruby Gem
 ====================
-A Ruby wrapper for the Twitter REST and Search APIs
+A Ruby wrapper for the Assistly API
 
 Installation
 ------------

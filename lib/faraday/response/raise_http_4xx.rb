@@ -7,17 +7,17 @@ module Faraday
     def on_complete(env)
       case env[:status].to_i
       when 400
-        raise Twitter::BadRequest.new(error_message(env), env[:response_headers])
+        raise Assistly::BadRequest.new(error_message(env), env[:response_headers])
       when 401
-        raise Twitter::Unauthorized.new(error_message(env), env[:response_headers])
+        raise Assistly::Unauthorized.new(error_message(env), env[:response_headers])
       when 403
-        raise Twitter::Forbidden.new(error_message(env), env[:response_headers])
+        raise Assistly::Forbidden.new(error_message(env), env[:response_headers])
       when 404
-        raise Twitter::NotFound.new(error_message(env), env[:response_headers])
+        raise Assistly::NotFound.new(error_message(env), env[:response_headers])
       when 406
-        raise Twitter::NotAcceptable.new(error_message(env), env[:response_headers])
+        raise Assistly::NotAcceptable.new(error_message(env), env[:response_headers])
       when 420
-        raise Twitter::EnhanceYourCalm.new(error_message(env), env[:response_headers])
+        raise Assistly::EnhanceYourCalm.new(error_message(env), env[:response_headers])
       end
     end
 
