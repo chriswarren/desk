@@ -116,13 +116,13 @@ describe Assistly::Client do
           end
 
           it "should get the correct resource" do
-            @client.create_customer_email(1, "foo@example.com")
+            @client.create_customer_email(1, :email => "foo@example.com")
             a_post("customers/1/emails.#{format}").
               should have_been_made
           end
 
           it "should return the information about this user" do
-            email = @client.create_customer_email(1, "api@example.com")
+            email = @client.create_customer_email(1, :email => "api@example.com")
 
             email.email.should == "api@example.com"
           end
@@ -140,13 +140,13 @@ describe Assistly::Client do
           end
 
           it "should get the correct resource" do
-            @client.update_customer_email(1, 2, "foo@example.com")
+            @client.update_customer_email(1, 2, :email => "foo@example.com")
             a_put("customers/1/emails/2.#{format}").
               should have_been_made
           end
 
           it "should return the information about this user" do
-            email = @client.update_customer_email(1, 2, "api@example.com")
+            email = @client.update_customer_email(1, 2, :email => "api@example.com")
 
             email.email.should == "api@example.com"
           end

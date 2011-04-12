@@ -34,7 +34,7 @@ module Assistly
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.create_customer(12345, :subject => "New Subject")
+      #     Assistly.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
       # @format :json
       # @authenticated true
       # @see http://dev.assistly.com/docs/api/customers/create
@@ -52,7 +52,7 @@ module Assistly
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.update_customer(12345, :subject => "New Subject")
+      #     Assistly.update_customer(12345, :name => "Christopher Warren")
       # @format :json
       # @authenticated true
       # @see http://dev.assistly.com/docs/api/customers/update
@@ -74,8 +74,10 @@ module Assistly
       # @format :json
       # @authenticated true
       # @see http://dev.assistly.com/docs/api/customers/emails/create
-      def create_customer_email(id, email)
-        response = post("customers/#{id}/emails",:email => email)
+      def create_customer_email(id, email, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        options.merge!({:email => email})
+        response = post("customers/#{id}/emails",options)
         if response['success']
           return response['results']['email']
         else
@@ -87,12 +89,14 @@ module Assistly
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.update_customer_email(12345, 12345, "foo@example.com")
+      #     Assistly.update_customer_email(12345, 12345, :email => "foo@example.com")
+      #     Assistly.update_customer_email(12345, 12345, :customer_contact_type => "work")
       # @format :json
       # @authenticated true
       # @see http://dev.assistly.com/docs/api/customers/emails/update
-      def update_customer_email(id, email_id, email)
-        response = put("customers/#{id}/emails/#{email_id}",:email => email)
+      def update_customer_email(id, email_id, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        response = put("customers/#{id}/emails/#{email_id}",options)
         if response['success']
           return response['results']['email']
         else
