@@ -11,7 +11,7 @@ describe Assistly::Client do
         context "create a new interaction" do
           before do
             stub_post("interactions.#{format}").
-              to_return(:body => fixture("new_interaction.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
+              to_return(:body => fixture("interaction_create.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
           end
 
           it "should get the correct resource" do
