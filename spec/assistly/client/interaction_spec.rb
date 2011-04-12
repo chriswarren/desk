@@ -15,13 +15,13 @@ describe Assistly::Client do
           end
 
           it "should get the correct resource" do
-            @client.create_interaction(:interaction_subject => "this is an api test", :customer_email => "customer@zencoder.com")
+            @client.create_interaction(:interaction_subject => "this is an api test", :customer_email => "foo@example.com")
             a_post("interactions.#{format}").
               should have_been_made
           end
 
           it "should create an interaction" do
-            interaction = @client.create_interaction(:interaction_subject => "this is an api test", :customer_email => "customer@zencoder.com")
+            interaction = @client.create_interaction(:interaction_subject => "this is an api test", :customer_email => "foo@example.com")
 
             interaction.customer.emails.first.email.email.should == "customer@zencoder.com"
             interaction.interaction.interactionable.email.subject.should == "this is an api test"

@@ -25,7 +25,7 @@ module Assistly
       # @authenticated true
       # @rate_limited true
       # @return [Array] The requested users.
-      # @see http://dev.twitter.com/doc/get/users/lookup
+      # @see http://dev.assistly.com/docs/api/users
       # @example Return extended information account users
       #   Assistly.users
       def users(*args)
