@@ -24,6 +24,7 @@ Usage Examples
     # All methods require authentication. To get your Assistly OAuth credentials,
     # register an app in the Assistly admin for your account at http://your-domain.assistly.com/admin
     @assistly = Assistly.configure do |config|
+      config.subdomain = YOUR_ASSISTLY_SUBDOMAIN
       config.consumer_key = YOUR_CONSUMER_KEY
       config.consumer_secret = YOUR_CONSUMER_SECRET
       config.oauth_token = YOUR_OAUTH_TOKEN
@@ -39,6 +40,9 @@ Usage Examples
     
     # Update a specific case
     @assistly.update_case(12345, :subject => "Something Else")
+    
+    # Get a case url
+    @assistly.case_url(12345)
     
     # List customers
     @assistly.customers
@@ -88,15 +92,15 @@ Here are some ways *you* can contribute:
 * by writing specifications
 * by writing code (**no patch is too small**: fix typos, add comments, clean up inconsistent whitespace)
 * by refactoring code
-* by closing [issues](http://github.com/chriswarren/assistly/issues)
+* by closing [issues](http://github.com/zencoder/assistly/issues)
 * by reviewing patches
 
-All contributors will be added to the [HISTORY](https://github.com/chriswarren/twitter/blob/master/HISTORY.mkd)
+All contributors will be added to the [HISTORY](https://github.com/zencoder/twitter/blob/master/HISTORY.mkd)
 file and will receive the respect and gratitude of the community.
 
 Submitting an Issue
 -------------------
-We use the [GitHub issue tracker](http://github.com/chriswarren/assistly/issues) to track bugs and
+We use the [GitHub issue tracker](http://github.com/zencoder/assistly/issues) to track bugs and
 features. Before submitting a bug report or feature request, check to make sure it hasn't already
 been submitted. You can indicate support for an existing issuse by voting it up. When submitting a
 bug report, please include a [Gist](http://gist.github.com/) that includes a stack trace and any
@@ -118,4 +122,4 @@ Submitting a Pull Request
 Copyright
 ---------
 Copyright (c) 2011 Chris Warren
-See [LICENSE](https://github.com/chriswarren/assistly/blob/master/LICENSE.mkd) for details.
+See [LICENSE](https://github.com/zencoder/assistly/blob/master/LICENSE.mkd) for details.
