@@ -31,7 +31,7 @@ eos
   s.email = ['chris@zencoder.com']
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.files = `git ls-files`.split("\n")
-  s.homepage = 'https://github.com/chriswarren/assistly'
+  s.homepage = 'https://github.com/zencoder/assistly'
   s.name = 'assistly'
   s.platform = Gem::Platform::RUBY
   s.require_paths = ['lib']
