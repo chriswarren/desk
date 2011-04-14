@@ -50,7 +50,7 @@ module Assistly
     DEFAULT_PROXY = nil
     
     # By default, don't set a subdomain
-    DEFAULT_SUBDOMAIN = "zencoder"
+    DEFAULT_SUBDOMAIN = "example"
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_USER_AGENT = "Assistly Ruby Gem #{Assistly::VERSION}".freeze
