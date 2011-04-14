@@ -35,7 +35,6 @@ describe Assistly::API do
           :oauth_token => 'OT',
           :oauth_token_secret => 'OS',
           :adapter => :typhoeus,
-          :endpoint => 'http://tumblr.com/',
           :format => :xml,
           :proxy => 'http://erik:sekret@proxy.example.com:8080',
           :subdomain => 'zencoder',

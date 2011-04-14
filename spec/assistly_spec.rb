@@ -44,19 +44,6 @@ describe Assistly do
       Assistly.adapter.should == :typhoeus
     end
   end
-
-  # describe ".endpoint" do
-  #   it "should return the default endpoint" do
-  #     Assistly.endpoint.should == Assistly::Configuration::DEFAULT_ENDPOINT
-  #   end
-  # end
-
-  describe ".endpoint=" do
-    it "should set the endpoint" do
-      Assistly.endpoint = 'http://tumblr.com/'
-      Assistly.endpoint.should == 'http://tumblr.com/'
-    end
-  end
   
   describe ".subdomain=" do
     before do

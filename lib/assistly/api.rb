@@ -11,9 +11,14 @@ module Assistly
     # Creates a new API
     def initialize(options={})
       options = Assistly.options.merge(options)
+      
       Configuration::VALID_OPTIONS_KEYS.each do |key|
         send("#{key}=", options[key])
       end
+    end
+    
+    def endpoint
+      "https://#{self.subdomain}.assistly.com/api/#{self.version}/"
     end
 
     include Connection

@@ -9,7 +9,6 @@ module Assistly
       :adapter,
       :consumer_key,
       :consumer_secret,
-      :endpoint,
       :format,
       :oauth_token,
       :oauth_token_secret,
@@ -57,15 +56,7 @@ module Assistly
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_VERSION = "v1".freeze
-    
-    # The endpoint that will be used to connect if none is set
-    #
-    # @note This is configurable in case you want to use HTTP instead of HTTPS, specify a different API version, or use a Twitter-compatible endpoint.
-    # @see http://status.net/wiki/Twitter-compatible_API
-    # @see http://en.blog.wordpress.com/2009/12/12/twitter-api/
-    # @see http://staff.tumblr.com/post/287703110/api
-    # @see http://developer.typepad.com/typepad-twitter-api/twitter-api.html
-    # DEFAULT_ENDPOINT = "https://#{self.subdomain}.assistly.com/api/#{Assistly.version}/"
+
 
     # @private
     attr_accessor *VALID_OPTIONS_KEYS
@@ -90,7 +81,6 @@ module Assistly
       self.adapter            = DEFAULT_ADAPTER
       self.consumer_key       = DEFAULT_CONSUMER_KEY
       self.consumer_secret    = DEFAULT_CONSUMER_SECRET
-      self.endpoint           = "https://#{Assistly.subdomain}.assistly.com/api/#{Assistly.version}/"
       self.format             = DEFAULT_FORMAT
       self.oauth_token        = DEFAULT_OAUTH_TOKEN
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
