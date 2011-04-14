@@ -46,6 +46,10 @@ module Assistly
         response = put("cases/#{id}",options)
         response.case
       end
+      
+      def case_url(id)
+        "https://#{subdomain}.assistly.com/agent/case/#{id}"
+      end
     end
   end
 end

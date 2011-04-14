@@ -83,6 +83,19 @@ describe Assistly::Client do
 
         end
       end
+      
+      describe ".case_url" do
+
+        context "generating a case url" do
+
+          it "should make a correct url for the case" do
+            a_case_url = @client.case_url(123)
+            
+            a_case_url.should == "https://example.assistly.com/agent/case/123"
+          end
+
+        end
+      end
     end
   end
 end
