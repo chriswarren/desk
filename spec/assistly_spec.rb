@@ -45,16 +45,44 @@ describe Assistly do
     end
   end
 
-  describe ".endpoint" do
-    it "should return the default endpoint" do
-      Assistly.endpoint.should == Assistly::Configuration::DEFAULT_ENDPOINT
-    end
-  end
+  # describe ".endpoint" do
+  #   it "should return the default endpoint" do
+  #     Assistly.endpoint.should == Assistly::Configuration::DEFAULT_ENDPOINT
+  #   end
+  # end
 
   describe ".endpoint=" do
     it "should set the endpoint" do
       Assistly.endpoint = 'http://tumblr.com/'
       Assistly.endpoint.should == 'http://tumblr.com/'
+    end
+  end
+  
+  describe ".subdomain=" do
+    before do
+      Assistly.subdomain = "zencoder"
+    end
+    
+    it "should set the subdomain" do
+      Assistly.subdomain.should == "zencoder"
+    end
+    
+    it "should change the endpoint" do
+      Assistly.endpoint.should == "https://zencoder.assistly.com/api/#{Assistly::Configuration::DEFAULT_VERSION}/"
+    end
+  end
+  
+  describe ".version=" do
+    before do
+      Assistly.version = "v4"
+    end
+    
+    it "should set the subdomain" do
+      Assistly.version.should == "v4"
+    end
+    
+    it "should change the endpoint" do
+      Assistly.endpoint.should == "https://#{Assistly::Configuration::DEFAULT_SUBDOMAIN}.assistly.com/api/v4/"
     end
   end
 

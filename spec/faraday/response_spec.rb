@@ -20,7 +20,7 @@ describe Faraday::Response do
 
       before do
         stub_get('users/1.json').
-          with(:headers => {'Accept'=>'application/json', 'User-Agent'=>'Assistly Ruby Gem 0.1'}).
+          with(:headers => {'Accept'=>'application/json', 'User-Agent'=>Assistly::Configuration::DEFAULT_USER_AGENT}).
           to_return(:status => status)
       end
 
