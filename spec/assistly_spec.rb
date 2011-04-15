@@ -59,6 +59,19 @@ describe Assistly do
     end
   end
   
+  describe ".support_email" do
+    it "should return the default support_email" do
+      Assistly.support_email.should == Assistly::Configuration::DEFAULT_SUPPORT_EMAIL
+    end
+  end
+
+  describe ".support_email=" do
+    it "should set the support_email" do
+      Assistly.support_email = "help@example.com"
+      Assistly.support_email.should == "help@example.com"
+    end
+  end
+  
   describe ".version=" do
     before do
       Assistly.version = "v4"

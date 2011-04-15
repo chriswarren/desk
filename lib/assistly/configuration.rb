@@ -14,6 +14,7 @@ module Assistly
       :oauth_token_secret,
       :proxy,
       :subdomain,
+      :support_email,
       :user_agent,
       :version].freeze
 
@@ -48,7 +49,7 @@ module Assistly
     # By default, don't use a proxy server
     DEFAULT_PROXY = nil
     
-    # By default, don't set a subdomain
+    # By default use example
     DEFAULT_SUBDOMAIN = "example"
 
     # The user agent that will be sent to the API endpoint if none is set
@@ -56,7 +57,9 @@ module Assistly
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_VERSION = "v1".freeze
-
+    
+    # By default, don't set a support email address
+    DEFAULT_SUPPORT_EMAIL = nil
 
     # @private
     attr_accessor *VALID_OPTIONS_KEYS
@@ -86,6 +89,7 @@ module Assistly
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
       self.proxy              = DEFAULT_PROXY
       self.subdomain          = DEFAULT_SUBDOMAIN
+      self.support_email      = DEFAULT_SUPPORT_EMAIL
       self.user_agent         = DEFAULT_USER_AGENT
       self.version            = DEFAULT_VERSION
       self

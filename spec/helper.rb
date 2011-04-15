@@ -5,8 +5,10 @@ SimpleCov.start do
   add_group 'Specs', 'spec'
 end
 require 'assistly'
+require 'pony'
 require 'rspec'
 require 'webmock/rspec'
+require 'email_spec'
 require 'ruby-debug'
 RSpec.configure do |config|
   config.include WebMock::API

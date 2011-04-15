@@ -24,7 +24,7 @@ describe Assistly::Client do
 
           it "should return up to 100 cases worth of extended information" do
             cases = @client.cases
-            
+
             cases.should be_a Array
             cases.first.case.id.should == 1
             cases.first.case.user.name.should == "Jeremy Suriel"
@@ -32,7 +32,7 @@ describe Assistly::Client do
 
         end
       end
-      
+
       describe ".case" do
 
         context "lookup" do
@@ -50,7 +50,7 @@ describe Assistly::Client do
 
           it "should return up to 100 cases worth of extended information" do
             a_case = @client.case(1)
-            
+
             a_case.id.should == 1
             a_case.external_id.should == "123"
             a_case.subject.should == "Welcome to Assistly"
@@ -58,7 +58,7 @@ describe Assistly::Client do
 
         end
       end
-      
+
       describe ".update_case" do
 
         context "update" do
@@ -76,14 +76,14 @@ describe Assistly::Client do
 
           it "should return up to 100 cases worth of extended information" do
             a_case = @client.update_case(1, :subject => "Welcome to Assistly")
-            
+
             a_case.id.should == 1
             a_case.subject.should == "Welcome to Assistly"
           end
 
         end
       end
-      
+
       describe ".case_url" do
 
         context "generating a case url" do

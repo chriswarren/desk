@@ -38,6 +38,7 @@ describe Assistly::API do
           :format => :xml,
           :proxy => 'http://erik:sekret@proxy.example.com:8080',
           :subdomain => 'zencoder',
+          :support_email => 'help@zencoder.com',
           :user_agent => 'Custom User Agent',
           :version => "amazing"
         }

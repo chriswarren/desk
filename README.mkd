@@ -30,52 +30,60 @@ Usage Examples
       config.oauth_token = YOUR_OAUTH_TOKEN
       config.oauth_token_secret = YOUR_OAUTH_TOKEN_SECRET
     end
-    
+
     # List cases
     @assistly.cases
     @assistly.cases(:since_id => 12345)
-    
+
     # Get a specific case
     @assistly.case(12345)
-    
+
     # Update a specific case
     @assistly.update_case(12345, :subject => "Something Else")
-    
+
     # Get a case url
     @assistly.case_url(12345)
-    
+
     # List customers
     @assistly.customers
     @assistly.customers(:since_id => 12345, :count => 5)
-    
+
     # Get a specific customer
     @assistly.customer(12345)
-    
+
     # Create a customer
     @assistly.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
-    
+
     # Update a customer
     @assistly.update_customer(12345, :name => "Christopher Warren")
-    
+
     # Add a customer email
     @assistly.create_customer_email(12345, "foo@example.com")
     @assistly.create_customer_email(12345, "foo@example.com", :customer_contact_type => "work")
-    
+
     # Update a customer email
     @assistly.update_customer_email(12345, 54321, :email => "foo@example.com")
     @assistly.update_customer_email(12345, 54321, :customer_contact_type => "work")
-    
+
     # List interactions
     @assistly.interactions
     @assistly.interactions(:since_id => 12345)
     @assistly.interactions(:since_id => 12345, :count => 5)
+
+    # Create an inbound interaction
+    @assistly.create_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
+    @assistly.create_inbound_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
     
-    # Create an interaction
-    @assistly.create_interaction(:interaction_subject => "this is a test", :customer_email => "foo@example.com")
-    
+    # Create an outbound interaction
+    # Assistly's API doesn't support creating outbound communications, so we do this over email with a BCC back to Assistly and customer headers.
+    # Read more at http://support.assistly.com/customer/portal/articles/4180
+    # Additional headers can be passed as well http://support.assistly.com/customer/portal/articles/6728
+    @assistly.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")
+    @assistly.create_outbound_interaction("foo@example.com", "Missed Your Call", "Sorry we missed yoru call. What's up?")
+
     # List users
     @assistly.users
-    
+
     # Get a specific user
     @assistly.user(12345)
 
@@ -95,7 +103,7 @@ Here are some ways *you* can contribute:
 * by closing [issues](http://github.com/zencoder/assistly/issues)
 * by reviewing patches
 
-All contributors will be added to the [HISTORY](https://github.com/zencoder/twitter/blob/master/HISTORY.mkd)
+All contributors will be added to the [HISTORY](https://github.com/zencoder/assistly/blob/master/HISTORY.mkd)
 file and will receive the respect and gratitude of the community.
 
 Submitting an Issue
@@ -121,5 +129,5 @@ Submitting a Pull Request
 
 Copyright
 ---------
-Copyright (c) 2011 Chris Warren
+Copyright (c) 2011 Chris Warren/Zencoder
 See [LICENSE](https://github.com/zencoder/assistly/blob/master/LICENSE.mkd) for details.
