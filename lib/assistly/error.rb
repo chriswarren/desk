@@ -59,4 +59,9 @@ module Assistly
 
   # Raised when Assistly returns the HTTP status code 503
   class ServiceUnavailable < Error; end
+  
+  # Gem Specific Errors
+  class AssistlyError < StandardError; end
+  
+  class SupportEmailNotSet < AssistlyError; end
 end

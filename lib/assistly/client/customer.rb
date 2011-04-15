@@ -44,7 +44,7 @@ module Assistly
         if response['success']
           return response['results']['customer']
         else
-          return response['errors']
+          return response
         end
       end
       
@@ -62,7 +62,7 @@ module Assistly
         if response['success']
           return response['results']['customer']
         else
-          return response['errors']
+          return response
         end
       end
       
@@ -81,7 +81,7 @@ module Assistly
         if response['success']
           return response['results']['email']
         else
-          return response['errors']
+          return response
         end
       end
       
@@ -100,7 +100,7 @@ module Assistly
         if response['success']
           return response['results']['email']
         else
-          return response['errors']
+          return response
         end
       end
     end

@@ -132,6 +132,20 @@ describe Assistly::Client do
           end
 
         end
+        
+        context "without support_email defined" do
+          
+          before do
+            @client_without_support_email = Assistly::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
+          end
+          
+          it "should raise an error" do
+            lambda do
+              @client_without_support_email.create_outbound_interaction("customer@example.com", "Need help?", "Sorry we missed you in chat today.")
+            end.should raise_error(Assistly::SupportEmailNotSet)
+          end
+          
+        end
       end
 
       describe ".interactions" do

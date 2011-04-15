@@ -76,8 +76,12 @@ Usage Examples
     
     # Create an outbound interaction
     # Assistly's API doesn't support creating outbound communications, so we do this over email with a BCC back to Assistly and customer headers.
+    # Assistly.support_email must be set to your Assistly email address so that the email can be sent to the account and give the customer someone to respond to.
+    # 
     # Read more at http://support.assistly.com/customer/portal/articles/4180
     # Additional headers can be passed as well http://support.assistly.com/customer/portal/articles/6728
+    #
+    # Email is sent using Pony https://github.com/benprew/pony
     @assistly.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")
     @assistly.create_outbound_interaction("foo@example.com", "Missed Your Call", "Sorry we missed yoru call. What's up?")
 

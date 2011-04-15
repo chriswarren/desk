@@ -48,7 +48,7 @@ module Assistly
         if response['success']
           return response['results']
         else
-          return response['errors']
+          return response
         end
       end
       
@@ -61,6 +61,7 @@ module Assistly
       # @see http://support.assistly.com/customer/portal/articles/4180
       # @see http://support.assistly.com/customer/portal/articles/6728
       def create_outbound_interaction(to, subject, body, *args)
+        raise Assistly::SupportEmailNotSet if support_email.blank?
         options = args.last.is_a?(Hash) ? args.pop : {}
         options.merge!(:to => to, :subject => subject, :body => body, :from => support_email, :bcc => support_email)
         options.merge!(:headers => { "x-assistly-customer-email" => to, 
