@@ -11,7 +11,7 @@ module Assistly
       #     Assistly.macros(:count => 5, :page => 3)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/show
+      # @see http://dev.assistly.com/docs/api/macros
       def macros(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("macros",options)
@@ -85,6 +85,60 @@ module Assistly
         response = delete("macros/#{id}")
         response
       end
+      
+      ##########
+      # Macro Actions
+      ##########
+      
+      # Returns extended information of macros
+      #
+      #   @option options [Boolean, String, Integer]
+      #   @example Return extended information for 12345
+      #     Assistly.macro_actions(1)
+      #     Assistly.macro_actions(1, :count => 5)
+      #     Assistly.macro_actions(1, :count => 5, :page => 3)
+      # @format :json
+      # @authenticated true
+      # @see http://dev.assistly.com/docs/api/macros/actions
+      def macro_actions(id, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        response = get("macros/#{id}/actions",options)
+        response['results']
+      end
+      
+      # Returns extended information on a single macro
+      #
+      #   @param id [Integer] a macro ID
+      #   @option options [Hash]
+      #   @example Return extended information for 12345
+      #     Assistly.macro_action(12345, "set-case-description")
+      # @format :json
+      # @authenticated true
+      # @see http://dev.assistly.com/docs/api/macros/actions/show
+      def macro_action(id, slug)
+        response = get("macros/#{id}/actions/#{slug}")
+        response['action']
+      end
+      
+      # Updates a single macro action
+      #
+      #   @param id [Integer] a macro ID
+      #   @option options [String]
+      #   @example Updates information for macro 12345
+      #     Assistly.update_macro_action(12345, "set-case-description", :value => "New Subject")
+      # @format :json
+      # @authenticated true
+      # @see http://dev.assistly.com/docs/api/macros/actions/update
+      def update_macro_action(id, slug, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        response = put("macros/#{id}/actions/#{slug}",options)
+        if response['success']
+          return response['results']['action']
+        else
+          return response
+        end
+      end
+      
     end
   end
 end

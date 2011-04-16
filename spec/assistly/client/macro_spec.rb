@@ -128,6 +128,77 @@ describe Assistly::Client do
 
         end
       end
+      
+      describe ".macro_actions" do
+
+        context "lookup" do
+
+          before do
+            stub_get("macros/1/actions.#{format}").
+              to_return(:body => fixture("macro_actions.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
+          end
+
+          it "should get the correct resource" do
+            @client.macro_actions(1)
+            a_get("macros/1/actions.#{format}").
+              should have_been_made
+          end
+
+          it "should return up to 100 macro actions worth of extended information" do
+            macro_actions = @client.macro_actions(1)
+
+            macro_actions.should be_a Array
+            macro_actions.first.action.slug.should == "set-case-description"
+          end
+
+        end
+      end
+      
+      describe ".macro_action" do
+
+        context "lookup" do
+
+          before do
+            stub_get("macros/1/actions/set-case-description.#{format}").
+              to_return(:body => fixture("macro_action.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
+          end
+
+          it "should get the correct resource" do
+            @client.macro_action(1,"set-case-description")
+            a_get("macros/1/actions/set-case-description.#{format}").
+              should have_been_made
+          end
+
+          it "should return up to 100 macro actions worth of extended information" do
+            macro_action = @client.macro_action(1,"set-case-description")
+            macro_action.slug.should == "set-case-description"
+          end
+
+        end
+      end
+      
+      describe ".update_macro_action" do
+
+        context "update" do
+
+          before do
+            stub_put("macros/1/actions/set-case-description.#{format}").
+              to_return(:body => fixture("macro_action_update.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
+          end
+
+          it "should post to the correct resource" do
+            @client.update_macro_action(1, "set-case-description", :value => "This is my case description")
+            a_put("macros/1/actions/set-case-description.#{format}").
+              should have_been_made
+          end
+
+          it "should return the new macro" do
+            macro_action = @client.update_macro_action(1, "set-case-description", :value => "This is my case description")
+            macro_action.value.should == "Description to be applied"
+          end
+
+        end
+      end
     end
   end
 end
