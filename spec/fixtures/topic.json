@@ -1,0 +1,9 @@
+{
+        "topic":
+        {
+                "id":1,
+                "name":"General",
+                "description":"Anything goes here",
+                "show_in_portal":true
+        }
+}

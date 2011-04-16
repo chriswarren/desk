@@ -12,6 +12,7 @@ module Assistly
     require 'assistly/client/interaction'
     require 'assistly/client/case'
     require 'assistly/client/customer'
+    require 'assistly/client/topic'
 
     alias :api_endpoint :endpoint
 
@@ -21,5 +22,6 @@ module Assistly
     include Assistly::Client::Interaction
     include Assistly::Client::Case
     include Assistly::Client::Customer
+    include Assistly::Client::Topic
   end
 end
