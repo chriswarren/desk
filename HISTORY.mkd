@@ -1,3 +1,8 @@
+0.2.0 - April 16, 2011
+-------------------------
+* Support for Topics, Articles, and Macros added
+* Update Readme
+
 0.1.5 - April 15, 2011
 -------------------------
 * Support for creating outbound interactions via email

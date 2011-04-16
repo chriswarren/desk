@@ -1,10 +1,19 @@
 The Assistly Ruby Gem
 ====================
-A Ruby wrapper for the Assistly API
+A Ruby wrapper for the [Assistly API](http://dev.assistly.com/)
 
 Installation
 ------------
     gem install assistly
+
+What's new in 0.2.0?
+------------------
+Added support for Topics, Articles, and Macros, which is currently all that is available in the Assistly API.
+
+What's new in 0.1.5?
+------------------
+Added the ability to create outbound communications over email
+
 
 What's new in 0.1?
 ------------------
@@ -24,12 +33,17 @@ Usage Examples
     # All methods require authentication. To get your Assistly OAuth credentials,
     # register an app in the Assistly admin for your account at http://your-domain.assistly.com/admin
     @assistly = Assistly.configure do |config|
+      config.support_email = "help@example.com"
       config.subdomain = YOUR_ASSISTLY_SUBDOMAIN
       config.consumer_key = YOUR_CONSUMER_KEY
       config.consumer_secret = YOUR_CONSUMER_SECRET
       config.oauth_token = YOUR_OAUTH_TOKEN
       config.oauth_token_secret = YOUR_OAUTH_TOKEN_SECRET
     end
+
+    ######
+    # Cases
+    ######
 
     # List cases
     @assistly.cases
@@ -43,6 +57,10 @@ Usage Examples
 
     # Get a case url
     @assistly.case_url(12345)
+    
+    ######
+    # Customers
+    ######
 
     # List customers
     @assistly.customers
@@ -64,6 +82,10 @@ Usage Examples
     # Update a customer email
     @assistly.update_customer_email(12345, 54321, :email => "foo@example.com")
     @assistly.update_customer_email(12345, 54321, :customer_contact_type => "work")
+    
+    ######
+    # Interactions
+    ######
 
     # List interactions
     @assistly.interactions
@@ -85,11 +107,81 @@ Usage Examples
     @assistly.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")
     @assistly.create_outbound_interaction("foo@example.com", "Missed Your Call", "Sorry we missed yoru call. What's up?")
 
+    ######
+    # Users
+    ######
+
     # List users
     @assistly.users
 
     # Get a specific user
     @assistly.user(12345)
+    
+    ######
+    # Topics
+    ######
+    
+    # List Topics
+    @assistly.topics
+    
+    # Get a specific topic
+    @assistly.topic(12345)
+    
+    # Create a new topic
+    @assistly.create_topic("name", :description => "description")
+    
+    # Update a topic
+    @assistly.update_topic(12345, :subject => "Updated")
+    
+    # Delete a topic
+    @assistly.delete_topic(12345)
+    
+    ######
+    # Articles
+    ######
+    
+    # List articles for a topic
+    @assistly.articles(1)
+    
+    # Get a specific article
+    @assistly.article(12345)
+    
+    # Create a new article within a topic
+    @assistly.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
+    
+    # Update an article
+    @assistly.update_article(12345, :subject => "Updated API Tips")
+    
+    # Delete an article
+    @assistly.delete_article(12345)
+    
+    ######
+    # Macros
+    ######
+    
+    # List Macros
+    @assistly.macros
+
+    # Get a specific macro
+    @assistly.macro(12345)
+
+    # Create a new macro
+    @assistly.create_macro("name", :labels => "escalated")
+
+    # Update a macro
+    @assistly.update_macro(12345, :name => "Updated Name")
+
+    # Delete a macro
+    @assistly.delete_macro(12345)
+    
+    # Macro Actions
+    @assistly.macro_actions(12345)
+    
+    # Macro Action
+    @assistly.macro_action(12345, "set-case-description")
+    
+    # Update Macro Action
+    @assistly.update_macro_action(12345, "set-case-description", :value => "New Subject")
 
 Contributing
 ------------
@@ -133,5 +225,5 @@ Submitting a Pull Request
 
 Copyright
 ---------
-Copyright (c) 2011 Chris Warren/Zencoder
+Copyright (c) 2011 Chris Warren/[Zencoder](http://zencoder.com)
 See [LICENSE](https://github.com/zencoder/assistly/blob/master/LICENSE.mkd) for details.

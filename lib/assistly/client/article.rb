@@ -2,7 +2,7 @@ module Assistly
   class Client
     # Defines methods related to articles
     module Article
-      # Returns extended information of articles for a article
+      # Returns extended information of articles for a topic
       #
       #   @param id [Integer] a article ID
       #   @option options [Boolean, String, Integer]
@@ -42,10 +42,11 @@ module Assistly
       # Creates a new article
       #
       #   @param id [Integer] a article ID
+      #   @param id [Integer] a article ID
+      #   @param id [Integer] a article ID
       #   @option options [Hash]
       #   @example Creates a new article
-      #     Assistly.create_article("name")
-      #     Assistly.create_article("name", :description => "description")
+      #     Assistly.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
       # @format :json
       # @authenticated true
       # @see http://dev.assistly.com/docs/api/articles/create

@@ -24,13 +24,11 @@ module Assistly
       #   @option options [Hash]
       #   @example Return extended information for 12345
       #     Assistly.macro(12345)
-      #     Assistly.macro(12345, :by => "external_id")
       # @format :json
       # @authenticated true
       # @see http://dev.assistly.com/docs/api/macros/show
-      def macro(id, *args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("macros/#{id}",options)
+      def macro(id)
+        response = get("macros/#{id}")
         response.macro
       end
       
@@ -40,7 +38,7 @@ module Assistly
       #   @option options [Hash]
       #   @example Creates a new macro
       #     Assistly.create_macro("name")
-      #     Assistly.create_macro("name", :description => "description")
+      #     Assistly.create_macro("name")
       # @format :json
       # @authenticated true
       # @see http://dev.assistly.com/docs/api/macros/create

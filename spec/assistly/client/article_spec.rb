@@ -67,13 +67,13 @@ describe Assistly::Client do
           end
 
           it "should post to the correct resource" do
-            @client.create_article(1, "API Tips", "Tips on using our API")
+            @client.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
             a_post("topics/1/articles.#{format}").
               should have_been_made
           end
 
           it "should return the articles" do
-            article = @client.create_article(1, "API Tips", "Tips on using our API")
+            article = @client.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
     
             article.id.should == 13
           end
