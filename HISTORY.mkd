@@ -1,3 +1,12 @@
+0.1.5 - April 15, 2011
+-------------------------
+* Support for creating outbound interactions via email
+
+0.1.1 - 0.1.4 - April 14, 2011
+-------------------------
+* Miscellaneous bug fixes found when actually using this in production.
+* Moved to Zencoder Github account
+
 0.1 - April 12, 2011
 -------------------------
 * Initial release
