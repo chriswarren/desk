@@ -1,0 +1,13 @@
+{
+        "success":true,
+        "results":
+        {
+                "macro":
+                {
+                        "id":12,
+                        "name":"API Macro",
+                        "enabled":true,
+                        "labels":"Escalated,Some Other Label"
+                }
+        }
+}

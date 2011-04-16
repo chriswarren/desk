@@ -14,6 +14,7 @@ module Assistly
     require 'assistly/client/customer'
     require 'assistly/client/topic'
     require 'assistly/client/article'
+    require 'assistly/client/macro'
 
     alias :api_endpoint :endpoint
 
@@ -25,5 +26,6 @@ module Assistly
     include Assistly::Client::Customer
     include Assistly::Client::Topic
     include Assistly::Client::Article
+    include Assistly::Client::Macro
   end
 end
