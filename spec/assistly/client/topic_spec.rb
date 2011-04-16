@@ -123,7 +123,7 @@ describe Assistly::Client do
               should have_been_made
           end
 
-          it "should return the new topic" do
+          it "should return a successful response" do
             topic = @client.delete_topic(1)
             topic.success.should == true
           end
