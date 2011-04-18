@@ -6,10 +6,14 @@ Installation
 ------------
     gem install assistly
 
+What's new in 0.2.2?
+------------------
+Added deep_merge! support so that we keep any custom email headers when creating outbound interactions. 
+Required pony in the gem so you don't have to include it in your app.
+
 What's new in 0.2.1?
 ------------------
 Stopped returning only the 'results' array when listing things, because this would cause us to not have access to page numbers, total counts, etc.
-
 
 What's new in 0.2.0?
 ------------------

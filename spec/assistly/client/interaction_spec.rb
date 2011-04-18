@@ -149,15 +149,15 @@ describe Assistly::Client do
         
         context "with customer headers set" do
           before do
-            @email = @client.create_outbound_interaction("customer@example.com", "Need help?", "Sorry we missed you in chat today.", :headers => { "x-assistly-interaction-user-agent" => "12345"})
+            @custom_email = @client.create_outbound_interaction("customer@example.com", "Need help?", "Sorry we missed you in chat today.", :headers => { "x-assistly-interaction-user-agent" => "12345"})
           end
           
           it "should merge the custom headers" do
-            @email.last.should have_header("x-assistly-interaction-user-agent","12345")
+            @custom_email.last.should have_header("x-assistly-interaction-user-agent","12345")
           end
           
           it "should preserve the existing headers" do
-            @email.last.should have_header("x-assistly-customer-email","customer@example.com")
+            @custom_email.last.should have_header("x-assistly-customer-email","customer@example.com")
           end
         end
       end
