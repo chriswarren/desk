@@ -1,3 +1,7 @@
+0.2.3 April 18, 2011
+------------------
+Removed deep_merge because it conflicts with rails. Handling the merge inside the create_outbound_interaction method only on headers for now, until we need it elsewhere.
+
 0.2.2 - April 18, 2011
 ------------------
 Added deep_merge! support so that we keep any custom email headers when creating outbound interactions. 
