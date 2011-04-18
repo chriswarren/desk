@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('rash', '~> 0.3.0')
   s.add_runtime_dependency('simple_oauth', '~> 0.1.4')
   s.add_runtime_dependency('pony', '~> 1.1')
-  s.add_runtime_dependency('deep_merge', '~> 0.1.0')
   s.authors = ["Chris Warren"]
   s.description = %q{A Ruby wrapper for the Assistly REST API}
   s.post_install_message =<<eos

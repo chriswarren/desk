@@ -63,9 +63,11 @@ module Assistly
         raise Assistly::SupportEmailNotSet if support_email.blank?
         options = args.last.is_a?(Hash) ? args.pop : {}
         options.merge!(:to => to, :subject => subject, :body => body, :from => support_email, :bcc => support_email)
-        options.deep_merge!(:headers => { "x-assistly-customer-email" => to, 
-                                     "x-assistly-interaction-direction" => "out",
-                                     "x-assistly-case-status" => options[:status]||"open"})
+        headers = { "x-assistly-customer-email" => to, 
+                    "x-assistly-interaction-direction" => "out",
+                    "x-assistly-case-status" => options[:status]||"open"}
+        headers.merge!(options[:headers]) if options[:headers]
+        options.merge!(:headers => headers)
         Pony.mail(options)
       end
     end

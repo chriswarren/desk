@@ -3,7 +3,6 @@ require 'assistly/configuration'
 require 'assistly/api'
 require 'assistly/client'
 require 'pony'
-require 'deep_merge'
 
 module Assistly
   extend Configuration
