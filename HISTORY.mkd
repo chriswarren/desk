@@ -1,3 +1,7 @@
+0.2.1 - April 18, 2001
+------------------
+Stopped returning only the 'results' array when listing things, because this would cause us to not have access to page numbers, total counts, etc.
+
 0.2.0 - April 16, 2011
 -------------------------
 * Support for Topics, Articles, and Macros added
