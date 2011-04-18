@@ -6,6 +6,11 @@ Installation
 ------------
     gem install assistly
 
+What's new in 0.2.1?
+------------------
+Stopped returning only the 'results' array when listing things, because this would cause us to not have access to page numbers, total counts, etc.
+
+
 What's new in 0.2.0?
 ------------------
 Added support for Topics, Articles, and Macros, which is currently all that is available in the Assistly API.
