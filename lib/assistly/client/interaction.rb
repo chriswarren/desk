@@ -20,7 +20,6 @@ module Assistly
       
       def create_interaction(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        direction = 
         if options[:direction].to_s == "outbound"
           options.delete(:direction)
           to      = options.delete(:customer_email)
@@ -64,7 +63,7 @@ module Assistly
         raise Assistly::SupportEmailNotSet if support_email.blank?
         options = args.last.is_a?(Hash) ? args.pop : {}
         options.merge!(:to => to, :subject => subject, :body => body, :from => support_email, :bcc => support_email)
-        options.merge!(:headers => { "x-assistly-customer-email" => to, 
+        options.deep_merge!(:headers => { "x-assistly-customer-email" => to, 
                                      "x-assistly-interaction-direction" => "out",
                                      "x-assistly-case-status" => options[:status]||"open"})
         Pony.mail(options)
