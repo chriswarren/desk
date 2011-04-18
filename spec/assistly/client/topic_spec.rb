@@ -25,8 +25,8 @@ describe Assistly::Client do
           it "should return up to 100 topics worth of extended information" do
             topics = @client.topics
 
-            topics.should be_a Array
-            topics.first.topic.id.should == 1
+            topics.results.should be_a Array
+            topics.results.first.topic.id.should == 1
           end
 
         end

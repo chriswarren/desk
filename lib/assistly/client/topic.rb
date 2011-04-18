@@ -15,7 +15,7 @@ module Assistly
       def topics(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("topics",options)
-        response['results']
+        response
       end
       
       # Returns extended information on a single topic

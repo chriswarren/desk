@@ -15,7 +15,7 @@ module Assistly
       def interactions(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("interactions",options)
-        response['results']
+        response
       end
       
       def create_interaction(*args)

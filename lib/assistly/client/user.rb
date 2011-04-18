@@ -31,7 +31,7 @@ module Assistly
       def users(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get('users', options)
-        response['results'].collect{|result| result.user}
+        response
       end
     end
   end

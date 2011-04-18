@@ -25,8 +25,8 @@ describe Assistly::Client do
           it "should return up to 100 macros worth of extended information" do
             macros = @client.macros
 
-            macros.should be_a Array
-            macros.first.macro.id.should == 11
+            macros.results.should be_a Array
+            macros.results.first.macro.id.should == 11
           end
 
         end

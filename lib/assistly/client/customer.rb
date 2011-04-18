@@ -14,7 +14,7 @@ module Assistly
       def customers(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("customers",options)
-        response['results']
+        response
       end
       
       # Returns extended information on a single customer

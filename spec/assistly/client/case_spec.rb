@@ -25,9 +25,9 @@ describe Assistly::Client do
           it "should return up to 100 cases worth of extended information" do
             cases = @client.cases
 
-            cases.should be_a Array
-            cases.first.case.id.should == 1
-            cases.first.case.user.name.should == "Jeremy Suriel"
+            cases.results.should be_a Array
+            cases.results.first.case.id.should == 1
+            cases.results.first.case.user.name.should == "Jeremy Suriel"
           end
 
         end

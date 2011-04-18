@@ -15,7 +15,7 @@ module Assistly
       def cases(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("cases",options)
-        response['results']
+        response
       end
       
       # Returns extended information on a single case

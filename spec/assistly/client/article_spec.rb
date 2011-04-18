@@ -25,8 +25,8 @@ describe Assistly::Client do
           it "should return the articles" do
             articles = @client.articles(1)
     
-            articles.should be_a Array
-            articles.first.article.id.should == 13
+            articles.results.should be_a Array
+            articles.results.first.article.id.should == 13
           end
 
         end

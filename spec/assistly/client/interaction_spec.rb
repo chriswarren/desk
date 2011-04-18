@@ -166,8 +166,8 @@ describe Assistly::Client do
           it "should return up to 100 users worth of extended information" do
             interactions = @client.interactions
 
-            interactions.should be_a Array
-            interactions.last.interaction.user.name.should == "Agent Jeremy"
+            interactions.results.should be_a Array
+            interactions.results.last.interaction.user.name.should == "Agent Jeremy"
           end
 
         end

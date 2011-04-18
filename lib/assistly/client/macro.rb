@@ -15,7 +15,7 @@ module Assistly
       def macros(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("macros",options)
-        response['results']
+        response
       end
       
       # Returns extended information on a single macro

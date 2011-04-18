@@ -47,8 +47,8 @@ describe Assistly::Client do
 
           it "should return up to 100 users worth of extended information" do
             users = @client.users
-            users.should be_a Array
-            users.first.name.should == "Test User"
+            users.results.should be_a Array
+            users.results.first.user.name.should == "Test User"
           end
 
         end

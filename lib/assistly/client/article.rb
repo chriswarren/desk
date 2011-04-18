@@ -16,11 +16,7 @@ module Assistly
       def articles(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("topics/#{id}/articles",options)
-        if response['results']
-          return response['results']
-        else
-          return response
-        end
+        response
       end
       
       # Returns extended information on a single article
