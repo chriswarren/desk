@@ -6,6 +6,10 @@ Installation
 ------------
     gem install assistly
 
+What's new in 0.2.4?
+------------------
+Resolved an issue that was breaking PUT requests.
+
 What's new in 0.2.3?
 ------------------
 Removed deep_merge because it conflicts with rails. Handling the merge inside the create_outbound_interaction method only on headers for now, until we need it elsewhere.
