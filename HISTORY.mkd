@@ -1,3 +1,11 @@
+0.2.6 October 3, 2011
+------------------
+Newer Faraday and multixml versions
+
+0.2.5 August 17, 2011
+------------------
+Newer multijson version for Rails 3.1 compatibility
+
 0.2.3 April 18, 2011
 ------------------
 Removed deep_merge because it conflicts with rails. Handling the merge inside the create_outbound_interaction method only on headers for now, until we need it elsewhere.

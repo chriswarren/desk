@@ -6,6 +6,10 @@ Installation
 ------------
     gem install assistly
 
+What's new in 0.2.6?
+------------------
+Newer faraday, faraday_middleware and multixml versions
+
 What's new in 0.2.5?
 ------------------
 Newer multijson version for Rails 3.1 compatibility
@@ -20,7 +24,7 @@ Removed deep_merge because it conflicts with rails. Handling the merge inside th
 
 What's new in 0.2.2?
 ------------------
-Added deep_merge support so that we keep any custom email headers when creating outbound interactions. 
+Added deep_merge support so that we keep any custom email headers when creating outbound interactions.
 Required pony in the gem so you don't have to include it in your app.
 
 What's new in 0.2.1?
@@ -78,7 +82,7 @@ Usage Examples
 
     # Get a case url
     Assistly.case_url(12345)
-    
+
     ######
     # Customers
     ######
@@ -103,7 +107,7 @@ Usage Examples
     # Update a customer email
     Assistly.update_customer_email(12345, 54321, :email => "foo@example.com")
     Assistly.update_customer_email(12345, 54321, :customer_contact_type => "work")
-    
+
     ######
     # Interactions
     ######
@@ -116,11 +120,11 @@ Usage Examples
     # Create an inbound interaction
     Assistly.create_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
     Assistly.create_inbound_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
-    
+
     # Create an outbound interaction
     # Assistly's API doesn't support creating outbound communications, so we do this over email with a BCC back to Assistly and customer headers.
     # Assistly.support_email must be set to your Assistly email address so that the email can be sent to the account and give the customer someone to respond to.
-    # 
+    #
     # Read more at http://support.assistly.com/customer/portal/articles/4180
     # Additional headers can be passed as well http://support.assistly.com/customer/portal/articles/6728
     #
@@ -137,49 +141,49 @@ Usage Examples
 
     # Get a specific user
     Assistly.user(12345)
-    
+
     ######
     # Topics
     ######
-    
+
     # List Topics
     Assistly.topics
-    
+
     # Get a specific topic
     Assistly.topic(12345)
-    
+
     # Create a new topic
     Assistly.create_topic("name", :description => "description")
-    
+
     # Update a topic
     Assistly.update_topic(12345, :subject => "Updated")
-    
+
     # Delete a topic
     Assistly.delete_topic(12345)
-    
+
     ######
     # Articles
     ######
-    
+
     # List articles for a topic
     Assistly.articles(1)
-    
+
     # Get a specific article
     Assistly.article(12345)
-    
+
     # Create a new article within a topic
     Assistly.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
-    
+
     # Update an article
     Assistly.update_article(12345, :subject => "Updated API Tips")
-    
+
     # Delete an article
     Assistly.delete_article(12345)
-    
+
     ######
     # Macros
     ######
-    
+
     # List Macros
     Assistly.macros
 
@@ -194,13 +198,13 @@ Usage Examples
 
     # Delete a macro
     Assistly.delete_macro(12345)
-    
+
     # Macro Actions
     Assistly.macro_actions(12345)
-    
+
     # Macro Action
     Assistly.macro_action(12345, "set-case-description")
-    
+
     # Update Macro Action
     Assistly.update_macro_action(12345, "set-case-description", :value => "New Subject")
 
