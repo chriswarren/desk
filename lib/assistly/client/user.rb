@@ -12,7 +12,7 @@ module Assistly
       #     Assistly.user(12345)
       # @format :json, :xml
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/users/show
+      # @see http://dev.desk.com/docs/api/users/show
       def user(id,*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("users/#{id}",options)
@@ -25,7 +25,7 @@ module Assistly
       # @authenticated true
       # @rate_limited true
       # @return [Array] The requested users.
-      # @see http://dev.assistly.com/docs/api/users
+      # @see http://dev.desk.com/docs/api/users
       # @example Return extended information account users
       #   Assistly.users
       def users(*args)

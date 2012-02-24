@@ -45,7 +45,7 @@ module Assistly
   class EnhanceYourCalm < Error
     # The number of seconds your application should wait before requesting date from the Search API again
     #
-    # @see http://dev.Assistly.com/pages/rate-limiting
+    # @see http://dev.desk.com/pages/rate-limiting
     def retry_after
       @http_headers.values_at('retry-after', 'Retry-After').detect {|value| value }.to_i
     end
