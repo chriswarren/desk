@@ -11,7 +11,7 @@ module Assistly
       #     Assistly.cases(:since_id => 12345)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/cases/show
+      # @see http://dev.desk.com/docs/api/cases/show
       def cases(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("cases",options)
@@ -26,7 +26,7 @@ module Assistly
       #     Assistly.case(12345, :by => "external_id")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/cases/show
+      # @see http://dev.desk.com/docs/api/cases/show
       def case(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("cases/#{id}",options)
@@ -40,7 +40,7 @@ module Assistly
       #     Assistly.update_case(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/cases/update
+      # @see http://dev.desk.com/docs/api/cases/update
       def update_case(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = put("cases/#{id}",options)
@@ -48,7 +48,7 @@ module Assistly
       end
       
       def case_url(id)
-        "https://#{subdomain}.assistly.com/agent/case/#{id}"
+        "https://#{subdomain}.desk.com/agent/case/#{id}"
       end
     end
   end
