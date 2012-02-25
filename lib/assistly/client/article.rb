@@ -12,7 +12,7 @@ module Assistly
       #     Assistly.articles(:count => 5, :page => 3)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/topics/articles
+      # @see http://dev.desk.com/docs/api/topics/articles
       def articles(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("topics/#{id}/articles",options)
@@ -28,7 +28,7 @@ module Assistly
       #     Assistly.article(12345, :by => "external_id")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/articles/show
+      # @see http://dev.desk.com/docs/api/articles/show
       def article(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("articles/#{id}",options)
@@ -45,7 +45,7 @@ module Assistly
       #     Assistly.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/articles/create
+      # @see http://dev.desk.com/docs/api/articles/create
       def create_article(topic_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = post("topics/#{topic_id}/articles",options)
@@ -64,7 +64,7 @@ module Assistly
       #     Assistly.update_article(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/articles/update
+      # @see http://dev.desk.com/docs/api/articles/update
       def update_article(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = put("articles/#{id}",options)
@@ -82,7 +82,7 @@ module Assistly
       #     Assistly.update_article(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/articles/update
+      # @see http://dev.desk.com/docs/api/articles/update
       def delete_article(id)
         response = delete("articles/#{id}")
         response

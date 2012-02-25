@@ -7,7 +7,7 @@
                                 "id":1,
                                 "name":"Test User",
                                 "name_public":"Test User",
-                                "email":"testuser@assistly.com",
+                                "email":"testuser@desk.com",
                                 "created_at":"2011-01-28T16:30:16Z",
                                 "updated_at":"2011-01-28T16:31:09Z",
                                 "user_level":"siteadmin_billing",

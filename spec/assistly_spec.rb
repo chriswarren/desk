@@ -55,7 +55,7 @@ describe Assistly do
     end
     
     it "should change the endpoint" do
-      Assistly.endpoint.should == "https://zencoder.assistly.com/api/#{Assistly::Configuration::DEFAULT_VERSION}/"
+      Assistly.endpoint.should == "https://zencoder.desk.com/api/#{Assistly::Configuration::DEFAULT_VERSION}/"
     end
   end
   
@@ -82,7 +82,7 @@ describe Assistly do
     end
     
     it "should change the endpoint" do
-      Assistly.endpoint.should == "https://#{Assistly::Configuration::DEFAULT_SUBDOMAIN}.assistly.com/api/v4/"
+      Assistly.endpoint.should == "https://#{Assistly::Configuration::DEFAULT_SUBDOMAIN}.desk.com/api/v4/"
     end
   end
 

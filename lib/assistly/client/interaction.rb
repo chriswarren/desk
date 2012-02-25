@@ -11,7 +11,7 @@ module Assistly
       #     Assistly.interactions(:since_id => 12345, :count => 5)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/interactions
+      # @see http://dev.desk.com/docs/api/interactions
       def interactions(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("interactions",options)
@@ -38,7 +38,7 @@ module Assistly
       # @authenticated true
       # @rate_limited true
       # @return [Array] The requested users.
-      # @see http://dev.assistly.com/docs/api/interactions/create
+      # @see http://dev.desk.com/docs/api/interactions/create
       # @example Create a new interaction
       #   Assistly.create_interaction(:interaction_subject => "this is an api test", :customer_email => "foo@example.com")
       def create_inbound_interaction(*args)
@@ -57,8 +57,8 @@ module Assistly
       # so we'll use send an email to the customer directly that is BCC'd to the support email address
       # which will create the ticket
       # 
-      # @see http://support.assistly.com/customer/portal/articles/4180
-      # @see http://support.assistly.com/customer/portal/articles/6728
+      # @see http://support.desk.com/customer/portal/articles/4180
+      # @see http://support.desk.com/customer/portal/articles/6728
       def create_outbound_interaction(to, subject, body, *args)
         raise Assistly::SupportEmailNotSet if support_email.blank?
         options = args.last.is_a?(Hash) ? args.pop : {}
