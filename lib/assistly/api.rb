@@ -18,7 +18,7 @@ module Assistly
     end
     
     def endpoint
-      "https://#{self.subdomain}.assistly.com/api/#{self.version}/"
+      "https://#{self.subdomain}.desk.com/api/#{self.version}/"
     end
 
     include Connection

@@ -10,7 +10,7 @@ module Assistly
       #     Assistly.customers(:since_id => 12345, :count => 5)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/customers
+      # @see http://dev.desk.com/docs/api/customers
       def customers(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("customers",options)
@@ -24,7 +24,7 @@ module Assistly
       #     Assistly.customer(12345)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/customers/show
+      # @see http://dev.desk.com/docs/api/customers/show
       def customer(id)
         response = get("customers/#{id}")
         response.customer
@@ -37,7 +37,7 @@ module Assistly
       #     Assistly.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/customers/create
+      # @see http://dev.desk.com/docs/api/customers/create
       def create_customer(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = post("customers",options)
@@ -55,7 +55,7 @@ module Assistly
       #     Assistly.update_customer(12345, :name => "Christopher Warren")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/customers/update
+      # @see http://dev.desk.com/docs/api/customers/update
       def update_customer(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = put("customers/#{id}",options)
@@ -73,7 +73,7 @@ module Assistly
       #     Assistly.create_customer_email(12345, "foo@example.com")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/customers/emails/create
+      # @see http://dev.desk.com/docs/api/customers/emails/create
       def create_customer_email(id, email, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         options.merge!({:email => email})
@@ -93,7 +93,7 @@ module Assistly
       #     Assistly.update_customer_email(12345, 12345, :customer_contact_type => "work")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/customers/emails/update
+      # @see http://dev.desk.com/docs/api/customers/emails/update
       def update_customer_email(id, email_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = put("customers/#{id}/emails/#{email_id}",options)
