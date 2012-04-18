@@ -103,6 +103,44 @@ module Assistly
           return response
         end
       end
+      
+      # Create a new customer phone number
+      #
+      #   @option options [String]
+      #   @example Return extended information for 12345
+      #     Assistly.create_customer_phone(12345, "555-368-7147")
+      # @format :json
+      # @authenticated true
+      # @see http://dev.desk.com/docs/api/customers/phones/create
+      def create_customer_phone(id, phone, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        options.merge!({:phone => phone})
+        response = post("customers/#{id}/phones",options)
+        if response['success']
+          return response['results']['phone']
+        else
+          return response
+        end
+      end
+      
+      # Update a customer's phone number
+      #
+      #   @option options [String]
+      #   @example Return extended information for 12345
+      #     Assistly.update_customer_phone(12345, 12345, :phone => "555-368-7147")
+      #     Assistly.update_customer_phone(12345, 12345, :customer_contact_type => "work")
+      # @format :json
+      # @authenticated true
+      # @see http://dev.desk.com/docs/api/customers/phones/update
+      def update_customer_phone(id, phone_id, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        response = put("customers/#{id}/phones/#{phone_id}",options)
+        if response['success']
+          return response['results']['phone']
+        else
+          return response
+        end
+      end
     end
   end
 end
