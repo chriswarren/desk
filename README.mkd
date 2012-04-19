@@ -107,6 +107,14 @@ Usage Examples
     # Update a customer email
     Assistly.update_customer_email(12345, 54321, :email => "foo@example.com")
     Assistly.update_customer_email(12345, 54321, :customer_contact_type => "work")
+    
+    # Add a customer phone number
+    Assistly.create_customer_phone(12345, "555-368-7147")
+    Assistly.create_customer_phone(12345, "555-368-7147", :customer_contact_type => "work")
+
+    # Update a customer phone number
+    Assistly.update_customer_phone(12345, 54321, :phone => "555-368-7147")
+    Assistly.update_customer_phone(12345, 54321, :customer_contact_type => "work")
 
     ######
     # Interactions
