@@ -6,6 +6,10 @@ Installation
 ------------
     gem install assistly
 
+What's new in 0.2.7?
+------------------
+Newer faraday and faraday_middleware versions
+
 What's new in 0.2.6?
 ------------------
 Newer faraday, faraday_middleware and multixml versions
