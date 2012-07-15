@@ -11,7 +11,7 @@ module Assistly
       #     Assistly.macros(:count => 5, :page => 3)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros
+      # @see http://dev.desk.com/docs/api/macros
       def macros(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("macros",options)
@@ -26,7 +26,7 @@ module Assistly
       #     Assistly.macro(12345)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/show
+      # @see http://dev.desk.com/docs/api/macros/show
       def macro(id)
         response = get("macros/#{id}")
         response.macro
@@ -41,7 +41,7 @@ module Assistly
       #     Assistly.create_macro("name")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/create
+      # @see http://dev.desk.com/docs/api/macros/create
       def create_macro(name, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = post("macros",options)
@@ -60,7 +60,7 @@ module Assistly
       #     Assistly.update_macro(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/update
+      # @see http://dev.desk.com/docs/api/macros/update
       def update_macro(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = put("macros/#{id}",options)
@@ -78,7 +78,7 @@ module Assistly
       #     Assistly.update_macro(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/update
+      # @see http://dev.desk.com/docs/api/macros/update
       def delete_macro(id)
         response = delete("macros/#{id}")
         response
@@ -97,7 +97,7 @@ module Assistly
       #     Assistly.macro_actions(1, :count => 5, :page => 3)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/actions
+      # @see http://dev.desk.com/docs/api/macros/actions
       def macro_actions(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("macros/#{id}/actions",options)
@@ -112,7 +112,7 @@ module Assistly
       #     Assistly.macro_action(12345, "set-case-description")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/actions/show
+      # @see http://dev.desk.com/docs/api/macros/actions/show
       def macro_action(id, slug)
         response = get("macros/#{id}/actions/#{slug}")
         response['action']
@@ -126,7 +126,7 @@ module Assistly
       #     Assistly.update_macro_action(12345, "set-case-description", :value => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/macros/actions/update
+      # @see http://dev.desk.com/docs/api/macros/actions/update
       def update_macro_action(id, slug, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = put("macros/#{id}/actions/#{slug}",options)

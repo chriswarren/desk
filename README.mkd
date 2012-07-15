@@ -1,6 +1,6 @@
 The Assistly Ruby Gem
 ====================
-A Ruby wrapper for the [Assistly API](http://dev.assistly.com/)
+A Ruby wrapper for the [Assistly API](http://dev.desk.com/)
 
 Installation
 ------------
@@ -42,7 +42,7 @@ Added the ability to create outbound communications over email
 
 What's new in 0.1?
 ------------------
-This is the first release of the Assistly gem, based on the [Twitter gem](http://github.com/jnunemaker/twitter). Support for most of the [Assistly API](http://dev.assistly.com/docs/api) are handled.
+This is the first release of the Assistly gem, based on the [Twitter gem](http://github.com/jnunemaker/twitter). Support for most of the [Assistly API](http://dev.desk.com/docs/api) are handled.
 There is not yet support for Content or Macros.
 
 Help! I'm getting: "Did not recognize your engine specification. Please specify either a symbol or a class. (RuntimeError)"
@@ -56,7 +56,7 @@ Usage Examples
     require "assistly"
 
     # All methods require authentication. To get your Assistly OAuth credentials,
-    # register an app in the Assistly admin for your account at http://your-domain.assistly.com/admin
+    # register an app in the Assistly admin for your account at http://your-domain.desk.com/admin
     Assistly.configure do |config|
       config.support_email = "help@example.com"
       config.subdomain = YOUR_ASSISTLY_SUBDOMAIN
@@ -107,6 +107,14 @@ Usage Examples
     # Update a customer email
     Assistly.update_customer_email(12345, 54321, :email => "foo@example.com")
     Assistly.update_customer_email(12345, 54321, :customer_contact_type => "work")
+    
+    # Add a customer phone number
+    Assistly.create_customer_phone(12345, "555-368-7147")
+    Assistly.create_customer_phone(12345, "555-368-7147", :customer_contact_type => "work")
+
+    # Update a customer phone number
+    Assistly.update_customer_phone(12345, 54321, :phone => "555-368-7147")
+    Assistly.update_customer_phone(12345, 54321, :customer_contact_type => "work")
 
     ######
     # Interactions
@@ -125,8 +133,8 @@ Usage Examples
     # Assistly's API doesn't support creating outbound communications, so we do this over email with a BCC back to Assistly and customer headers.
     # Assistly.support_email must be set to your Assistly email address so that the email can be sent to the account and give the customer someone to respond to.
     #
-    # Read more at http://support.assistly.com/customer/portal/articles/4180
-    # Additional headers can be passed as well http://support.assistly.com/customer/portal/articles/6728
+    # Read more at http://support.desk.com/customer/portal/articles/4180
+    # Additional headers can be passed as well http://support.desk.com/customer/portal/articles/6728
     #
     # Email is sent using Pony https://github.com/benprew/pony
     Assistly.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")

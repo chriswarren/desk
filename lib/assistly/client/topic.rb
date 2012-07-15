@@ -11,7 +11,7 @@ module Assistly
       #     Assistly.topics(:count => 5, :page => 3)
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/topics/show
+      # @see http://dev.desk.com/docs/api/topics/show
       def topics(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("topics",options)
@@ -27,7 +27,7 @@ module Assistly
       #     Assistly.topic(12345, :by => "external_id")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/topics/show
+      # @see http://dev.desk.com/docs/api/topics/show
       def topic(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("topics/#{id}",options)
@@ -43,7 +43,7 @@ module Assistly
       #     Assistly.create_topic("name", :description => "description")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/topics/create
+      # @see http://dev.desk.com/docs/api/topics/create
       def create_topic(name, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = post("topics",options)
@@ -62,7 +62,7 @@ module Assistly
       #     Assistly.update_topic(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/topics/update
+      # @see http://dev.desk.com/docs/api/topics/update
       def update_topic(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = put("topics/#{id}",options)
@@ -80,7 +80,7 @@ module Assistly
       #     Assistly.update_topic(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
-      # @see http://dev.assistly.com/docs/api/topics/update
+      # @see http://dev.desk.com/docs/api/topics/update
       def delete_topic(id)
         response = delete("topics/#{id}")
         response
