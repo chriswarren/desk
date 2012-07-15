@@ -1,5 +1,5 @@
-module Assistly
-  # Custom error class for rescuing from all Assistly errors
+module Desk
+  # Custom error class for rescuing from all Desk.com errors
   class Error < StandardError
     attr_reader :http_headers
 
@@ -26,22 +26,22 @@ module Assistly
     end
   end
 
-  # Raised when Assistly returns the HTTP status code 400
+  # Raised when Desk returns the HTTP status code 400
   class BadRequest < Error; end
 
-  # Raised when Assistly returns the HTTP status code 401
+  # Raised when Desk returns the HTTP status code 401
   class Unauthorized < Error; end
 
-  # Raised when Assistly returns the HTTP status code 403
+  # Raised when Desk returns the HTTP status code 403
   class Forbidden < Error; end
 
-  # Raised when Assistly returns the HTTP status code 404
+  # Raised when Desk returns the HTTP status code 404
   class NotFound < Error; end
 
-  # Raised when Assistly returns the HTTP status code 406
+  # Raised when Desk returns the HTTP status code 406
   class NotAcceptable < Error; end
 
-  # Raised when Assistly returns the HTTP status code 420
+  # Raised when Desk returns the HTTP status code 420
   class EnhanceYourCalm < Error
     # The number of seconds your application should wait before requesting date from the Search API again
     #
@@ -51,17 +51,17 @@ module Assistly
     end
   end
 
-  # Raised when Assistly returns the HTTP status code 500
+  # Raised when Desk returns the HTTP status code 500
   class InternalServerError < Error; end
 
-  # Raised when Assistly returns the HTTP status code 502
+  # Raised when Desk returns the HTTP status code 502
   class BadGateway < Error; end
 
-  # Raised when Assistly returns the HTTP status code 503
+  # Raised when Desk returns the HTTP status code 503
   class ServiceUnavailable < Error; end
-  
+
   # Gem Specific Errors
-  class AssistlyError < StandardError; end
-  
-  class SupportEmailNotSet < AssistlyError; end
+  class DeskError < StandardError; end
+
+  class SupportEmailNotSet < DeskError; end
 end

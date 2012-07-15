@@ -1,4 +1,4 @@
-module Assistly
+module Desk
   class Client
     # Defines methods related to users
     module User
@@ -9,7 +9,7 @@ module Assistly
       #   @option options [Boolean, String, Integer] :include_entities Include {http://dev.twitter.com/pages/tweet_entities Tweet Entities} when set to true, 't' or 1.
       #   @return [Hashie::Mash] The requested user.
       #   @example Return extended information for 12345
-      #     Assistly.user(12345)
+      #     Desk.user(12345)
       # @format :json, :xml
       # @authenticated true
       # @see http://dev.desk.com/docs/api/users/show
@@ -27,7 +27,7 @@ module Assistly
       # @return [Array] The requested users.
       # @see http://dev.desk.com/docs/api/users
       # @example Return extended information account users
-      #   Assistly.users
+      #   Desk.users
       def users(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get('users', options)

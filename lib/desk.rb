@@ -1,20 +1,20 @@
-require 'assistly/error'
-require 'assistly/configuration'
-require 'assistly/api'
-require 'assistly/client'
+require 'desk/error'
+require 'desk/configuration'
+require 'desk/api'
+require 'desk/client'
 require 'pony'
 
-module Assistly
+module Desk
   extend Configuration
 
-  # Alias for Assistly::Client.new
+  # Alias for Desk::Client.new
   #
-  # @return [Assistly::Client]
+  # @return [Desk::Client]
   def self.client(options={})
-    Assistly::Client.new(options)
+    Desk::Client.new(options)
   end
 
-  # Delegate to Assistly::Client
+  # Delegate to Desk::Client
   def self.method_missing(method, *args, &block)
     return super unless client.respond_to?(method)
     client.send(method, *args, &block)

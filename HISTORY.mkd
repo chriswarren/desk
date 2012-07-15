@@ -1,3 +1,8 @@
+0.3.0 July 15, 2012
+------------------
+Renamed from Assistly to Desk
+Updated Faraday and Hashie versions
+
 0.2.6 October 3, 2011
 ------------------
 Newer Faraday and multixml versions
@@ -12,7 +17,7 @@ Removed deep_merge because it conflicts with rails. Handling the merge inside th
 
 0.2.2 - April 18, 2011
 ------------------
-Added deep_merge! support so that we keep any custom email headers when creating outbound interactions. 
+Added deep_merge! support so that we keep any custom email headers when creating outbound interactions.
 Required pony in the gem so you don't have to include it in your app.
 
 0.2.1 - April 18, 2011

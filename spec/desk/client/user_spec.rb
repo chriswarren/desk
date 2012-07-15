@@ -1,10 +1,10 @@
 require 'helper'
 
-describe Assistly::Client do
-  Assistly::Configuration::VALID_FORMATS.each do |format|
+describe Desk::Client do
+  Desk::Configuration::VALID_FORMATS.each do |format|
     context ".new(:format => '#{format}')" do
       before do
-        @client = Assistly::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
+        @client = Desk::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
       end
 
       describe ".user" do

@@ -1,4 +1,4 @@
-module Assistly
+module Desk
   # @private
   module Authentication
     private

@@ -3,7 +3,7 @@ require 'faraday/request/multipart_with_file'
 require 'faraday/response/raise_http_4xx'
 require 'faraday/response/raise_http_5xx'
 
-module Assistly
+module Desk
   # @private
   module Connection
     private

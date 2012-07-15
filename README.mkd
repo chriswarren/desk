@@ -1,10 +1,15 @@
-The Assistly Ruby Gem
+The Desk Ruby Gem
 ====================
-A Ruby wrapper for the [Assistly API](http://dev.desk.com/)
+A Ruby wrapper for the [Desk.com API](http://dev.desk.com/)
 
 Installation
 ------------
-    gem install assistly
+    gem install desk
+
+What's new in 0.3.0?
+------------------
+Renamed to Desk
+Newer faraday, faraday_middleware and hashie
 
 What's new in 0.2.6?
 ------------------
@@ -53,13 +58,13 @@ You'll need to explicitly require a JSON library. We recommend [yajl-ruby](http:
 Usage Examples
 --------------
     require "rubygems"
-    require "assistly"
+    require "desk"
 
-    # All methods require authentication. To get your Assistly OAuth credentials,
-    # register an app in the Assistly admin for your account at http://your-domain.desk.com/admin
-    Assistly.configure do |config|
+    # All methods require authentication. To get your Desk OAuth credentials,
+    # register an app in the Desk.com admin for your account at http://your-domain.desk.com/admin
+    Desk.configure do |config|
       config.support_email = "help@example.com"
-      config.subdomain = YOUR_ASSISTLY_SUBDOMAIN
+      config.subdomain = YOUR_DESK_SUBDOMAIN
       config.consumer_key = YOUR_CONSUMER_KEY
       config.consumer_secret = YOUR_CONSUMER_SECRET
       config.oauth_token = YOUR_OAUTH_TOKEN
@@ -71,150 +76,150 @@ Usage Examples
     ######
 
     # List cases
-    Assistly.cases
-    Assistly.cases(:since_id => 12345)
+    Desk.cases
+    Desk.cases(:since_id => 12345)
 
     # Get a specific case
-    Assistly.case(12345)
+    Desk.case(12345)
 
     # Update a specific case
-    Assistly.update_case(12345, :subject => "Something Else")
+    Desk.update_case(12345, :subject => "Something Else")
 
     # Get a case url
-    Assistly.case_url(12345)
+    Desk.case_url(12345)
 
     ######
     # Customers
     ######
 
     # List customers
-    Assistly.customers
-    Assistly.customers(:since_id => 12345, :count => 5)
+    Desk.customers
+    Desk.customers(:since_id => 12345, :count => 5)
 
     # Get a specific customer
-    Assistly.customer(12345)
+    Desk.customer(12345)
 
     # Create a customer
-    Assistly.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
+    Desk.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
 
     # Update a customer
-    Assistly.update_customer(12345, :name => "Christopher Warren")
+    Desk.update_customer(12345, :name => "Christopher Warren")
 
     # Add a customer email
-    Assistly.create_customer_email(12345, "foo@example.com")
-    Assistly.create_customer_email(12345, "foo@example.com", :customer_contact_type => "work")
+    Desk.create_customer_email(12345, "foo@example.com")
+    Desk.create_customer_email(12345, "foo@example.com", :customer_contact_type => "work")
 
     # Update a customer email
-    Assistly.update_customer_email(12345, 54321, :email => "foo@example.com")
-    Assistly.update_customer_email(12345, 54321, :customer_contact_type => "work")
-    
+    Desk.update_customer_email(12345, 54321, :email => "foo@example.com")
+    Desk.update_customer_email(12345, 54321, :customer_contact_type => "work")
+
     # Add a customer phone number
-    Assistly.create_customer_phone(12345, "555-368-7147")
-    Assistly.create_customer_phone(12345, "555-368-7147", :customer_contact_type => "work")
+    Desk.create_customer_phone(12345, "555-368-7147")
+    Desk.create_customer_phone(12345, "555-368-7147", :customer_contact_type => "work")
 
     # Update a customer phone number
-    Assistly.update_customer_phone(12345, 54321, :phone => "555-368-7147")
-    Assistly.update_customer_phone(12345, 54321, :customer_contact_type => "work")
+    Desk.update_customer_phone(12345, 54321, :phone => "555-368-7147")
+    Desk.update_customer_phone(12345, 54321, :customer_contact_type => "work")
 
     ######
     # Interactions
     ######
 
     # List interactions
-    Assistly.interactions
-    Assistly.interactions(:since_id => 12345)
-    Assistly.interactions(:since_id => 12345, :count => 5)
+    Desk.interactions
+    Desk.interactions(:since_id => 12345)
+    Desk.interactions(:since_id => 12345, :count => 5)
 
     # Create an inbound interaction
-    Assistly.create_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
-    Assistly.create_inbound_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
+    Desk.create_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
+    Desk.create_inbound_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
 
     # Create an outbound interaction
-    # Assistly's API doesn't support creating outbound communications, so we do this over email with a BCC back to Assistly and customer headers.
-    # Assistly.support_email must be set to your Assistly email address so that the email can be sent to the account and give the customer someone to respond to.
+    # Desk.com's API doesn't support creating outbound communications, so we do this over email with a BCC back to Desk and customer headers.
+    # Desk.support_email must be set to your Desk.com email address so that the email can be sent to the account and give the customer someone to respond to.
     #
     # Read more at http://support.desk.com/customer/portal/articles/4180
     # Additional headers can be passed as well http://support.desk.com/customer/portal/articles/6728
     #
     # Email is sent using Pony https://github.com/benprew/pony
-    Assistly.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")
-    Assistly.create_outbound_interaction("foo@example.com", "Missed Your Call", "Sorry we missed yoru call. What's up?")
+    Desk.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")
+    Desk.create_outbound_interaction("foo@example.com", "Missed Your Call", "Sorry we missed yoru call. What's up?")
 
     ######
     # Users
     ######
 
     # List users
-    Assistly.users
+    Desk.users
 
     # Get a specific user
-    Assistly.user(12345)
+    Desk.user(12345)
 
     ######
     # Topics
     ######
 
     # List Topics
-    Assistly.topics
+    Desk.topics
 
     # Get a specific topic
-    Assistly.topic(12345)
+    Desk.topic(12345)
 
     # Create a new topic
-    Assistly.create_topic("name", :description => "description")
+    Desk.create_topic("name", :description => "description")
 
     # Update a topic
-    Assistly.update_topic(12345, :subject => "Updated")
+    Desk.update_topic(12345, :subject => "Updated")
 
     # Delete a topic
-    Assistly.delete_topic(12345)
+    Desk.delete_topic(12345)
 
     ######
     # Articles
     ######
 
     # List articles for a topic
-    Assistly.articles(1)
+    Desk.articles(1)
 
     # Get a specific article
-    Assistly.article(12345)
+    Desk.article(12345)
 
     # Create a new article within a topic
-    Assistly.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
+    Desk.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
 
     # Update an article
-    Assistly.update_article(12345, :subject => "Updated API Tips")
+    Desk.update_article(12345, :subject => "Updated API Tips")
 
     # Delete an article
-    Assistly.delete_article(12345)
+    Desk.delete_article(12345)
 
     ######
     # Macros
     ######
 
     # List Macros
-    Assistly.macros
+    Desk.macros
 
     # Get a specific macro
-    Assistly.macro(12345)
+    Desk.macro(12345)
 
     # Create a new macro
-    Assistly.create_macro("name", :labels => "escalated")
+    Desk.create_macro("name", :labels => "escalated")
 
     # Update a macro
-    Assistly.update_macro(12345, :name => "Updated Name")
+    Desk.update_macro(12345, :name => "Updated Name")
 
     # Delete a macro
-    Assistly.delete_macro(12345)
+    Desk.delete_macro(12345)
 
     # Macro Actions
-    Assistly.macro_actions(12345)
+    Desk.macro_actions(12345)
 
     # Macro Action
-    Assistly.macro_action(12345, "set-case-description")
+    Desk.macro_action(12345, "set-case-description")
 
     # Update Macro Action
-    Assistly.update_macro_action(12345, "set-case-description", :value => "New Subject")
+    Desk.update_macro_action(12345, "set-case-description", :value => "New Subject")
 
 Contributing
 ------------
@@ -229,15 +234,15 @@ Here are some ways *you* can contribute:
 * by writing specifications
 * by writing code (**no patch is too small**: fix typos, add comments, clean up inconsistent whitespace)
 * by refactoring code
-* by closing [issues](http://github.com/zencoder/assistly/issues)
+* by closing [issues](http://github.com/zencoder/desk/issues)
 * by reviewing patches
 
-All contributors will be added to the [HISTORY](https://github.com/zencoder/assistly/blob/master/HISTORY.mkd)
+All contributors will be added to the [HISTORY](https://github.com/zencoder/desk/blob/master/HISTORY.mkd)
 file and will receive the respect and gratitude of the community.
 
 Submitting an Issue
 -------------------
-We use the [GitHub issue tracker](http://github.com/zencoder/assistly/issues) to track bugs and
+We use the [GitHub issue tracker](http://github.com/zencoder/desk/issues) to track bugs and
 features. Before submitting a bug report or feature request, check to make sure it hasn't already
 been submitted. You can indicate support for an existing issuse by voting it up. When submitting a
 bug report, please include a [Gist](http://gist.github.com/) that includes a stack trace and any
@@ -258,5 +263,5 @@ Submitting a Pull Request
 
 Copyright
 ---------
-Copyright (c) 2011 Chris Warren/[Zencoder](http://zencoder.com)
-See [LICENSE](https://github.com/zencoder/assistly/blob/master/LICENSE.mkd) for details.
+Copyright (c) 2012 Chris Warren/[Zencoder](http://zencoder.com)
+See [LICENSE](https://github.com/zencoder/desk/blob/master/LICENSE.mkd) for details.

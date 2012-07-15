@@ -1,14 +1,14 @@
 require 'helper'
 
-describe Assistly::API do
+describe Desk::API do
   before do
-    @keys = Assistly::Configuration::VALID_OPTIONS_KEYS
+    @keys = Desk::Configuration::VALID_OPTIONS_KEYS
   end
 
   context "with module configuration" do
 
     before do
-      Assistly.configure do |config|
+      Desk.configure do |config|
         @keys.each do |key|
           config.send("#{key}=", key)
         end
@@ -16,11 +16,11 @@ describe Assistly::API do
     end
 
     after do
-      Assistly.reset
+      Desk.reset
     end
 
     it "should inherit module configuration" do
-      api = Assistly::API.new
+      api = Desk::API.new
       @keys.each do |key|
         api.send(key).should == key
       end
@@ -47,7 +47,7 @@ describe Assistly::API do
       context "during initialization"
 
         it "should override module configuration" do
-          api = Assistly::API.new(@configuration)
+          api = Desk::API.new(@configuration)
           @keys.each do |key|
             api.send(key).should == @configuration[key]
           end
@@ -56,7 +56,7 @@ describe Assistly::API do
       context "after initilization" do
 
         it "should override module configuration after initialization" do
-          api = Assistly::API.new
+          api = Desk::API.new
           @configuration.each do |key, value|
             api.send("#{key}=", value)
           end

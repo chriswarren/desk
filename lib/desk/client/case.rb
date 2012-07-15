@@ -1,4 +1,4 @@
-module Assistly
+module Desk
   class Client
     # Defines methods related to cases
     module Case
@@ -6,9 +6,9 @@ module Assistly
       #
       #   @option options [Boolean, String, Integer]
       #   @example Return extended information for 12345
-      #     Assistly.cases(:case_id => 12345)
-      #     Assistly.cases(:email => "customer@example.com", :count => 5)
-      #     Assistly.cases(:since_id => 12345)
+      #     Desk.cases(:case_id => 12345)
+      #     Desk.cases(:email => "customer@example.com", :count => 5)
+      #     Desk.cases(:since_id => 12345)
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/cases/show
@@ -17,13 +17,13 @@ module Assistly
         response = get("cases",options)
         response
       end
-      
+
       # Returns extended information on a single case
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.case(12345)
-      #     Assistly.case(12345, :by => "external_id")
+      #     Desk.case(12345)
+      #     Desk.case(12345, :by => "external_id")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/cases/show
@@ -32,12 +32,12 @@ module Assistly
         response = get("cases/#{id}",options)
         response.case
       end
-      
+
       # Updates a single case
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.update_case(12345, :subject => "New Subject")
+      #     Desk.update_case(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/cases/update
@@ -46,7 +46,7 @@ module Assistly
         response = put("cases/#{id}",options)
         response.case
       end
-      
+
       def case_url(id)
         "https://#{subdomain}.desk.com/agent/case/#{id}"
       end

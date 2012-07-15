@@ -1,4 +1,4 @@
-module Assistly
+module Desk
   class Client
     # Defines methods related to articles
     module Article
@@ -7,9 +7,9 @@ module Assistly
       #   @param id [Integer] a article ID
       #   @option options [Boolean, String, Integer]
       #   @example Return extended information for 12345
-      #     Assistly.articles
-      #     Assistly.articles(:count => 5)
-      #     Assistly.articles(:count => 5, :page => 3)
+      #     Desk.articles
+      #     Desk.articles(:count => 5)
+      #     Desk.articles(:count => 5, :page => 3)
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/topics/articles
@@ -18,14 +18,14 @@ module Assistly
         response = get("topics/#{id}/articles",options)
         response
       end
-      
+
       # Returns extended information on a single article
       #
       #   @param id [Integer] a article ID
       #   @option options [Hash]
       #   @example Return extended information for 12345
-      #     Assistly.article(12345)
-      #     Assistly.article(12345, :by => "external_id")
+      #     Desk.article(12345)
+      #     Desk.article(12345, :by => "external_id")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/articles/show
@@ -34,7 +34,7 @@ module Assistly
         response = get("articles/#{id}",options)
         response.article
       end
-      
+
       # Creates a new article
       #
       #   @param id [Integer] a article ID
@@ -42,7 +42,7 @@ module Assistly
       #   @param id [Integer] a article ID
       #   @option options [Hash]
       #   @example Creates a new article
-      #     Assistly.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
+      #     Desk.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/articles/create
@@ -55,13 +55,13 @@ module Assistly
           return response
         end
       end
-      
+
       # Updates a single article
       #
       #   @param id [Integer] a article ID
       #   @option options [String]
       #   @example Updates information for article 12345
-      #     Assistly.update_article(12345, :subject => "New Subject")
+      #     Desk.update_article(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/articles/update
@@ -74,12 +74,12 @@ module Assistly
           return response
         end
       end
-      
+
       # Deletes a single article
       #
       #   @param id [Integer] a article ID
       #   @example Deletes article 12345
-      #     Assistly.update_article(12345, :subject => "New Subject")
+      #     Desk.update_article(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/articles/update

@@ -1,10 +1,10 @@
 require 'simplecov'
 SimpleCov.start do
-  add_group 'Assistly', 'lib/assistly'
+  add_group 'Desk', 'lib/desk'
   add_group 'Faraday Middleware', 'lib/faraday'
   add_group 'Specs', 'spec'
 end
-require 'assistly'
+require 'desk'
 require 'pony'
 require 'rspec'
 require 'webmock/rspec'
@@ -15,35 +15,35 @@ RSpec.configure do |config|
 end
 
 def a_delete(path)
-  a_request(:delete, Assistly.endpoint + path)
+  a_request(:delete, Desk.endpoint + path)
 end
 
 def a_get(path)
-  a_request(:get, Assistly.endpoint + path)
+  a_request(:get, Desk.endpoint + path)
 end
 
 def a_post(path)
-  a_request(:post, Assistly.endpoint + path)
+  a_request(:post, Desk.endpoint + path)
 end
 
 def a_put(path)
-  a_request(:put, Assistly.endpoint + path)
+  a_request(:put, Desk.endpoint + path)
 end
 
 def stub_delete(path)
-  stub_request(:delete, Assistly.endpoint + path)
+  stub_request(:delete, Desk.endpoint + path)
 end
 
 def stub_get(path)
-  stub_request(:get, Assistly.endpoint + path)
+  stub_request(:get, Desk.endpoint + path)
 end
 
 def stub_post(path)
-  stub_request(:post, Assistly.endpoint + path)
+  stub_request(:post, Desk.endpoint + path)
 end
 
 def stub_put(path)
-  stub_request(:put, Assistly.endpoint + path)
+  stub_request(:put, Desk.endpoint + path)
 end
 
 def fixture_path

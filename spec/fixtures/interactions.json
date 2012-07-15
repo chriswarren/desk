@@ -55,10 +55,10 @@
                         "delivered_to": "JTest 01 <jtest01@desk.com>",
                         "interaction_direction": "in",
                         "hidden_at": null,
-                        "hidden_by_id": null 
-                    } 
-                } 
-            } 
+                        "hidden_by_id": null
+                    }
+                }
+            }
         },
         {
             "interaction": {
@@ -97,7 +97,7 @@
                     "user_level": "sysadmin",
                     "login_count": 579,
                     "time_zone": "Eastern Time (US & Canada)",
-                    "last_login_at": "2010-08-27T13:45:38Z" 
+                    "last_login_at": "2010-08-27T13:45:38Z"
                 },
                 "sent_at": "2010-08-31T15:45:17Z",
                 "case_id": 1811,
@@ -112,7 +112,7 @@
                         "reply_to": null,
                         "in_reply_to": "<DB902A25-E373-4E49-B45D-B99C0FDAE873@desk.com>",
                         "sender": null,
-                        "message_id": "<4c7d237242eb3_160d867bebe4121@jeremy.assistly.local>",
+                        "message_id": "<4c7d237242eb3_160d867bebe4121@jeremy.desk.local>",
                         "uid": null,
                         "subject": "Re: Please help me",
                         "body_text": "\n\n__________________________________\nPlease type your reply at the top of the email...\n------------------------------------------------------\n \n \n\nAgent Jeremy | AUG 31,2010 03:44PM UTC\n\n\nBlue!\n\n\n------------------------------------------------------\n\n\n \n\n\nSales | AUG 31,2010 03:44PM UTC  | Original message \n  \n\n\nWhat color is the sky?\n\n\nJeremy Suriel \nChief Architect \u2022 Assist.ly\ntwitter.com/jrmey\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n------------------------------------------------------\nFor your reference this is Case #: 1811\n------------------------------------------------------\n\nSupport powered by Assistly (http://www.desk.com/)\n\n [ [ cc11a56264793ec471701942ec80bd4e9e7194a5-1975 ] ]",
@@ -127,11 +127,11 @@
                         "interaction_direction": "out",
                         "hidden_at": null,
                         "hidden_by_id": null,
-                        "out_status": "sent" 
-                    } 
-                } 
-            } 
-        } 
+                        "out_status": "sent"
+                    }
+                }
+            }
+        }
     ],
     "page": 1,
     "count": 20,

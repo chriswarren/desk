@@ -1,13 +1,13 @@
 require 'helper'
 
-describe Assistly::Client do
+describe Desk::Client do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
 
-  Assistly::Configuration::VALID_FORMATS.each do |format|
+  Desk::Configuration::VALID_FORMATS.each do |format|
     context ".new(:format => '#{format}')" do
       before do
-        @client = Assistly::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS', :support_email => "help@example.com")
+        @client = Desk::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS', :support_email => "help@example.com")
       end
 
       describe ".create_interaction" do
@@ -30,7 +30,7 @@ describe Assistly::Client do
             interaction.interaction.interactionable.email.subject.should == "this is an api test"
           end
         end
-        
+
         context "create a new interaction and specify inbound" do
           before do
             stub_post("interactions.#{format}").
@@ -50,7 +50,7 @@ describe Assistly::Client do
             interaction.interaction.interactionable.email.subject.should == "this is an api test"
           end
         end
-        
+
         context "create a new interaction and specify outbound" do
           before do
             @email = @client.create_interaction(:customer_email => "customer@example.com", :interaction_subject => "Need help?", :interaction_body => "Sorry we missed you in chat today.", :direction => "outbound")
@@ -72,7 +72,7 @@ describe Assistly::Client do
             @email.last.should bcc_to(@client.support_email)
           end
 
-          it "should set the Assistly headers" do
+          it "should set the Desk headers" do
             @email.last.should have_header("x-assistly-customer-email","customer@example.com")
             @email.last.should have_header("x-assistly-interaction-direction","out")
             @email.last.should have_header("x-assistly-case-status","open")
@@ -125,37 +125,37 @@ describe Assistly::Client do
             @email.last.should bcc_to(@client.support_email)
           end
 
-          it "should set the Assistly headers" do
+          it "should set the Assitly headers" do
             @email.last.should have_header("x-assistly-customer-email","customer@example.com")
             @email.last.should have_header("x-assistly-interaction-direction","out")
             @email.last.should have_header("x-assistly-case-status","open")
           end
 
         end
-        
+
         context "without support_email defined" do
-          
+
           before do
-            @client_without_support_email = Assistly::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
+            @client_without_support_email = Desk::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
           end
-          
+
           it "should raise an error" do
             lambda do
               @client_without_support_email.create_outbound_interaction("customer@example.com", "Need help?", "Sorry we missed you in chat today.")
-            end.should raise_error(Assistly::SupportEmailNotSet)
+            end.should raise_error(Desk::SupportEmailNotSet)
           end
-          
+
         end
-        
+
         context "with customer headers set" do
           before do
             @custom_email = @client.create_outbound_interaction("customer@example.com", "Need help?", "Sorry we missed you in chat today.", :headers => { "x-assistly-interaction-user-agent" => "12345"})
           end
-          
+
           it "should merge the custom headers" do
             @custom_email.last.should have_header("x-assistly-interaction-user-agent","12345")
           end
-          
+
           it "should preserve the existing headers" do
             @custom_email.last.should have_header("x-assistly-customer-email","customer@example.com")
           end

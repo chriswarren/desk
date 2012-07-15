@@ -1,10 +1,10 @@
 require 'helper'
 
-describe Assistly::Client do
-  Assistly::Configuration::VALID_FORMATS.each do |format|
+describe Desk::Client do
+  Desk::Configuration::VALID_FORMATS.each do |format|
     context ".new(:format => '#{format}')" do
       before do
-        @client = Assistly::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
+        @client = Desk::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
       end
 
       describe ".cases" do
@@ -53,7 +53,7 @@ describe Assistly::Client do
 
             a_case.id.should == 1
             a_case.external_id.should == "123"
-            a_case.subject.should == "Welcome to Assistly"
+            a_case.subject.should == "Welcome to Desk.com"
           end
 
         end
@@ -69,16 +69,16 @@ describe Assistly::Client do
           end
 
           it "should get the correct resource" do
-            @client.update_case(1, :subject => "Welcome to Assistly")
+            @client.update_case(1, :subject => "Welcome to Desk")
             a_put("cases/1.#{format}").
               should have_been_made
           end
 
           it "should return up to 100 cases worth of extended information" do
-            a_case = @client.update_case(1, :subject => "Welcome to Assistly")
+            a_case = @client.update_case(1, :subject => "Welcome to Desk.com")
 
             a_case.id.should == 1
-            a_case.subject.should == "Welcome to Assistly"
+            a_case.subject.should == "Welcome to Desk.com"
           end
 
         end

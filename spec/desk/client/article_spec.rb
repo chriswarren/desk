@@ -1,10 +1,10 @@
 require 'helper'
 
-describe Assistly::Client do
-  Assistly::Configuration::VALID_FORMATS.each do |format|
+describe Desk::Client do
+  Desk::Configuration::VALID_FORMATS.each do |format|
     context ".new(:format => '#{format}')" do
       before do
-        @client = Assistly::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
+        @client = Desk::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
       end
 
       describe ".articles" do
@@ -24,14 +24,14 @@ describe Assistly::Client do
 
           it "should return the articles" do
             articles = @client.articles(1)
-    
+
             articles.results.should be_a Array
             articles.results.first.article.id.should == 13
           end
 
         end
       end
-      
+
       describe ".article" do
 
         context "lookup" do
@@ -74,13 +74,13 @@ describe Assistly::Client do
 
           it "should return the articles" do
             article = @client.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
-    
+
             article.id.should == 13
           end
 
         end
       end
-      
+
       describe ".update_article" do
 
         context "update" do
@@ -128,7 +128,7 @@ describe Assistly::Client do
 
         end
       end
-      
+
     end
   end
 end

@@ -1,7 +1,7 @@
 require 'faraday'
-require 'assistly/version'
+require 'desk/version'
 
-module Assistly
+module Desk
   # Defines constants and methods related to configuration
   module Configuration
     # An array of valid keys in the options hash when configuring a {Twitter::API}
@@ -48,16 +48,16 @@ module Assistly
 
     # By default, don't use a proxy server
     DEFAULT_PROXY = nil
-    
+
     # By default use example
     DEFAULT_SUBDOMAIN = "example"
 
     # The user agent that will be sent to the API endpoint if none is set
-    DEFAULT_USER_AGENT = "Assistly Ruby Gem #{Assistly::VERSION}".freeze
+    DEFAULT_USER_AGENT = "Desk.com Ruby Gem #{Desk::VERSION}".freeze
 
     # The user agent that will be sent to the API endpoint if none is set
     DEFAULT_VERSION = "v1".freeze
-    
+
     # By default, don't set a support email address
     DEFAULT_SUPPORT_EMAIL = nil
 

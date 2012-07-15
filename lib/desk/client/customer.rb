@@ -1,4 +1,4 @@
-module Assistly
+module Desk
   class Client
     # Defines methods related to customers
     module Customer
@@ -6,8 +6,8 @@ module Assistly
       #
       #   @option options [Boolean, String, Integer]
       #   @example Return extended information for customers
-      #     Assistly.customers
-      #     Assistly.customers(:since_id => 12345, :count => 5)
+      #     Desk.customers
+      #     Desk.customers(:since_id => 12345, :count => 5)
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers
@@ -16,12 +16,12 @@ module Assistly
         response = get("customers",options)
         response
       end
-      
+
       # Returns extended information on a single customer
       #
       #   @option options [String]
       #   @example Return extended information for customer 12345
-      #     Assistly.customer(12345)
+      #     Desk.customer(12345)
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers/show
@@ -34,7 +34,7 @@ module Assistly
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
+      #     Desk.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers/create
@@ -47,12 +47,12 @@ module Assistly
           return response
         end
       end
-      
+
       # Update a customer
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.update_customer(12345, :name => "Christopher Warren")
+      #     Desk.update_customer(12345, :name => "Christopher Warren")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers/update
@@ -65,12 +65,12 @@ module Assistly
           return response
         end
       end
-      
+
       # Create a new customer email
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.create_customer_email(12345, "foo@example.com")
+      #     Desk.create_customer_email(12345, "foo@example.com")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers/emails/create
@@ -84,13 +84,13 @@ module Assistly
           return response
         end
       end
-      
+
       # Update a customer's email
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.update_customer_email(12345, 12345, :email => "foo@example.com")
-      #     Assistly.update_customer_email(12345, 12345, :customer_contact_type => "work")
+      #     Desk.update_customer_email(12345, 12345, :email => "foo@example.com")
+      #     Desk.update_customer_email(12345, 12345, :customer_contact_type => "work")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers/emails/update
@@ -103,12 +103,12 @@ module Assistly
           return response
         end
       end
-      
+
       # Create a new customer phone number
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.create_customer_phone(12345, "555-368-7147")
+      #     Desk.create_customer_phone(12345, "555-368-7147")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers/phones/create
@@ -122,13 +122,13 @@ module Assistly
           return response
         end
       end
-      
+
       # Update a customer's phone number
       #
       #   @option options [String]
       #   @example Return extended information for 12345
-      #     Assistly.update_customer_phone(12345, 12345, :phone => "555-368-7147")
-      #     Assistly.update_customer_phone(12345, 12345, :customer_contact_type => "work")
+      #     Desk.update_customer_phone(12345, 12345, :phone => "555-368-7147")
+      #     Desk.update_customer_phone(12345, 12345, :customer_contact_type => "work")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/customers/phones/update

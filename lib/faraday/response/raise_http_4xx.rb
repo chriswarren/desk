@@ -7,17 +7,17 @@ module Faraday
     def on_complete(env)
       case env[:status].to_i
       when 400
-        raise Assistly::BadRequest.new(error_message(env), env[:response_headers])
+        raise Desk::BadRequest.new(error_message(env), env[:response_headers])
       when 401
-        raise Assistly::Unauthorized.new(error_message(env), env[:response_headers])
+        raise Desk::Unauthorized.new(error_message(env), env[:response_headers])
       when 403
-        raise Assistly::Forbidden.new(error_message(env), env[:response_headers])
+        raise Desk::Forbidden.new(error_message(env), env[:response_headers])
       when 404
-        raise Assistly::NotFound.new(error_message(env), env[:response_headers])
+        raise Desk::NotFound.new(error_message(env), env[:response_headers])
       when 406
-        raise Assistly::NotAcceptable.new(error_message(env), env[:response_headers])
+        raise Desk::NotAcceptable.new(error_message(env), env[:response_headers])
       when 420
-        raise Assistly::EnhanceYourCalm.new(error_message(env), env[:response_headers])
+        raise Desk::EnhanceYourCalm.new(error_message(env), env[:response_headers])
       end
     end
 

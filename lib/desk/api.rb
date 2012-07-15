@@ -1,8 +1,8 @@
-require 'assistly/connection'
-require 'assistly/request'
-require 'assistly/authentication'
+require 'desk/connection'
+require 'desk/request'
+require 'desk/authentication'
 
-module Assistly
+module Desk
   # @private
   class API
     # @private
@@ -10,13 +10,13 @@ module Assistly
 
     # Creates a new API
     def initialize(options={})
-      options = Assistly.options.merge(options)
-      
+      options = Desk.options.merge(options)
+
       Configuration::VALID_OPTIONS_KEYS.each do |key|
         send("#{key}=", options[key])
       end
     end
-    
+
     def endpoint
       "https://#{self.subdomain}.desk.com/api/#{self.version}/"
     end

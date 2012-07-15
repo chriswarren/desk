@@ -1,4 +1,4 @@
-module Assistly
+module Desk
   class Client
     # Defines methods related to topics
     module Topic
@@ -6,9 +6,9 @@ module Assistly
       #
       #   @option options [Boolean, String, Integer]
       #   @example Return extended information for 12345
-      #     Assistly.topics
-      #     Assistly.topics(:count => 5)
-      #     Assistly.topics(:count => 5, :page => 3)
+      #     Desk.topics
+      #     Desk.topics(:count => 5)
+      #     Desk.topics(:count => 5, :page => 3)
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/topics/show
@@ -17,14 +17,14 @@ module Assistly
         response = get("topics",options)
         response
       end
-      
+
       # Returns extended information on a single topic
       #
       #   @param id [Integer] a topic ID
       #   @option options [Hash]
       #   @example Return extended information for 12345
-      #     Assistly.topic(12345)
-      #     Assistly.topic(12345, :by => "external_id")
+      #     Desk.topic(12345)
+      #     Desk.topic(12345, :by => "external_id")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/topics/show
@@ -33,14 +33,14 @@ module Assistly
         response = get("topics/#{id}",options)
         response.topic
       end
-      
+
       # Creates a new topic
       #
       #   @param name [String] A topic name
       #   @option options [Hash]
       #   @example Creates a new topic
-      #     Assistly.create_topic("name")
-      #     Assistly.create_topic("name", :description => "description")
+      #     Desk.create_topic("name")
+      #     Desk.create_topic("name", :description => "description")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/topics/create
@@ -53,13 +53,13 @@ module Assistly
           return response
         end
       end
-      
+
       # Updates a single topic
       #
       #   @param id [Integer] a topic ID
       #   @option options [String]
       #   @example Updates information for topic 12345
-      #     Assistly.update_topic(12345, :subject => "New Subject")
+      #     Desk.update_topic(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/topics/update
@@ -72,12 +72,12 @@ module Assistly
           return response
         end
       end
-      
+
       # Deletes a single topic
       #
       #   @param id [Integer] a topic ID
       #   @example Deletes topic 12345
-      #     Assistly.update_topic(12345, :subject => "New Subject")
+      #     Desk.update_topic(12345, :subject => "New Subject")
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/topics/update
