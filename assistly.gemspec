@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency('yard', '~> 0.6')
   s.add_development_dependency('ZenTest', '~> 4.5')
   s.add_runtime_dependency('hashie', '~> 1.2.0')
-  s.add_runtime_dependency('faraday', '~> 0.7.0')
-  s.add_runtime_dependency('faraday_middleware', '~> 0.7.0')
+  s.add_runtime_dependency('faraday', '~> 0.8.0')
+  s.add_runtime_dependency('faraday_middleware', '~> 0.8.0')
   s.add_runtime_dependency('jruby-openssl', '~> 0.7.2') if RUBY_PLATFORM == 'java'
   s.add_runtime_dependency('multi_json', '~> 1.0.3')
   s.add_runtime_dependency('multi_xml', '~> 0.4.0')
