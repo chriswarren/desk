@@ -24,11 +24,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('pony', '~> 1.1')
   s.authors = ["Chris Warren"]
   s.description = %q{A Ruby wrapper for the Desk.com REST API}
-  s.post_install_message =<<eos
-********************************************************************************
-Ruby wrapper for the Desk.com API.
-********************************************************************************
-eos
   s.email = ['chris@zencoder.com']
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.files = `git ls-files`.split("\n")
