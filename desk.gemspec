@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('faraday', '~> 0.8.0')
   s.add_runtime_dependency('faraday_middleware', '~> 0.8.0')
   s.add_runtime_dependency('jruby-openssl', '~> 0.7.2') if RUBY_PLATFORM == 'java'
-  s.add_runtime_dependency('multi_json', '~> 1.0.3')
+  s.add_runtime_dependency('multi_json', '~> 1.3')
   s.add_runtime_dependency('multi_xml', '~> 0.4.0')
   s.add_runtime_dependency('rash', '~> 0.3.1')
   s.add_runtime_dependency('simple_oauth', '~> 0.1.4')
