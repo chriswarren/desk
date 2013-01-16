@@ -6,6 +6,14 @@ Installation
 ------------
     gem install desk
 
+What's new in 0.3.2?
+------------------
+Added support for Groups
+
+What's new in 0.3.1?
+------------------
+Newer multi_json version for compatibility with omniauth_desk
+
 What's new in 0.3.0?
 ------------------
 Renamed to Desk
@@ -145,6 +153,16 @@ Usage Examples
     Desk.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")
     Desk.create_outbound_interaction("foo@example.com", "Missed Your Call", "Sorry we missed yoru call. What's up?")
 
+    ######
+    # Groups
+    ######
+    
+    # List Groups
+    Desk.groups
+    
+    # Get a specific group
+    Desk.group(12345)
+    
     ######
     # Users
     ######
