@@ -6,63 +6,6 @@ Installation
 ------------
     gem install desk
 
-What's new in 0.3.2?
-------------------
-Added support for Groups
-
-What's new in 0.3.1?
-------------------
-Newer multi_json version for compatibility with omniauth_desk
-
-What's new in 0.3.0?
-------------------
-Renamed to Desk
-Newer faraday, faraday_middleware and hashie
-
-What's new in 0.2.6?
-------------------
-Newer faraday, faraday_middleware and multixml versions
-
-What's new in 0.2.5?
-------------------
-Newer multijson version for Rails 3.1 compatibility
-
-What's new in 0.2.4?
-------------------
-Resolved an issue that was breaking PUT requests.
-
-What's new in 0.2.3?
-------------------
-Removed deep_merge because it conflicts with rails. Handling the merge inside the create_outbound_interaction method only on headers for now, until we need it elsewhere.
-
-What's new in 0.2.2?
-------------------
-Added deep_merge support so that we keep any custom email headers when creating outbound interactions.
-Required pony in the gem so you don't have to include it in your app.
-
-What's new in 0.2.1?
-------------------
-Stopped returning only the 'results' array when listing things, because this would cause us to not have access to page numbers, total counts, etc.
-
-What's new in 0.2.0?
-------------------
-Added support for Topics, Articles, and Macros, which is currently all that is available in the Assistly API.
-
-What's new in 0.1.5?
-------------------
-Added the ability to create outbound communications over email
-
-
-What's new in 0.1?
-------------------
-This is the first release of the Assistly gem, based on the [Twitter gem](http://github.com/jnunemaker/twitter). Support for most of the [Assistly API](http://dev.desk.com/docs/api) are handled.
-There is not yet support for Content or Macros.
-
-Help! I'm getting: "Did not recognize your engine specification. Please specify either a symbol or a class. (RuntimeError)"
----------------------------------------------------------------------------------------------------------------------------
-
-You'll need to explicitly require a JSON library. We recommend [yajl-ruby](http://github.com/brianmario/yajl-ruby).
-
 Usage Examples
 --------------
     require "rubygems"
@@ -238,6 +181,66 @@ Usage Examples
 
     # Update Macro Action
     Desk.update_macro_action(12345, "set-case-description", :value => "New Subject")
+
+What's new in 0.3.3?
+------------------
+Added support for max requests per minute ([rate limits](http://dev.desk.com/docs/api/rate_limit))
+
+What's new in 0.3.2?
+------------------
+Added support for Groups
+
+What's new in 0.3.1?
+------------------
+Newer multi_json version for compatibility with omniauth_desk
+
+What's new in 0.3.0?
+------------------
+Renamed to Desk
+Newer faraday, faraday_middleware and hashie
+
+What's new in 0.2.6?
+------------------
+Newer faraday, faraday_middleware and multixml versions
+
+What's new in 0.2.5?
+------------------
+Newer multijson version for Rails 3.1 compatibility
+
+What's new in 0.2.4?
+------------------
+Resolved an issue that was breaking PUT requests.
+
+What's new in 0.2.3?
+------------------
+Removed deep_merge because it conflicts with rails. Handling the merge inside the create_outbound_interaction method only on headers for now, until we need it elsewhere.
+
+What's new in 0.2.2?
+------------------
+Added deep_merge support so that we keep any custom email headers when creating outbound interactions.
+Required pony in the gem so you don't have to include it in your app.
+
+What's new in 0.2.1?
+------------------
+Stopped returning only the 'results' array when listing things, because this would cause us to not have access to page numbers, total counts, etc.
+
+What's new in 0.2.0?
+------------------
+Added support for Topics, Articles, and Macros, which is currently all that is available in the Assistly API.
+
+What's new in 0.1.5?
+------------------
+Added the ability to create outbound communications over email
+
+What's new in 0.1?
+------------------
+This is the first release of the Assistly gem, based on the [Twitter gem](http://github.com/jnunemaker/twitter). Support for most of the [Assistly API](http://dev.desk.com/docs/api) are handled.
+There is not yet support for Content or Macros.
+
+Help! I'm getting: "Did not recognize your engine specification. Please specify either a symbol or a class. (RuntimeError)"
+---------------------------------------------------------------------------------------------------------------------------
+
+You'll need to explicitly require a JSON library. We recommend [yajl-ruby](http://github.com/brianmario/yajl-ruby).
 
 Contributing
 ------------
