@@ -50,6 +50,9 @@ module Desk
       @http_headers.values_at('retry-after', 'Retry-After').detect {|value| value }.to_i
     end
   end
+  
+  # Raised when Desk max_requests is reached and use_max_requests is set to true
+  class TooManyRequests < StandardError; end
 
   # Raised when Desk returns the HTTP status code 500
   class InternalServerError < Error; end

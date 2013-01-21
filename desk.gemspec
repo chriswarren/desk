@@ -22,12 +22,12 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('rash', '~> 0.3.1')
   s.add_runtime_dependency('simple_oauth', '~> 0.1.4')
   s.add_runtime_dependency('pony', '~> 1.1')
-  s.authors = ["Chris Warren"]
+  s.authors = ["Chris Warren", "Thomas Stachl"]
   s.description = %q{A Ruby wrapper for the Desk.com REST API}
-  s.email = ['chris@zencoder.com']
+  s.email = ['chris@zencoder.com', 'thomas@stachl.me']
   s.executables = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.files = `git ls-files`.split("\n")
-  s.homepage = 'https://github.com/zencoder/desk'
+  s.homepage = 'https://github.com/tstachl/desk'
   s.name = 'desk'
   s.platform = Gem::Platform::RUBY
   s.require_paths = ['lib']

@@ -6,21 +6,27 @@ require 'pony'
 
 module Desk
   extend Configuration
+  @counter = 0
+  @minute = Time.now.min
 
-  # Alias for Desk::Client.new
-  #
-  # @return [Desk::Client]
-  def self.client(options={})
-    Desk::Client.new(options)
-  end
+  class << self
+    attr_accessor :counter, :minute
 
-  # Delegate to Desk::Client
-  def self.method_missing(method, *args, &block)
-    return super unless client.respond_to?(method)
-    client.send(method, *args, &block)
-  end
+    # Alias for Desk::Client.new
+    #
+    # @return [Desk::Client]
+    def client(options={})
+      Desk::Client.new(options)
+    end
 
-  def self.respond_to?(method)
-    client.respond_to?(method) || super
+    # Delegate to Desk::Client
+    def method_missing(method, *args, &block)
+      return super unless client.respond_to?(method)
+      client.send(method, *args, &block)
+    end
+
+    def respond_to?(method)
+      client.respond_to?(method) || super
+    end
   end
 end

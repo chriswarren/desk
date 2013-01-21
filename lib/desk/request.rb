@@ -23,8 +23,24 @@ module Desk
 
     private
 
+    def before_request
+      if Desk.minute != Time.now.min
+        Desk.minute = Time.now.min
+        Desk.counter = 0
+      end
+      
+      Desk.counter += 1
+      if Desk.use_max_requests
+        if Desk.counter > Desk.max_requests
+          raise Desk::TooManyRequests
+        end
+      end
+    end
+
     # Perform an HTTP request
     def request(method, path, options, raw=false)
+      before_request
+      
       response = connection(raw).send(method) do |request|
         case method
         when :get, :delete

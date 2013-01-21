@@ -1,44 +1,48 @@
+0.3.3 January 20, 2013
+----------------------
+Added support for max_requests per minute.
+
 0.3.0 July 15, 2012
-------------------
+-------------------
 Renamed from Assistly to Desk
 Updated Faraday and Hashie versions
 
 0.2.6 October 3, 2011
-------------------
+---------------------
 Newer Faraday and multixml versions
 
 0.2.5 August 17, 2011
-------------------
+---------------------
 Newer multijson version for Rails 3.1 compatibility
 
 0.2.3 April 18, 2011
-------------------
+--------------------
 Removed deep_merge because it conflicts with rails. Handling the merge inside the create_outbound_interaction method only on headers for now, until we need it elsewhere.
 
 0.2.2 - April 18, 2011
-------------------
+----------------------
 Added deep_merge! support so that we keep any custom email headers when creating outbound interactions.
 Required pony in the gem so you don't have to include it in your app.
 
 0.2.1 - April 18, 2011
-------------------
+----------------------
 Stopped returning only the 'results' array when listing things, because this would cause us to not have access to page numbers, total counts, etc.
 
 0.2.0 - April 16, 2011
--------------------------
+----------------------
 * Support for Topics, Articles, and Macros added
 * Update Readme
 
 0.1.5 - April 15, 2011
--------------------------
+----------------------
 * Support for creating outbound interactions via email
 
 0.1.1 - 0.1.4 - April 14, 2011
--------------------------
+------------------------------
 * Miscellaneous bug fixes found when actually using this in production.
 * Moved to Zencoder Github account
 
 0.1 - April 12, 2011
--------------------------
+--------------------
 * Initial release
 * Support for Case, Customer, Interaction, and User APIs.
