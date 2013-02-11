@@ -10,11 +10,13 @@ module Desk
       :consumer_key,
       :consumer_secret,
       :format,
+      :max_requests,
       :oauth_token,
       :oauth_token_secret,
       :proxy,
       :subdomain,
       :support_email,
+      :use_max_requests,
       :user_agent,
       :version].freeze
 
@@ -39,6 +41,12 @@ module Desk
     #
     # @note JSON is preferred over XML because it is more concise and faster to parse.
     DEFAULT_FORMAT = :json
+    
+    # By default, set the max requests to 60 per minute
+    DEFAULT_MAX_REQUESTS = 60
+
+    # By default, don't use the max request feature
+    DEFAULT_USE_MAX_REQUESTS = false
 
     # By default, don't set a user oauth token
     DEFAULT_OAUTH_TOKEN = nil
@@ -85,11 +93,13 @@ module Desk
       self.consumer_key       = DEFAULT_CONSUMER_KEY
       self.consumer_secret    = DEFAULT_CONSUMER_SECRET
       self.format             = DEFAULT_FORMAT
+      self.max_requests       = DEFAULT_MAX_REQUESTS
       self.oauth_token        = DEFAULT_OAUTH_TOKEN
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
       self.proxy              = DEFAULT_PROXY
       self.subdomain          = DEFAULT_SUBDOMAIN
       self.support_email      = DEFAULT_SUPPORT_EMAIL
+      self.use_max_requests   = DEFAULT_USE_MAX_REQUESTS
       self.user_agent         = DEFAULT_USER_AGENT
       self.version            = DEFAULT_VERSION
       self
