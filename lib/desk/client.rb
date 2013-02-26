@@ -8,6 +8,7 @@ module Desk
     # order to avoid a superclass mismatch error, allowing those modules to be
     # Client-namespaced.
     require 'desk/client/user'
+    require 'desk/client/group'
     require 'desk/client/interaction'
     require 'desk/client/case'
     require 'desk/client/customer'
@@ -18,6 +19,7 @@ module Desk
     alias :api_endpoint :endpoint
 
     include Desk::Client::User
+    include Desk::Client::Group
     include Desk::Client::Interaction
     include Desk::Client::Case
     include Desk::Client::Customer
