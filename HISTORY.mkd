@@ -1,3 +1,9 @@
+0.3.2 February 25, 2013
+------------------
+Support for groups (Thanks to @tstachl)
+Support for max_requests (Thanks to @tstachl)
+New multi_json and multi_xml version
+
 0.3.0 July 15, 2012
 ------------------
 Renamed from Assistly to Desk
