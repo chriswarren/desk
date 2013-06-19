@@ -14,7 +14,7 @@ module Desk
       # @see http://dev.desk.com/docs/api/cases/show
       def cases(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("cases",options)
+        response = get("cases/search",options)
         response
       end
 
