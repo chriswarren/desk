@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('multi_json', '~> 1.6')
   s.add_runtime_dependency('multi_xml', '~> 0.5')
   s.add_runtime_dependency('rash', '~> 0.3.1')
-  s.add_runtime_dependency('simple_oauth', '~> 0.1.4')
+  s.add_runtime_dependency('simple_oauth', '~> 0.2.0')
   s.add_runtime_dependency('pony', '~> 1.1')
   s.authors = ["Chris Warren"]
   s.description = %q{A Ruby wrapper for the Desk.com REST API}
