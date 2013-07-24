@@ -19,6 +19,7 @@ module Desk
 
     def endpoint
       "https://#{self.subdomain}.desk.com/api/#{self.version}/"
+      #"https://#{self.subdomain}-desk-com-pdnvx7ywoiee.runscope.net/api/#{self.version}/"
     end
 
     include Connection

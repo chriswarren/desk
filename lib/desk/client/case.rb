@@ -13,8 +13,12 @@ module Desk
       # @authenticated true
       # @see http://dev.desk.com/docs/api/cases/show
       def cases(*args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("cases/search",options)
+        if args.last.is_a?(Hash)
+          options = args.pop
+          response = get("cases/search", options)
+        else
+          response = get("cases")
+        end
         response
       end
 
@@ -30,7 +34,14 @@ module Desk
       def case(id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
         response = get("cases/#{id}",options)
-        response.case
+        response
+      end
+
+      def create_case(customer_id, *args)
+        # TODO check for required args; throw error(s)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        response = post("customers/#{customer_id}/cases", options)
+        response
       end
 
       # Updates a single case

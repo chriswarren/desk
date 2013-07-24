@@ -1,5 +1,6 @@
 require 'faraday_middleware'
 require 'faraday/request/multipart_with_file'
+require 'faraday/response/deashify'
 require 'faraday/response/raise_http_4xx'
 require 'faraday/response/raise_http_5xx'
 
@@ -22,7 +23,7 @@ module Desk
         builder.use Faraday::Request::Multipart
         builder.use Faraday::Request::UrlEncoded
         builder.use Faraday::Response::RaiseHttp4xx
-        builder.use Faraday::Response::Rashify unless raw
+        builder.use FaradayMiddleware::Deashify unless raw
         unless raw
           case format.to_s.downcase
           when 'json'
