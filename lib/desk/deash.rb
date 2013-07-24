@@ -20,19 +20,32 @@ module Hashie
 
     def method_missing(method, *args, &block)
       return self.[](method) if key?(method)
-      if key?("_links") && self._links.key?(method)
+      if includes_key_chain?("_links."+method.to_s)
         return nil if !self._links[method]
         return Desk.get(self._links[method].href.sub("/api/#{self.version}/", ""))
+      elsif includes_key_chain?("raw._links."+method.to_s)
+        return nil if !self.raw._links[method]
+        return Desk.get(self.raw._links[method].href.sub("/api/#{self.version}/", ""))
       end
       return super
     end
 
     def links
       Links.new(self._links) if key?("_links")
+      Links.new(self.raw._links) if includes_key_chain?("raw._links")
+    end
+
+    def includes_key_chain?(chain)
+      current_chain = self
+      chain.split(".").each do |k|
+        return false if !current_chain.key?(k)
+        current_chain = current_chain[k]
+      end
+      true
     end
 
     def each
-      if key?('raw') && self.raw.key?('_embedded') && self.raw._embedded.key?('entries')
+      if includes_key_chain?("raw._embedded.entries")
         self.raw._embedded['entries'].each do |entry|
           yield entry
         end
