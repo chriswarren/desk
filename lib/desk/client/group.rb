@@ -12,11 +12,11 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/groups
-      def groups(*args)
+      def list_groups(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("groups",options)
-        response
+        get("groups", options)
       end
+      alias_method :groups, :list_groups
 
       # Returns extended information on a single group
       #
@@ -27,10 +27,20 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/groups/show
-      def group(id)
-        response = get("groups/#{id}")
-        response.group
+      def show_group(group_id)
+        get("groups/#{group_id}")
       end
+      alias_method :group, :show_group
+
+      def list_group_filters(group_id)
+        get("groups/#{group_id}/filters")
+      end
+      alias_method :group_filters, :list_group_filters
+
+      def list_group_users(group_id)
+        get("groups/#{group_id}/users")
+      end
+      alias_method :group_users, :list_group_users
 
     end
   end

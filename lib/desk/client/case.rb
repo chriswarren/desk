@@ -12,7 +12,8 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/cases/show
-      def cases(*args)
+      def list_cases(*args)
+        # TODO searchs fail when only page, per_page, etc args are passed
         if args.last.is_a?(Hash)
           options = args.pop
           get("cases/search", options)
@@ -20,6 +21,7 @@ module Desk
           get("cases")
         end
       end
+      alias_method :cases, :list_cases
 
       # Returns extended information on a single case
       #
@@ -30,10 +32,12 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/cases/show
-      def case(id, *args)
+      def show_case(case_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        get("cases/#{id}",options)
+        case_id = "e-#{case_id}" if options[:by] == "external_id"
+        get("cases/#{case_id}")
       end
+      alias_method :case, :show_case
 
       def create_case(customer_id, *args)
         # TODO check for required args; throw error(s)
@@ -49,26 +53,18 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/cases/update
-      def update_case(id, *args)
+      def update_case(case_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        put("cases/#{id}",options)
+        patch("cases/#{case_id}",options)
       end
 
-      def message(id)
-        get("cases/#{id}/message")
+      def show_message(case_id)
+        get("cases/#{case_id}/message")
       end
+      alias_method :message, :show_message
 
-      def replies(id)
-        get("cases/#{id}/replies")
-      end
-
-      def reply(id, *args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        post("cases/#{id}/replies", options)
-      end
-
-      def case_url(id)
-        "https://#{subdomain}.desk.com/agent/case/#{id}"
+      def case_url(case_id)
+        "https://#{subdomain}.desk.com/agent/case/#{case_id}"
       end
     end
   end

@@ -12,11 +12,11 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/macros
-      def macros(*args)
+      def list_macros(*args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("macros",options)
-        response
+        get("macros", options)
       end
+      alias_method :macros, :list_macros
 
       # Returns extended information on a single macro
       #
@@ -27,10 +27,10 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/macros/show
-      def macro(id)
-        response = get("macros/#{id}")
-        response.macro
+      def show_macro(macro_id)
+        get("macros/#{macro_id}")
       end
+      alias_method :macro, :show_macro
 
       # Creates a new macro
       #
@@ -44,12 +44,7 @@ module Desk
       # @see http://dev.desk.com/docs/api/macros/create
       def create_macro(name, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = post("macros",options)
-        if response['success']
-          return response['results']['macro']
-        else
-          return response
-        end
+        post("macros", options)
       end
 
       # Updates a single macro
@@ -61,14 +56,9 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/macros/update
-      def update_macro(id, *args)
+      def update_macro(macro_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = put("macros/#{id}",options)
-        if response['success']
-          return response['results']['macro']
-        else
-          return response
-        end
+        patch("macros/#{macro_id}", options)
       end
 
       # Deletes a single macro
@@ -79,9 +69,8 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/macros/update
-      def delete_macro(id)
-        response = delete("macros/#{id}")
-        response
+      def delete_macro(macro_id)
+        delete("macros/#{macro_id}")
       end
 
       ##########
@@ -98,11 +87,11 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/macros/actions
-      def macro_actions(id, *args)
+      def list_macro_actions(macro_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("macros/#{id}/actions",options)
-        response['results']
+        get("macros/#{macro_id}/actions", options)
       end
+      alias_method :macro_actions, :list_macro_actions
 
       # Returns extended information on a single macro
       #
@@ -113,10 +102,10 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/macros/actions/show
-      def macro_action(id, slug)
-        response = get("macros/#{id}/actions/#{slug}")
-        response['action']
+      def show_macro_action(macro_id, action_id)
+        get("macros/#{macro_id}/actions/#{action_id}")
       end
+      alias_method :macro_action, :show_macro_action
 
       # Updates a single macro action
       #
@@ -127,14 +116,9 @@ module Desk
       # @format :json
       # @authenticated true
       # @see http://dev.desk.com/docs/api/macros/actions/update
-      def update_macro_action(id, slug, *args)
+      def update_macro_action(macro_id, action_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = put("macros/#{id}/actions/#{slug}",options)
-        if response['success']
-          return response['results']['action']
-        else
-          return response
-        end
+        patch("macros/#{macro_id}/actions/#{action_id}", options)
       end
 
     end

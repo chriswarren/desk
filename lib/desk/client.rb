@@ -7,9 +7,11 @@ module Desk
     # Require client method modules after initializing the Client class in
     # order to avoid a superclass mismatch error, allowing those modules to be
     # Client-namespaced.
+    require 'desk/client/attachment'
     require 'desk/client/user'
     require 'desk/client/group'
-    require 'desk/client/interaction'
+    require 'desk/client/reply'
+    require 'desk/client/note'
     require 'desk/client/case'
     require 'desk/client/customer'
     require 'desk/client/topic'
@@ -18,9 +20,11 @@ module Desk
 
     alias :api_endpoint :endpoint
 
+    include Desk::Client::Attachment
     include Desk::Client::User
     include Desk::Client::Group
-    include Desk::Client::Interaction
+    include Desk::Client::Reply
+    include Desk::Client::Note
     include Desk::Client::Case
     include Desk::Client::Customer
     include Desk::Client::Topic

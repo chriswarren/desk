@@ -20,6 +20,14 @@ module Hashie
     # Object#type is deprecated 
     Mash.send :undef_method, :type
 
+    def count
+      if includes_key_chain?("raw._embedded.entries")
+        self.raw._embedded['entries'].count
+      else
+        super
+      end
+    end
+
     def each
       if includes_key_chain?("raw._embedded.entries")
         self.raw._embedded['entries'].each do |entry|
