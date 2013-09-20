@@ -2,6 +2,12 @@ module Desk
   class Client
     # Defines methods related to cases
     module Case
+
+      def case_fns
+        [ :create, :update, 
+          :list_replies, :show_reply, :create_reply, :update_reply,
+          :list_notes, :show_note, :create_note]
+      end
       # Returns extended information of cases
       #
       #   @option options [Boolean, String, Integer]
@@ -38,25 +44,6 @@ module Desk
         get("cases/#{case_id}")
       end
       alias_method :case, :show_case
-
-      def create_case(customer_id, *args)
-        # TODO check for required args; throw error(s)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        post("customers/#{customer_id}/cases", options)
-      end
-
-      # Updates a single case
-      #
-      #   @option options [String]
-      #   @example Return extended information for 12345
-      #     Desk.update_case(12345, :subject => "New Subject")
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/cases/update
-      def update_case(case_id, *args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        patch("cases/#{case_id}",options)
-      end
 
       def show_message(case_id)
         get("cases/#{case_id}/message")

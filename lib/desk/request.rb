@@ -52,7 +52,7 @@ module Desk
         case method
         when :get, :delete
           request.url(formatted_path(path), options)
-        when :post, :put
+        when :patch, :post, :put
           request.path = formatted_path(path)
           request.headers['Content-Type'] = 'application/json'
           request.body = options.to_json unless options.empty?
