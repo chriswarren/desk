@@ -64,13 +64,25 @@ module Desk
               get("#{bases}/#{id}/#{sub_fn}", options)
             }
           else
-            method_name = "list_#{base}"
-            alias_names = ["#{bases}"]
+            method_name = "list_#{bases}"
+            alias_names = []
             block = lambda{ |*args|
               options = args.last.is_a?(Hash) ? args.pop : {}
               get("#{bases}", options)
             }
           end
+        when "search"
+          method_name = "search_#{bases}"
+          alias_names = ["#{bases}"]
+          block = lambda{ |*args|
+            options = args.last.is_a?(Hash) ? args.pop : {}
+            searchOptions = options.keys - [:page, :per_page]
+            if searchOptions.empty?
+              send("list_#{bases}", options)
+            else
+              get("#{bases}/search", options)
+            end
+          }
         when "show"
           if sub_fn
             method_name = "show_#{base}_#{sub_fn}"
