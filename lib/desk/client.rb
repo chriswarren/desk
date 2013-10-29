@@ -128,9 +128,17 @@ module Desk
             }
           end
         when "delete"
-          method_name = "delete_#{base}"
-          alias_names = []
-          block = lambda{ |id| delete("#{bases}/#{id}") }
+          if sub_fn
+            method_name = "delete_#{base}_#{sub_fn}"
+            alias_names = []
+            block = lambda{ |id, sub_id|
+              delete("#{bases}/#{id}/#{sub_fns}/#{sub_id}")
+            }
+          else
+            method_name = "delete_#{base}"
+            alias_names = []
+            block = lambda{ |id| delete("#{bases}/#{id}") }
+          end
         end
         self.class.send(:define_method, method_name, block)
         alias_names.each do |alias_name|
