@@ -33,39 +33,39 @@ module Desk
 
 
     def initialize(options={})
-      if !self.respond_to? :fns_setup
+      if !self.respond_to? :endpoints_setup
         self.class.included_modules.each do |m|
           if r = m.name.match(/Desk::Client::([a-zA-z]+)/)
             base = r[1].gsub(/(.)([A-Z])/, '\1_\2').downcase
-            if self.respond_to? "#{base}_fns"
-              fns_list = send("#{base}_fns")
-              setup_functions(base, fns_list)
+            if self.respond_to? "#{base}_endpoints"
+              endpoints_list = send("#{base}_endpoints")
+              setup_functions(base, endpoints_list)
             end
           end
         end
-        self.class.send(:define_method, :fns_setup) {}
+        self.class.send(:define_method, :endpoints_setup) {}
       end
       super(options)
     end
 
     private
 
-    def setup_functions(base, fns_list)
-      fns_list.each do |function|
-        fs = function.to_s.split("_")
-        fn = fs[0]
+    def setup_functions(base, endpoints_list)
+      endpoints_list.each do |endpoint|
+        eps = endpoint.to_s.split("_")
+        endpoint = eps[0]
         bases = plural(base)
-        sub_fn = fs[1]
-        sub_fns = plural(sub_fn) if sub_fn
+        sub_ep = eps[1]
+        sub_eps = plural(sub_ep) if sub_ep
 
-        case fn
+        case endpoint
         when "list"
-          if sub_fn
-            method_name = "list_#{base}_#{sub_fn}"
-            alias_names = ["#{base}_#{sub_fn}"]
+          if sub_ep
+            method_name = "list_#{base}_#{sub_ep}"
+            alias_names = ["#{base}_#{sub_ep}"]
             block = lambda{ |id, *args|
               options = args.last.is_a?(Hash) ? args.pop : {}
-              get("#{bases}/#{id}/#{sub_fn}", options)
+              get("#{bases}/#{id}/#{sub_ep}", options)
             }
           else
             method_name = "list_#{bases}"
@@ -88,11 +88,11 @@ module Desk
             end
           }
         when "show"
-          if sub_fn
-            method_name = "show_#{base}_#{sub_fn}"
-            alias_names = ["#{base}_#{sub_fn}"]
+          if sub_ep
+            method_name = "show_#{base}_#{sub_ep}"
+            alias_names = ["#{base}_#{sub_ep}"]
             block = lambda{ |id, sub_id|
-              get("#{bases}/#{id}/#{sub_fns}/#{sub_id}")
+              get("#{bases}/#{id}/#{sub_eps}/#{sub_id}")
             }
           else
             method_name = "show_#{base}"
@@ -100,12 +100,12 @@ module Desk
             block = lambda{ |id| get("#{bases}/#{id}") }
           end
         when "create"
-          if sub_fn
-            method_name = "create_#{base}_#{sub_fn}"
+          if sub_ep
+            method_name = "create_#{base}_#{sub_ep}"
             alias_names = []
             block = lambda{ |id, *args|
               options = args.last.is_a?(Hash) ? args.pop : {}
-              post("#{bases}/#{id}/#{sub_fns}", options)
+              post("#{bases}/#{id}/#{sub_eps}", options)
             }
           else
             method_name = "create_#{base}"
@@ -116,12 +116,12 @@ module Desk
             }
           end
         when "update"
-          if sub_fn
-            method_name = "update_#{base}_#{sub_fn}"
+          if sub_ep
+            method_name = "update_#{base}_#{sub_ep}"
             alias_names = []
             block = lambda{ |id, sub_id, *args|
               options = args.last.is_a?(Hash) ? args.pop : {}
-              patch("#{bases}/#{id}/#{sub_fns}/#{sub_id}", options)
+              patch("#{bases}/#{id}/#{sub_eps}/#{sub_id}", options)
             }
           else
             method_name = "update_#{base}"
@@ -132,11 +132,11 @@ module Desk
             }
           end
         when "delete"
-          if sub_fn
-            method_name = "delete_#{base}_#{sub_fn}"
+          if sub_ep
+            method_name = "delete_#{base}_#{sub_ep}"
             alias_names = []
             block = lambda{ |id, sub_id|
-              delete("#{bases}/#{id}/#{sub_fns}/#{sub_id}")
+              delete("#{bases}/#{id}/#{sub_eps}/#{sub_id}")
             }
           else
             method_name = "delete_#{base}"

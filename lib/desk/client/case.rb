@@ -3,7 +3,7 @@ module Desk
     # Defines methods related to cases
     module Case
 
-      def case_fns
+      def case_endpoints
         [ :list, :search, :create, :update, 
           :list_message,
           :list_replies, :show_reply, :create_reply, :update_reply,

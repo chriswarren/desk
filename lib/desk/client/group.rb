@@ -3,7 +3,7 @@ module Desk
     # Defines methods related to groups
     module Group
 
-      def group_fns
+      def group_endpoints
         [ :list, :show, :list_filters, :list_users ]
       end
 

@@ -2,7 +2,7 @@ module Desk
   class Client
     module Customer
 
-      def customer_fns
+      def customer_endpoints
         [ :list, :show, :create, :update, :search ]
       end
 

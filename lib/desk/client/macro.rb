@@ -3,7 +3,7 @@ module Desk
     # Defines methods related to macros
     module Macro
 
-      def macro_fns
+      def macro_endpoints
         [ :list, :show, :create, :update, :delete,
           :list_actions, :show_action, :update_action ]
       end
