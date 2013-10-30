@@ -12,6 +12,7 @@ module Desk
     require 'desk/client/case'
     require 'desk/client/custom_field'
     require 'desk/client/customer'
+    require 'desk/client/filter'
     require 'desk/client/group'
     require 'desk/client/macro'
     require 'desk/client/topic'
@@ -24,6 +25,7 @@ module Desk
     include Desk::Client::Case
     include Desk::Client::CustomField
     include Desk::Client::Customer
+    include Desk::Client::Filter
     include Desk::Client::Group
     include Desk::Client::Macro
     include Desk::Client::Topic
