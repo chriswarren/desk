@@ -7,32 +7,34 @@ module Desk
     # Require client method modules after initializing the Client class in
     # order to avoid a superclass mismatch error, allowing those modules to be
     # Client-namespaced.
-    require 'desk/client/attachment'
-    require 'desk/client/user'
-    require 'desk/client/group'
-    require 'desk/client/case'
-    require 'desk/client/customer'
-    require 'desk/client/topic'
     require 'desk/client/article'
+    require 'desk/client/attachment'
+    require 'desk/client/case'
+    require 'desk/client/custom_field'
+    require 'desk/client/customer'
+    require 'desk/client/group'
     require 'desk/client/macro'
+    require 'desk/client/topic'
+    require 'desk/client/user'
 
     alias :api_endpoint :endpoint
 
-    include Desk::Client::Attachment
-    include Desk::Client::User
-    include Desk::Client::Group
-    include Desk::Client::Case
-    include Desk::Client::Customer
-    include Desk::Client::Topic
     include Desk::Client::Article
+    include Desk::Client::Attachment
+    include Desk::Client::Case
+    include Desk::Client::CustomField
+    include Desk::Client::Customer
+    include Desk::Client::Group
     include Desk::Client::Macro
+    include Desk::Client::Topic
+    include Desk::Client::User
 
 
     def initialize(options={})
       if !self.respond_to? :fns_setup
         self.class.included_modules.each do |m|
           if r = m.name.match(/Desk::Client::([a-zA-z]+)/)
-            base = r[1].downcase
+            base = r[1].gsub(/(.)([A-Z])/, '\1_\2').downcase
             if self.respond_to? "#{base}_fns"
               fns_list = send("#{base}_fns")
               setup_functions(base, fns_list)
