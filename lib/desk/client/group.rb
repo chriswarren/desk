@@ -1,6 +1,5 @@
 module Desk
   class Client
-    # Defines methods related to groups
     module Group
 
       def group_endpoints

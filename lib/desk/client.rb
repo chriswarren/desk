@@ -8,27 +8,51 @@ module Desk
     # order to avoid a superclass mismatch error, allowing those modules to be
     # Client-namespaced.
     require 'desk/client/article'
-    require 'desk/client/attachment'
+    require 'desk/client/brand'
     require 'desk/client/case'
+    require 'desk/client/company'
     require 'desk/client/custom_field'
     require 'desk/client/customer'
+    require 'desk/client/facebook_user'
     require 'desk/client/filter'
     require 'desk/client/group'
+    require 'desk/client/insight'
+    require 'desk/client/integration_url'
+    require 'desk/client/job'
+    require 'desk/client/label'
     require 'desk/client/macro'
+    require 'desk/client/mailbox'
+    require 'desk/client/rule'
+    require 'desk/client/site_setting'
+    require 'desk/client/system_message'
     require 'desk/client/topic'
+    require 'desk/client/twitter_account'
+    require 'desk/client/twitter_user'
     require 'desk/client/user'
 
     alias :api_endpoint :endpoint
 
     include Desk::Client::Article
-    include Desk::Client::Attachment
+    include Desk::Client::Brand
     include Desk::Client::Case
+    include Desk::Client::Company
     include Desk::Client::CustomField
     include Desk::Client::Customer
+    include Desk::Client::FacebookUser
     include Desk::Client::Filter
     include Desk::Client::Group
+    include Desk::Client::Insight
+    include Desk::Client::IntegrationUrl
+    include Desk::Client::Job
+    include Desk::Client::Label
     include Desk::Client::Macro
+    include Desk::Client::Mailbox
+    include Desk::Client::Rule
+    include Desk::Client::SiteSetting
+    include Desk::Client::SystemMessage
     include Desk::Client::Topic
+    include Desk::Client::TwitterAccount
+    include Desk::Client::TwitterUser
     include Desk::Client::User
 
 
@@ -154,6 +178,8 @@ module Desk
     def plural(singular)
       if singular[-1, 1] == "y"
         singular[0..-2]+"ies"
+      elsif singular[-1, 1] == "x"
+        singular+"es"
       else
         singular+"s"
       end
