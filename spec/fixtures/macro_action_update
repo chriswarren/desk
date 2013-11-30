@@ -1,0 +1,17 @@
+{
+  "type": "set-case-description",
+  "value": "From a VIP Customer",
+  "enabled": false,
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/macros/1/actions/1",
+      "class": "macro_action"
+    },
+    "macro": {
+      "href": "/api/v2/macros/1",
+      "class": "macro"
+    }
+  }
+}

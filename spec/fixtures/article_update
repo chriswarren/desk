@@ -1,0 +1,50 @@
+{
+  "subject": "How to make your customers happy",
+  "body": "<strong>Use Desk.com</strong>",
+  "body_email": "Email just doesn't cut it",
+  "body_email_auto": false,
+  "body_chat": "Use Desk.com",
+  "body_chat_auto": true,
+  "body_web_callback": "<strong>Use Desk.com</strong>",
+  "body_web_callback_auto": false,
+  "body_twitter": "Use Desk.com in 140 chars or less",
+  "body_twitter_auto": false,
+  "body_qna": "Use Desk.com",
+  "body_qna_auto": true,
+  "body_phone": "Use Desk.com",
+  "body_phone_auto": true,
+  "body_facebook": "Use Desk.com",
+  "body_facebook_auto": true,
+  "rating": 75,
+  "rating_count": 4,
+  "rating_score": 3,
+  "position": 1,
+  "quickcode": "AWESOME",
+  "in_support_center": true,
+  "internal_notes": "Notes to the agent here",
+  "publish_at": "2013-11-12T18:07:34Z",
+  "created_at": "2013-11-12T18:02:34Z",
+  "updated_at": "2013-11-12T18:07:34Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/articles/1",
+      "class": "article"
+    },
+    "topic": {
+      "href": "/api/v2/topics/2",
+      "class": "topic"
+    },
+    "translations": {
+      "href": "/api/v2/articles/1/translations",
+      "class": "article_translation"
+    },
+    "created_by": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    },
+    "updated_by": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    }
+  }
+}

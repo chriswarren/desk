@@ -1,9 +1,0 @@
-{
-        "action":
-        {
-                "id":201,
-                "slug":"set-case-description",
-                "value":"Description to be applied",
-                "enabled":true
-        }
-}
