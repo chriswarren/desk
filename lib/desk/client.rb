@@ -72,6 +72,16 @@ module Desk
       super(options)
     end
 
+    def plural(singular)
+      if singular[-1, 1] == "y"
+        singular[0..-2]+"ies"
+      elsif singular[-1, 1] == "x"
+        singular+"es"
+      else
+        singular+"s"
+      end
+    end
+
     private
 
     def setup_functions(base, endpoints_list)
@@ -172,16 +182,6 @@ module Desk
         alias_names.each do |alias_name|
           self.class.send(:alias_method, alias_name, method_name)
         end
-      end
-    end
-
-    def plural(singular)
-      if singular[-1, 1] == "y"
-        singular[0..-2]+"ies"
-      elsif singular[-1, 1] == "x"
-        singular+"es"
-      else
-        singular+"s"
       end
     end
 

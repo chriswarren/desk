@@ -11,6 +11,6 @@ shared_context "basic configuration" do
 end
 
 shared_context "plural endpoint" do
-  let(:endpoints) { "#{endpoint}s" }
-  let(:sub_endpoints) { "#{sub_endpoint}s" }
+  let(:endpoints) { Desk.plural(endpoint) }
+  let(:sub_endpoints) { Desk.plural(sub_endpoint) }
 end
