@@ -22,6 +22,10 @@ def a_get(path)
   a_request(:get, Desk.endpoint + path)
 end
 
+def a_patch(path)
+  a_request(:patch, Desk.endpoint + path)
+end
+
 def a_post(path)
   a_request(:post, Desk.endpoint + path)
 end
@@ -36,6 +40,10 @@ end
 
 def stub_get(path)
   stub_request(:get, Desk.endpoint + path)
+end
+
+def stub_patch(path)
+  stub_request(:patch, Desk.endpoint + path)
 end
 
 def stub_post(path)
