@@ -54,13 +54,23 @@ module Hashie
       return super
     end
 
-    def id
-      if includes_key_chain?("raw._links.self.href")
-        case self._links.self['class']
-        when 'case', 'phone_call'
-          self._links.self.href.split("/")[4].to_i
+    def id(parent_id = false)
+      id = nil
+      if includes_key_chain?("raw._links.self.href") ||
+         includes_key_chain?("_links.self.href")
+        p = self._links.self.href.split("/")
+        if p.size > 5 && !parent_id
+          id = p[6]
+        elsif (p.size < 6 && !parent_id) || (p.size > 5 && parent_id)
+          id = p[4]
         end
+        id = id.to_i if id.to_i != 0
       end
+      id
+    end
+
+    def parent_id
+      id(true)
     end
 
     def includes_key_chain?(chain)
