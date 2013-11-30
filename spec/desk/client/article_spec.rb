@@ -1,5 +1,4 @@
 require 'helper'
-require 'shared_examples'
 
 describe Desk::Client do
   context "Article" do

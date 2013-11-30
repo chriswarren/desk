@@ -10,6 +10,10 @@ require 'rspec'
 require 'webmock/rspec'
 require 'email_spec'
 require 'ruby-debug'
+
+require 'shared_context'
+require 'shared_examples'
+
 RSpec.configure do |config|
   config.include WebMock::API
 end
