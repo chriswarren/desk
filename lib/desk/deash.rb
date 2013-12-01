@@ -58,13 +58,18 @@ module Hashie
       id = nil
       if includes_key_chain?("raw._links.self.href") ||
          includes_key_chain?("_links.self.href")
-        p = self._links.self.href.split("/")
-        if p.size > 5 && !parent_id
-          id = p[6]
-        elsif (p.size < 6 && !parent_id) || (p.size > 5 && parent_id)
-          id = p[4]
+        c = self._links.self['class']
+        if Desk.respond_to? "#{c}_id"
+          id = Desk.send("#{c}_id", self._links.self.href, parent_id)
+        else
+          p = self._links.self.href.split("/")
+          if p.size > 5 && !parent_id
+            id = p[6]
+          elsif (p.size < 6 && !parent_id) || (p.size > 5 && parent_id)
+            id = p[4]
+          end
+          id = id.to_i if id.to_i != 0
         end
-        id = id.to_i if id.to_i != 0
       end
       id
     end
