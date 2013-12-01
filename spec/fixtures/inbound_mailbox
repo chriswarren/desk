@@ -1,0 +1,32 @@
+{
+  "name": "Support Mailbox",
+  "enabled": true,
+  "type": "imaps",
+  "hostname": "mail.example.com",
+  "port": 993,
+  "email": "support@example.com",
+  "last_checked_at": "2013-11-22T22:49:20Z",
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "last_error": null,
+  "inbound_address_filter": null,
+  "outbound_address_filter": null,
+  "_links": {
+    "self": {
+      "href": "/api/v2/mailboxes/inbound/1",
+      "class": "inbound_mailbox"
+    },
+    "default_group": {
+      "href": "/api/v2/groups/1",
+      "class": "group"
+    },
+    "created_by": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    },
+    "updated_by": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    }
+  }
+}

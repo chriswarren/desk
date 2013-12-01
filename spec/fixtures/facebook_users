@@ -1,0 +1,55 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/facebook_users?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/facebook_users?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/facebook_users?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "image_url": "https://graph.facebook.com/zuck/picture?type=square",
+        "profile_url": "https://www.facebook.com/zuck",
+        "created_at": "2013-11-12T22:59:20Z",
+        "updated_at": "2013-11-17T22:59:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/facebook_users/1",
+            "class": "facebook_user"
+          },
+          "customer": {
+            "href": "/api/v2/customers/1",
+            "class": "customer"
+          }
+        }
+      },
+      {
+        "image_url": "https://example.com/facebook_user_image",
+        "profile_url": "https://example.com/facebook_profile",
+        "created_at": "2013-11-12T22:59:20Z",
+        "updated_at": "2013-11-17T22:59:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/facebook_users/2",
+            "class": "facebook_user"
+          },
+          "customer": {
+            "href": "/api/v2/customers/2",
+            "class": "customer"
+          }
+        }
+      }
+    ]
+  }
+}
