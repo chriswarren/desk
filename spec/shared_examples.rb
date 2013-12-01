@@ -164,7 +164,9 @@ shared_examples_for "a search endpoint" do |args|
 
 end
 
-shared_examples_for "a sub list endpoint" do
+shared_examples_for "a sub list endpoint" do |has_parent_id|
+
+  has_parent_id = true unless has_parent_id === false
 
   include_context "plural endpoint"
 
@@ -184,7 +186,7 @@ shared_examples_for "a sub list endpoint" do
 
   it "has valid entries" do
     expect(subject.first.id).to eq(sub_id)
-    expect(subject.first.parent_id).to eq(id)
+    expect(subject.first.parent_id).to eq(id) if has_parent_id
     expect(subject.first.send(check_key)).to eq(check_value)
   end
 
