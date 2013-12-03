@@ -1,0 +1,21 @@
+{
+  "body": "Please assist me with this case",
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "erased_at": null,
+  "_links": {
+    "self": {
+      "href": "/api/v2/cases/1/notes/1",
+      "class": "note"
+    },
+    "case": {
+      "href": "/api/v2/cases/1",
+      "class": "case"
+    },
+    "user": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    },
+    "erased_by": null
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/cases/1/attachments?page=1&per_page=50",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/cases/1/attachments?page=1&per_page=50",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/cases/1/attachments?page=1&per_page=50",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "file_name": "awesome_pic.png",
+        "content_type": "image/png",
+        "size": "500",
+        "url": "http://example.com/short_lived_link_to_the_file_content",
+        "erased_at": null,
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/cases/1/attachments/1",
+            "class": "attachment"
+          },
+          "case": {
+            "href": "/api/v2/cases/1",
+            "class": "case"
+          }
+        }
+      },
+      {
+        "file_name": "another_awesome_pic.png",
+        "content_type": "image/png",
+        "size": "500",
+        "url": "http://example.com/short_lived_link_to_the_file_content",
+        "erased_at": null,
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/cases/1/attachments/2",
+            "class": "attachment"
+          },
+          "case": {
+            "href": "/api/v2/cases/2",
+            "class": "case"
+          }
+        }
+      }
+    ]
+  }
+}

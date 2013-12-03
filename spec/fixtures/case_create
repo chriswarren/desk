@@ -1,0 +1,51 @@
+{
+  "external_id": null,
+  "subject": "Creating a case via the API",
+  "priority": 4,
+  "locked_until": null,
+  "description": null,
+  "status": "open",
+  "type": "email",
+  "language": "fr",
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:54:20Z",
+  "active_at": "2013-11-22T22:54:20Z",
+  "received_at": "2013-11-22T22:49:20Z",
+  "first_opened_at": "2013-11-22T22:50:20Z",
+  "opened_at": "2013-11-22T22:51:20Z",
+  "first_resolved_at": "2013-11-22T22:54:20Z",
+  "resolved_at": "2013-11-22T22:54:20Z",
+  "custom_fields": {
+    "level": "vip"
+  },
+  "_links": {
+    "self": {
+      "href": "/api/v2/cases/1",
+      "class": "case"
+    },
+    "message": {
+      "href": "/api/v2/cases/1/message",
+      "class": "message"
+    },
+    "customer": {
+      "href": "/api/v2/customers/1",
+      "class": "customer"
+    },
+    "assigned_user": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    },
+    "assigned_group": {
+      "href": "/api/v2/groups/1",
+      "class": "group"
+    },
+    "locked_by": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    }
+  },
+  "labels": [
+    "Spam",
+    "Ignore"
+  ]
+}
