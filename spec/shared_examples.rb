@@ -2,29 +2,29 @@ require 'helper'
 
 shared_examples_for "a list endpoint" do
 
-    include_context "plural endpoint"
+  include_context "plural endpoint"
 
-    subject { client.send("list_#{endpoints}") }
+  subject { client.send("list_#{endpoints}") }
 
-    before do
-      stub_get(endpoints).to_return(:body => fixture(endpoints))
-    end
+  before do
+    stub_get(endpoints).to_return(:body => fixture(endpoints))
+  end
 
-    it "gets the correct resource" do
-      subject
-      expect(a_get(endpoints)).to have_been_made
-    end
+  it "gets the correct resource" do
+    subject
+    expect(a_get(endpoints)).to have_been_made
+  end
 
-    it { expect(subject).to be_a Hashie::Deash }
+  it { expect(subject).to be_a Hashie::Deash }
 
-    it "has valid entries" do
-      expect(subject.first.id).to eq(id)
-      expect(subject.first.send(check_key)).to eq(check_value)
-    end
+  it "has valid entries" do
+    expect(subject.first.id).to eq(id)
+    expect(subject.first.send(check_key)).to eq(check_value)
+  end
 
-    it "allows raw access" do
-      expect(subject.raw.first).to be_a Array
-    end
+  it "allows raw access" do
+    expect(subject.raw.first).to be_a Array
+  end
 
 end
 
@@ -284,6 +284,29 @@ shared_examples_for "a sub update endpoint" do |args|
 
   it "allows raw access" do
     expect(subject.raw).to be_a Hashie::Deash
+  end
+
+end
+
+shared_examples_for "a sub delete endpoint" do
+
+  include_context "plural endpoint"
+
+  subject { client.send("delete_#{endpoint}_#{sub_endpoint}", id, sub_id) }
+
+  before do
+    stub_delete("#{endpoints}/#{id}/#{sub_endpoints}/#{sub_id}").
+      to_return(:body => nil)
+  end
+
+  it "gets the correct resource" do
+    subject
+    expect(a_delete("#{endpoints}/#{id}/#{sub_endpoints}/#{sub_id}")).
+      to have_been_made
+  end
+
+  it "has an empty response" do
+    expect(subject).to eq(nil)
   end
 
 end
