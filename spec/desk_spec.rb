@@ -154,8 +154,8 @@ describe Desk do
   describe ".counter" do
     before do
       Desk.counter = 0
-      stub_get("cases.json").
-        to_return(:body => fixture("cases.json"), :headers => {:content_type => "application/json; charset=utf-8"})
+      stub_get("cases").
+        to_return(:body => fixture("cases"), :headers => {:content_type => "application/json; charset=utf-8"})
     end
     
     it "should be 0 in the beginning" do
