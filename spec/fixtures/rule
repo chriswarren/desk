@@ -1,0 +1,13 @@
+{
+  "name": "Assign to Support",
+  "description": "Assign inbound tweets to support group",
+  "enabled": true,
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/rules/1",
+      "class": "rule"
+    }
+  }
+}

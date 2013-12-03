@@ -1,0 +1,49 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/rules?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/rules?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/rules?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "name": "Assign to Support",
+        "description": "Assign inbound tweets to support group",
+        "enabled": true,
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/rules/1",
+            "class": "rule"
+          }
+        }
+      },
+      {
+        "name": "Increase Priority for Influential Twitter Users",
+        "description": null,
+        "enabled": true,
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/rules/2",
+            "class": "rule"
+          }
+        }
+      }
+    ]
+  }
+}

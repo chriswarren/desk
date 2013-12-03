@@ -1,0 +1,17 @@
+{
+  "type": "bulk_case_update",
+  "status_message": "Completed",
+  "progress": 100,
+  "created_at": "2013-11-22T21:59:20Z",
+  "completed_at": "2013-11-22T22:49:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/jobs/1",
+      "class": "job"
+    },
+    "user": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    }
+  }
+}

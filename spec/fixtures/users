@@ -1,0 +1,63 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/users?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/users?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/users?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "name": "John Doe",
+        "public_name": "John Doe",
+        "email": "john@acme.com",
+        "level": "agent",
+        "created_at": "2012-11-22T22:59:20Z",
+        "updated_at": "2013-11-15T22:59:20Z",
+        "current_login_at": "2013-11-21T22:59:20Z",
+        "last_login_at": "2013-11-15T22:59:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          },
+          "preferences": {
+            "href": "/api/v2/users/1/preferences",
+            "class": "user_preference"
+          }
+        }
+      },
+      {
+        "name": "Jane Doe",
+        "public_name": "Jane Doe",
+        "email": "jane@acme.com",
+        "level": "agent",
+        "created_at": "2012-11-22T22:59:20Z",
+        "updated_at": "2013-11-15T22:59:20Z",
+        "current_login_at": "2013-11-21T22:59:20Z",
+        "last_login_at": "2013-11-15T22:59:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/2",
+            "class": "user"
+          },
+          "preferences": {
+            "href": "/api/v2/users/1/preferences",
+            "class": "user_preference"
+          }
+        }
+      }
+    ]
+  }
+}

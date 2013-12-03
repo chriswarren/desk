@@ -1,0 +1,14 @@
+{
+  "name": "auto_accept_on_route",
+  "value": true,
+  "_links": {
+    "self": {
+      "href": "/api/v2/users/1/preferences/3",
+      "class": "user_preference"
+    },
+    "user": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    }
+  }
+}

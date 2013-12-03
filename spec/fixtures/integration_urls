@@ -1,0 +1,54 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/integration_urls?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/integration_urls?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/integration_urls?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "name": "Sample URL",
+        "description": "A sample Integration URL",
+        "enabled": true,
+        "markup": "http://www.example.com/name={{customer.name | url_encode}}",
+        "rendered": "http://www.example.com/name=",
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/integration_urls/1",
+            "class": "integration_url"
+          }
+        }
+      },
+      {
+        "name": "Another URL",
+        "description": "A sample Integration URL",
+        "enabled": true,
+        "markup": "http://www.example.com/caseid={{case.id}}",
+        "rendered": "http://www.example.com/caseid=",
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/integration_urls/2",
+            "class": "integration_url"
+          }
+        },
+        "position": 2
+      }
+    ]
+  }
+}

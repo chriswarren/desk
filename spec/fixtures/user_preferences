@@ -1,0 +1,223 @@
+{
+  "total_entries": 14,
+  "_links": {
+    "self": {
+      "href": "/api/v2/users/1/preferences?page=1&per_page=50",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/users/1/preferences?page=1&per_page=50",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/users/1/preferences?page=1&per_page=50",
+      "class": "page"
+    },
+    "previous": null,
+    "next": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "name": "enable_routing_filter_on_login",
+        "value": "12",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/1",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          },
+          "filter": {
+            "href": "/api/v2/filters/12",
+            "class": "filter"
+          }
+        }
+      },
+      {
+        "name": "scroll_to_bottom_on_open",
+        "value": "1",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/2",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "auto_accept_on_route",
+        "value": false,
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/3",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "case_filter_view",
+        "value": "200",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/4",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "warn_onbeforeunload",
+        "value": false,
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/5",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "screenpop_sound",
+        "value": "80",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/6",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "screenpop_sound_repeat_enabled",
+        "value": false,
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/7",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "inactivity_sound",
+        "value": "10",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/8",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "inactivity_sound_repeat_enabled",
+        "value": false,
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/9",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "new_chat_message_sound",
+        "value": "70",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/10",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "confirm_on_short_replies",
+        "value": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/11",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "case_default_view",
+        "value": "-1",
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/12",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "show_labels_in_case_filter_view",
+        "value": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/13",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "name": "bulk_case_filter_manage_confirm",
+        "value": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/users/1/preferences/14",
+            "class": "user_preference"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      }
+    ]
+  }
+}

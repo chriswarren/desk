@@ -1,0 +1,15 @@
+{
+  "name": "Sample URL",
+  "description": "A sample Integration URL",
+  "enabled": false,
+  "markup": "http://www.example.com/name={{customer.name | url_encode}}",
+  "rendered": "http://www.example.com/name=",
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/integration_urls/1",
+      "class": "integration_url"
+    }
+  }
+}
