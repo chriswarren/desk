@@ -103,23 +103,23 @@ module Desk
             }
           else
             method_name = "list_#{bases}"
-            alias_names = []
+            alias_names = [bases]
             block = lambda{ |*args|
               options = args.last.is_a?(Hash) ? args.pop : {}
-              get("#{bases}", options)
+              searchOptions = options.keys - [:page, :per_page]
+              if (!self.respond_to? "search_#{bases}") || searchOptions.empty?
+                get(bases, options)
+              else
+                send("search_#{bases}", options)
+              end
             }
           end
         when "search"
           method_name = "search_#{bases}"
-          alias_names = ["#{bases}"]
+          alias_names = []
           block = lambda{ |*args|
             options = args.last.is_a?(Hash) ? args.pop : {}
-            searchOptions = options.keys - [:page, :per_page]
-            if searchOptions.empty?
-              send("list_#{bases}", options)
-            else
-              get("#{bases}/search", options)
-            end
+            get("#{bases}/search", options)
           }
         when "show"
           if sub_ep
