@@ -6,23 +6,117 @@ Installation
 ------------
     gem install desk
 
-What's new in 0.3.3?
-------------------
-@mtchavez bumped faraday_middleware to 0.9.0
+What's new in 1.0.0?
+--------------------
 
-What's new in 0.3.2?
-------------------
-@tstachl added support for groups and max requests
+Completely rewritten for Desk.com API v2
 
-What's new in 0.3.0?
-------------------
-Renamed to Desk
-Newer faraday, faraday_middleware and hashie
+For those upgrading from API v2 (Desk gem v0.3.x), check out the [transition
+guide][TRANSITION.mkd]
 
 Help! I'm getting: "Did not recognize your engine specification. Please specify either a symbol or a class. (RuntimeError)"
 ---------------------------------------------------------------------------------------------------------------------------
 
-You'll need to explicitly require a JSON library. We recommend [yajl-ruby](http://github.com/brianmario/yajl-ruby).
+You'll need to explicitly require a JSON library.
+We recommend [yajl-ruby](http://github.com/brianmario/yajl-ruby).
+
+Overview
+--------------
+
+Desk.com's API v2 follows a structure for (almost) every endpoint. Each endpoint
+impliments some, or all, of the following actions: list, search, show, create,
+update and delete. Additionally, some endpoints impliment sub-endpoints that
+utilize the same list of actions.
+
+The endpoint actions, and sub-endpoint actions, are implimented as methods in
+the following way:
+    [action]_[endpoint] or [action]_[endpoint]_[sub-endpoint]
+
+http://dev.desk.com/API/cases
+The cases endpoint is a great example. It impliments the list, search, show,
+create and updated actions. It additionally impliments sub-endpoints for
+messages, replies, notes and attachments related to cases.
+See the above link for more information.
+
+For the Case endpoint, the create action would look like:
+    Desk.create_case(args)
+
+For the Reply sub-endpoint under Cases, the update action would look like:
+    Desk.update_case_reply(case_id, reply_id, args)
+
+Take note, as reflected in the Desk.com API documentation, that the list and
+search actions change the plurality of the endpoint or sub-endpoint. Such as:
+    Desk.search_cases
+    Desk.list_case_replies(case_id)
+
+Aliases
+-------------
+
+For ease of use, the list and show endpoint and sub-endpoint methods have
+aliases that drop the action. These translate as follows:
+    list_[endpoint plural]                 => [endpoint plural]
+    show_[endpoint]                        => [endpoint]
+
+    list_[endpoint]_[sub-endpoint pluaral] => [endpoint]_[sub-endpoint plural]
+    show_[endpoint]_[sub-endpoint]         => [endpoint]_[sub-endpoint]
+
+For the Case endpoint and Reply sub-endpoint that would look like:
+    Desk.cases
+    Desk.case(case_id)
+    Desk.case_replies(case_id)
+    Desk.case_reply(case_id, reply_id)
+
+Additionally, for endpoints that impliment the search action, the list and list
+alias will intelligently use the correct API action for the provided arguments.
+Meaning, all of the following are valid:
+    Desk.cases
+    Desk.cases(:page => 2)
+    Desk.cases(:status => "new,open")
+    Desk.cases(:status => "new,open", :page => 2, :per_page => 10)
+
+Responses
+--------------
+
+While the raw API responses are available (see below), results are by default
+translated into cleaner, more accessible Ruby objects, allowing the following:
+    cases = Desk.cases
+    cases.each do |c|
+      puts c.priority
+      puts c.status
+    end
+
+For actions like show, create and update the endpoint fields are accessible in
+the object root, such as:
+    c = Desk.case(case_id)
+    puts c.priority
+    puts c.status
+
+Additionally, the new "_links" in API v2 are easily accessible in this way as
+well. Because each link (like self, first, next, etc) contain a fully formated
+API callback, we're able to directly load the results of that link and return
+the resulting object. This allows for clean, simple code like the following to
+page though all the avaiable cases:
+    cases = Desk.list_cases
+    while cases
+      cases.each do |c|
+        # do something with each case
+      end
+      cases = cases.next
+    end
+
+Or to easily access a case's assigned user and assigned group:
+    c = Desk.show_case(case_id)
+    user_object = c.assigned_user
+    group_object = c.assigned_group
+
+Raw Responses
+--------------
+
+While almost all of the Desk.com API results are accessible, in some form, using
+the simple object keys above the raw results are still avaiable via the "raw" key.
+This allows for:
+    c = Desk.show_case(case_id)
+    puts c.raw["_links"]["self"]["class"]
 
 Usage Examples
 --------------
@@ -41,154 +135,215 @@ Usage Examples
     end
 
     ######
-    # Cases
+    # List examples
     ######
 
     # List cases
     Desk.cases
+
+    # List customers
+    Desk.customers
+
+    # List site settings
+    Desk.site_settings
+
+    # List twitter users
+    Desk.twitter_users
+
+    # List article translations
+    Desk.article_translations(1)
+
+    # List case notes
+    Desk.case_notes(12345)
+
+    ######
+    # Search examples
+    ######
+
+    # Search articles
+    Desk.articles(:text => "happy", :topic_ids => "1,2,4")
+
+    # Search cases
     Desk.cases(:since_id => 12345)
+
+    # Search companies
+    Desk.companies(:q => "acme")
+
+    # Search customers
+    Desk.customers(:last_name => "Smith", :custom_field => "IS 5416")
+
+    ######
+    # Show examples
+    ######
+
+    # Get a specific custom field
+    Desk.custom_field(1)
+
+    # Get a specific facebook user
+    Desk.facebook_user(1234)
 
     # Get a specific case
     Desk.case(12345)
 
-    # Update a specific case
-    Desk.update_case(12345, :subject => "Something Else")
+    # Get a specific twitter account
+    Desk.twitter_account(2)
+
+    ######
+    # Create examples
+    ######
+
+    # Create a new phone case
+    Desk.create_case(
+      :type => "phone",
+      :subject => "Creating a case via the API",
+      :priority => 4,
+      :status => "open",
+      :labels => [ "Spam", "Ignore" ],
+      :_links => {
+        :customer => {
+          :href => "/api/v2/customers/1",
+          :class => "customer"
+        },
+        :assigned_user => {
+          :href => "/api/v2/users/1",
+          :class => "user"
+        },
+        :assigned_group => {
+          :href => "/api/v2/groups/1",
+          :class => "group"
+        },
+        :locked_by => {
+          :href => "/api/v2/users/1",
+          :class => "user"
+        },
+        :entered_by => {
+          :href => "/api/v2/users/1",
+          :class => "user"
+        }
+      },
+      :message => {
+        :direction => "out",
+        :body => "Please assist me with this case",
+      }
+    )
+
+    # Create a new label
+    Desk.create_label(
+      :name => "MyLabel",
+      :description => "A Test Label",
+      :types => [ "case", "macro" ],
+      :color => "blue"
+    )
+
+    # Create a new topic
+    Desk.create_topic(
+      :name => "Social Media",
+      :allow_questions => true,
+      :in_support_center => true
+    )
+
+    ######
+    # Update examples
+    ######
+
+    # Update a customer
+    Desk.update_customer(123,
+      :first_name => "Johnny",
+      :emails => {
+        { :type => "work", :value => "johnny@acme.com" },
+        { :type => "other", :value => "johnny@other.com" }
+      },
+      :custom_fields => { :level => "super" }
+    )
+
+    # Update an integration URL
+    Desk.update_integration_url(10, :enabled => false)
+
+    # Update a macro
+    Desk.update_macro(5, :name => "Macro 5")
+
+    ######
+    # Delete examples
+    ######
+
+    # Delete a case
+    Desk.delete_case(12345)
+
+    # Delete a label
+    Desk.delete_label(2)
+
+    # Delete a macro
+    Desk.delete_macro(10)
+
+    ######
+    # Sub-endpoint examples
+    ######
+
+    # Get the original message for a specific case
+    Desk.case_message(12345)
+
+    # Get the cases for a specifc filter
+    Desk.filter_cases(8)
+
+    # Output all replies for a specific case
+    Desk.case_replies(12345).each { |r| puts r.body }
+
+    # Update the translation for a specific topic
+    Desk.update_topic_translation(1, "ja", :name => "The Japanese Translation")
+
+    # Delete a specifc attachment for a specific case
+    Desk.delete_case_attachment(12345, 10)
+
+    ######
+    # _link helper examples
+    ######
+
+    # Output the original message and all replies using the _link helpers
+    c = Desk.case(12345)
+    puts c.message.body
+    c.replies.each { |r| puts r.body }
+
+    # Output all article subjects, who created them and who last updated them
+    Desk.articles.each do |a|
+      puts a.subject
+      puts "Created at: #{a.created_at} by #{a.created_by.public_name}"
+      puts "Updated at: #{a.updated_at} by #{a.updated_by.public_name}"
+    end
+
+    # For all customers who have been created since 01/01/2013, output the
+    # original message for all cases for those customers
+    Desk.customers(:since_created_at => 1385856000).each do |customer|
+      customer.cases.each do |c|
+        puts c.message.body
+      end
+    end
+
+    ######
+    # "non-standard" examples
+    ######
 
     # Get a case url
     Desk.case_url(12345)
 
-    ######
-    # Customers
-    ######
+    # Get the history for a sepcific case
+    Desk.case_history(12345)
 
-    # List customers
-    Desk.customers
-    Desk.customers(:since_id => 12345, :count => 5)
+    # Show insights meta data
+    Desk.insights_meta
 
-    # Get a specific customer
-    Desk.customer(12345)
+    # Create insights report
+    Desk.create_insights_report(
+      :resolution => "days",
+      :min_date => "2013-12-01",
+      :max_date => "2013-12-16",
+      :dimension1_name => "*",
+      :dimension1_values => "*",
+      :dimension2_name => "*",
+      :dimension2_values => "*"
+    )
 
-    # Create a customer
-    Desk.create_customer(:name => "Chris Warren", :twitter => "cdwarren")
-
-    # Update a customer
-    Desk.update_customer(12345, :name => "Christopher Warren")
-
-    # Add a customer email
-    Desk.create_customer_email(12345, "foo@example.com")
-    Desk.create_customer_email(12345, "foo@example.com", :customer_contact_type => "work")
-
-    # Update a customer email
-    Desk.update_customer_email(12345, 54321, :email => "foo@example.com")
-    Desk.update_customer_email(12345, 54321, :customer_contact_type => "work")
-
-    # Add a customer phone number
-    Desk.create_customer_phone(12345, "555-368-7147")
-    Desk.create_customer_phone(12345, "555-368-7147", :customer_contact_type => "work")
-
-    # Update a customer phone number
-    Desk.update_customer_phone(12345, 54321, :phone => "555-368-7147")
-    Desk.update_customer_phone(12345, 54321, :customer_contact_type => "work")
-
-    ######
-    # Interactions
-    ######
-
-    # List interactions
-    Desk.interactions
-    Desk.interactions(:since_id => 12345)
-    Desk.interactions(:since_id => 12345, :count => 5)
-
-    # Create an inbound interaction
-    Desk.create_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
-    Desk.create_inbound_interaction(:interaction_subject => "help me", :customer_email => "foo@example.com", :interaction_body => "You're my only hope.")
-
-    # Create an outbound interaction
-    # Desk.com's API doesn't support creating outbound communications, so we do this over email with a BCC back to Desk and customer headers.
-    # Desk.support_email must be set to your Desk.com email address so that the email can be sent to the account and give the customer someone to respond to.
-    #
-    # Read more at http://support.desk.com/customer/portal/articles/4180
-    # Additional headers can be passed as well http://support.desk.com/customer/portal/articles/6728
-    #
-    # Email is sent using Pony https://github.com/benprew/pony
-    Desk.create_interaction(:interaction_subject => "Missed Your Call", :customer_email => "foo@example.com", :interaction_body => "Sorry we missed yoru call. What's up?", :direction => "outbound")
-    Desk.create_outbound_interaction("foo@example.com", "Missed Your Call", "Sorry we missed yoru call. What's up?")
-
-    ######
-    # Users
-    ######
-
-    # List users
-    Desk.users
-
-    # Get a specific user
-    Desk.user(12345)
-
-    ######
-    # Topics
-    ######
-
-    # List Topics
-    Desk.topics
-
-    # Get a specific topic
-    Desk.topic(12345)
-
-    # Create a new topic
-    Desk.create_topic("name", :description => "description")
-
-    # Update a topic
-    Desk.update_topic(12345, :subject => "Updated")
-
-    # Delete a topic
-    Desk.delete_topic(12345)
-
-    ######
-    # Articles
-    ######
-
-    # List articles for a topic
-    Desk.articles(1)
-
-    # Get a specific article
-    Desk.article(12345)
-
-    # Create a new article within a topic
-    Desk.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
-
-    # Update an article
-    Desk.update_article(12345, :subject => "Updated API Tips")
-
-    # Delete an article
-    Desk.delete_article(12345)
-
-    ######
-    # Macros
-    ######
-
-    # List Macros
-    Desk.macros
-
-    # Get a specific macro
-    Desk.macro(12345)
-
-    # Create a new macro
-    Desk.create_macro("name", :labels => "escalated")
-
-    # Update a macro
-    Desk.update_macro(12345, :name => "Updated Name")
-
-    # Delete a macro
-    Desk.delete_macro(12345)
-
-    # Macro Actions
-    Desk.macro_actions(12345)
-
-    # Macro Action
-    Desk.macro_action(12345, "set-case-description")
-
-    # Update Macro Action
-    Desk.update_macro_action(12345, "set-case-description", :value => "New Subject")
+    # Show the daily system message
+    Desk.system_message
 
 Contributing
 ------------

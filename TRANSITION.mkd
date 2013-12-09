@@ -1,0 +1,133 @@
+Desk.com API v1 to v2 transition guide
+======================================
+
+The API v2 endpoints and responses are both highly standardized and
+significantly different compared to v1 of the API. As a result the Desk.com Ruby
+gem was almost entirely rewritten to take advantage of the changes. An
+unfortunate side effect is that likely all projects upgrading from v1 to v2 will
+need to be rewritten to some extent.
+
+Below are some ideas and tips for utilizing the new features as well as
+transition guides for the original endpoints.
+
+General Pagination
+------------------
+
+Previously, to paginate through results (like all cases) you would need to do
+something similar to the following:
+
+    page = 1
+    while page > 0 do
+      results = Desk.cases(:count => 10, :page => page)
+      # Do something with results
+      if page*10 >= results.total
+        page = 0
+      else
+        page += 1
+      end
+    end
+
+Now, utilizing the new "_links" callbacks (see the main README for more
+information), pagination can be done like:
+
+    results = Desk.list_cases
+    while results
+      # Do something with results
+      results = results.next
+    end
+
+Result objects
+--------------
+
+Previously, the raw results from the API were returned as a Hashie object. This
+required your code to dig down like:
+
+    r = Desk.cases(:count => 5)
+    r.results.each do |c|
+      theActualCaseObject = c.case
+      # Do something with theActualCaseObject
+    end
+
+    r = Desk.case(12345)
+    theActualCaseObject = r.case
+    # Do soemthing with theActualCaseObject
+
+Now, the object returned (an extended Hashie object of type Deash) gives root
+level access to the endpoint fields. This allows for:
+
+    Desk.cases(:per_page => 5).each do |theCase|
+      # Do something with theCase
+    end
+
+    theCase = Desk.case(12345)
+    # Do soemthing with theCase
+
+For more information see the specific endpoint examples below.
+
+Cases & Interaction endpoint examples
+-------------------------------------
+
+Previously cases and interactions were seperate endpoints. Additionally all
+interactions were returned with no direct access to a specific interaction, the
+original message or notes. Just to get, for example, the original interaction
+for all cases assigned to a user your code likely looked something like this:
+
+    r = Desk.cases(:assigned_user => "joe")
+    r.results.each do |c|
+      in = Desk.interactions(:case_id => c.case.case_id)
+      in.results.each do |i|
+        if( i.interaction.basis == "original" )
+          i.interaction.interactionable.each do |interaction_type, interaction|
+            case interaction_type
+            when "email"
+              puts "Message: #{interaction.body}
+            when "tweet"
+              puts "Message: #{interaction.subject}"
+            when "chat"
+              puts "Message: #{interaction.messages.first.message.text}"
+            end
+          end
+        end
+      end
+    end
+
+Now, because of standardized fields and responses along with the _links
+callbacks, the above can be simplified to:
+
+    Desk.cases(:assigned_user => "joe").each do |c|
+      puts "Message: #{c.message.body}"
+    end
+
+For more information on accessing case messages, replies, notes, attachments and
+history site the README and http://dev.desk.com/API/cases/
+
+Customer endpoint examples
+--------------------------
+
+The redundancy for customers is gone as well. Email addresses, phone numbers and
+addresses are no longer burried and are all accessible in a uniform way. So, with
+API v1, what looked like:
+
+    customers = Desk.customers(:since_created_at => 1279139906)
+    customers.results.each do |customer|
+      puts "#{customer.customer.first_name} #{customer.customer.last_name}"
+      customer.customer.addresses.each do |address|
+        puts address.address.location
+      end
+      customer.customer.phones.each do |phone|
+        # seriously, this is correct, but it feels a bit excessive
+        puts phone.phone.phone
+      end
+      customer.customer.twitters.each do |twitter|
+        puts twitter.twitter.login
+      end
+    end
+
+using the API v2 looks like:
+
+    Desk.customers(:since_created_at => 1279139906).each do |customer|
+      puts "#{customer.first_name} #{customer.last_name}"
+      customer.addresses.each { |address| puts address.value }
+      customer.phone_numbers.each { |phone| puts phone.value }
+      puts customer.twitter_user.handle
+    end
