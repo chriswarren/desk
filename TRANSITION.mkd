@@ -27,7 +27,7 @@ something similar to the following:
       end
     end
 
-Now, utilizing the new "_links" callbacks (see the main README for more
+Now, utilizing the new "\_links" callbacks (see the main README for more
 information), pagination can be done like:
 
     results = Desk.list_cases

@@ -12,7 +12,7 @@ What's new in 1.0.0?
 Completely rewritten for Desk.com API v2
 
 For those upgrading from API v2 (Desk gem v0.3.x), check out the [transition
-guide][TRANSITION.mkd]
+guide](TRANSITION.mkd)
 
 Help! I'm getting: "Did not recognize your engine specification. Please specify either a symbol or a class. (RuntimeError)"
 ---------------------------------------------------------------------------------------------------------------------------
@@ -23,29 +23,34 @@ We recommend [yajl-ruby](http://github.com/brianmario/yajl-ruby).
 Overview
 --------------
 
-Desk.com's API v2 follows a structure for (almost) every endpoint. Each endpoint
+Desk.com's API v2 follows a standard structure for (almost) every endpoint (see
+the last section of the examples for the irregularities). Each endpoint
 impliments some, or all, of the following actions: list, search, show, create,
 update and delete. Additionally, some endpoints impliment sub-endpoints that
 utilize the same list of actions.
 
 The endpoint actions, and sub-endpoint actions, are implimented as methods in
 the following way:
+
     [action]_[endpoint] or [action]_[endpoint]_[sub-endpoint]
 
-http://dev.desk.com/API/cases
+http://dev.desk.com/API/cases  
 The cases endpoint is a great example. It impliments the list, search, show,
 create and updated actions. It additionally impliments sub-endpoints for
 messages, replies, notes and attachments related to cases.
 See the above link for more information.
 
 For the Case endpoint, the create action would look like:
+
     Desk.create_case(args)
 
 For the Reply sub-endpoint under Cases, the update action would look like:
+
     Desk.update_case_reply(case_id, reply_id, args)
 
 Take note, as reflected in the Desk.com API documentation, that the list and
 search actions change the plurality of the endpoint or sub-endpoint. Such as:
+
     Desk.search_cases
     Desk.list_case_replies(case_id)
 
@@ -54,6 +59,7 @@ Aliases
 
 For ease of use, the list and show endpoint and sub-endpoint methods have
 aliases that drop the action. These translate as follows:
+
     list_[endpoint plural]                 => [endpoint plural]
     show_[endpoint]                        => [endpoint]
 
@@ -61,6 +67,7 @@ aliases that drop the action. These translate as follows:
     show_[endpoint]_[sub-endpoint]         => [endpoint]_[sub-endpoint]
 
 For the Case endpoint and Reply sub-endpoint that would look like:
+
     Desk.cases
     Desk.case(case_id)
     Desk.case_replies(case_id)
@@ -69,6 +76,7 @@ For the Case endpoint and Reply sub-endpoint that would look like:
 Additionally, for endpoints that impliment the search action, the list and list
 alias will intelligently use the correct API action for the provided arguments.
 Meaning, all of the following are valid:
+
     Desk.cases
     Desk.cases(:page => 2)
     Desk.cases(:status => "new,open")
@@ -79,6 +87,7 @@ Responses
 
 While the raw API responses are available (see below), results are by default
 translated into cleaner, more accessible Ruby objects, allowing the following:
+
     cases = Desk.cases
     cases.each do |c|
       puts c.priority
@@ -87,15 +96,17 @@ translated into cleaner, more accessible Ruby objects, allowing the following:
 
 For actions like show, create and update the endpoint fields are accessible in
 the object root, such as:
+
     c = Desk.case(case_id)
     puts c.priority
     puts c.status
 
-Additionally, the new "_links" in API v2 are easily accessible in this way as
+Additionally, the new "\_links" in API v2 are easily accessible in this way as
 well. Because each link (like self, first, next, etc) contain a fully formated
 API callback, we're able to directly load the results of that link and return
 the resulting object. This allows for clean, simple code like the following to
 page though all the avaiable cases:
+
     cases = Desk.list_cases
     while cases
       cases.each do |c|
@@ -105,6 +116,7 @@ page though all the avaiable cases:
     end
 
 Or to easily access a case's assigned user and assigned group:
+
     c = Desk.show_case(case_id)
     user_object = c.assigned_user
     group_object = c.assigned_group
@@ -115,6 +127,7 @@ Raw Responses
 While almost all of the Desk.com API results are accessible, in some form, using
 the simple object keys above the raw results are still avaiable via the "raw" key.
 This allows for:
+
     c = Desk.show_case(case_id)
     puts c.raw["_links"]["self"]["class"]
 
