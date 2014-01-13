@@ -43,10 +43,10 @@ module Hashie
       # TODO: Make this DRY
       if includes_key_chain?("_links."+method.to_s)
         return nil if !self._links[method]
-        return Desk.get(self._links[method].href.sub("/api/#{self.version}/", ""))
+        return Desk.get(self._links[method].href.sub(Desk.api_path, ""))
       elsif includes_key_chain?("raw._links."+method.to_s)
         return nil if !self.raw._links[method]
-        return Desk.get(self.raw._links[method].href.sub("/api/#{self.version}/", ""))
+        return Desk.get(self.raw._links[method].href.sub(Desk.api_path, ""))
       elsif includes_key_chain?("raw."+method.to_s)
         return nil if !self.raw[method]
         return self.raw[method]
