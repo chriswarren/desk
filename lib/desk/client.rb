@@ -82,6 +82,21 @@ module Desk
       end
     end
 
+    def create_link(type, class_or_hash, id = nil, sub_class = nil, sub_id = nil)
+      if class_or_hash.class == Hashie::Deash
+        {type.to_sym => {
+          :class => class_or_hash._links.self['class'],
+          :href => class_or_hash._links.self['href']
+        }}
+      elsif class_or_hash.class == String
+        href = Desk.api_path+plural(class_or_hash)+"/#{id}"
+        href += "/"+plural(sub_class)+"/#{sub_id}" if sub_class != nil
+        {type.to_sym => { :class => class_or_hash, :href => href }}
+      else
+        nil
+      end
+    end
+
     private
 
     def setup_functions(base, endpoints_list)
