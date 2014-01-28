@@ -332,6 +332,40 @@ Usage Examples
     end
 
     ######
+    # Helper methods
+    ######
+
+    # Add an address, email and phone
+    # number to an existing customer
+    customer = Desk.customer(12345)
+    customer_add_address(customer, "12545 Riata Vista Cir, Austin, TX 78727",
+    "work")
+    customer_add_email(customer, "ruby@desk.com")
+    customer_add_phone_number(customer, "123-456-7890", "other")
+
+    # Delete a specific address, email and
+    # phone number from an existing customer
+    customer = Desk.customer(12345)
+    customer_delete_address(customer, "12545 Riata Vista Cir, Austin, TX 78727")
+    customer_delete_email(customer, "ruby@desk.com")
+    customer_delete_phone_number(customer, "123-456-7890")
+
+    # Delete all addresses and phone
+    # numbers of a specific type
+    customer = Desk.customer(12345)
+    customer_delete_address(customer, "work")
+    customer_delete_phone_number(customer, "other")
+
+    # The delete helpers also support mixing
+    # and matching multiple items
+    customer = Desk.customer(12345)
+    customer_delete_address(customer, "work", "other", " "12545 Riata Vista Cir,
+    Austin, TX 78727")
+    customer_delete_email(customer, "ruby@desk.com", "gem@desk.com")
+    customer_delete_phone_number(customer, "work", "123-456-7890",
+    "908-456-321")
+
+    ######
     # "non-standard" examples
     ######
 
