@@ -1,4 +1,4 @@
 module Desk
   # The version of the gem
-  VERSION = '0.3.3'.freeze unless defined?(::Desk::VERSION)
+  VERSION = '1.0.0'.freeze unless defined?(::Desk::VERSION)
 end
