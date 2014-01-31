@@ -1,0 +1,18 @@
+{
+  "name": "enable_routing_filter_on_login",
+  "value": "12",
+  "_links": {
+    "self": {
+      "href": "/api/v2/users/1/preferences/1",
+      "class": "user_preference"
+    },
+    "user": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    },
+    "filter": {
+      "href": "/api/v2/filters/12",
+      "class": "filter"
+    }
+  }
+}

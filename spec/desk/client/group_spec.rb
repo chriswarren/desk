@@ -1,54 +1,37 @@
 require 'helper'
 
 describe Desk::Client do
-  Desk::Configuration::VALID_FORMATS.each do |format|
-    context ".new(:format => '#{format}')" do
-      before do
-        @client = Desk::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
-      end
+  context "Group" do
 
-      describe ".groups" do
-        context "lookup" do
-          before do
-            stub_get("groups.#{format}").
-              to_return(:body => fixture("groups.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
-          end
+    let(:endpoint) { "group" }
+    let(:id) { 1 }
+    let(:check_key) { "name" }
+    let(:check_value) { "Support Ninjas" }
 
-          it "should get the correct resource" do
-            @client.groups
-            a_get("groups.#{format}").
-              should have_been_made
-          end
+    include_context "basic configuration"
 
-          it "should return up to 100 groups worth of extended information" do
-            groups = @client.groups
-            groups.results.should be_a Array
-            groups.results.last.group.id.should == 2
-            groups.results.last.group.name.should == "Administrators"
-          end
-        end
-      end
+    it_behaves_like "a list endpoint"
 
-      describe ".group" do
-        context "lookup" do
-          before do
-            stub_get("groups/1.#{format}").
-              to_return(:body => fixture("group.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
-          end
+    it_behaves_like "a show endpoint"
 
-          it "should get the correct resource" do
-            @client.group(1)
-            a_get("groups/1.#{format}").
-              should have_been_made
-          end
+    context "Filter" do
 
-          it "should return up to 100 cases worth of extended information" do
-            group = @client.group(1)
-            group.id.should == 1
-            group.name.should == "Sales"
-          end
-        end
-      end
+      let(:sub_endpoint) { "filter" }
+      let(:sub_id) { 1 }
+      let(:check_value) { "My Active Cases" }
+
+      it_behaves_like "a sub list endpoint", false
+
+    end
+
+    context "User" do
+
+      let(:sub_endpoint) { "user" }
+      let(:sub_id) { 1 }
+      let(:check_value) { "John Doe" }
+
+      it_behaves_like "a sub list endpoint", false
+
     end
   end
 end

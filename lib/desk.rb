@@ -11,7 +11,7 @@ module Desk
 
   class << self
     attr_accessor :counter, :minute
-    
+
     # Alias for Desk::Client.new
     #
     # @return [Desk::Client]

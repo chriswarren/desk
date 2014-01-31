@@ -1,0 +1,60 @@
+{
+  "first_name": "Johnny",
+  "last_name": "Doe",
+  "company": "ACME, Inc",
+  "title": "Senior Ninja",
+  "external_id": null,
+  "background": "This guy can be a challenge to work with",
+  "language": "en_us",
+  "locked_until": null,
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "custom_fields": {
+    "level": "super"
+  },
+  "emails": [
+    {
+      "type": "work",
+      "value": "johnny@acme.com"
+    },
+    {
+      "type": "other",
+      "value": "johnny@other.com"
+    }
+  ],
+  "phone_numbers": [
+    {
+      "type": "work",
+      "value": "123-456-7890"
+    }
+  ],
+  "addresses": [
+    {
+      "type": "work",
+      "value": "123 Main St, San Francisco, CA 94105"
+    }
+  ],
+  "_links": {
+    "self": {
+      "href": "/api/v2/customers/1",
+      "class": "customer"
+    },
+    "cases": {
+      "href": "/api/v2/customers/1/cases",
+      "class": "case"
+    },
+    "company": {
+      "href": "/api/v2/companies/1",
+      "class": "company"
+    },
+    "facebook_user": {
+      "href": "/api/v2/facebook_users/1",
+      "class": "facebook_user"
+    },
+    "twitter_user": {
+      "href": "/api/v2/twitter_users/1",
+      "class": "twitter_user"
+    },
+    "locked_by": null
+  }
+}

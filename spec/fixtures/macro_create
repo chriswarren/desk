@@ -1,0 +1,20 @@
+{
+  "name": "Macro Macro",
+  "description": "It's raining fire!",
+  "enabled": true,
+  "position": 1,
+  "folders": [
+    "Sample Macros",
+    "Favorites"
+  ],
+  "_links": {
+    "self": {
+      "href": "/api/v2/macros/1",
+      "class": "macro"
+    },
+    "actions": {
+      "href": "/api/v2/macros/1/actions",
+      "class": "macro_action"
+    }
+  }
+}

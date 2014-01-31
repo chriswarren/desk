@@ -1,0 +1,18 @@
+{
+  "handle": "desk_dev",
+  "image_url": "http://example.com/image.png",
+  "followers_count": "123",
+  "verified": false,
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/twitter_users/1",
+      "class": "twitter_user"
+    },
+    "customer": {
+      "href": "/api/v2/customers/1",
+      "class": "customer"
+    }
+  }
+}

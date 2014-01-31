@@ -1,58 +1,35 @@
 require 'helper'
 
 describe Desk::Client do
-  Desk::Configuration::VALID_FORMATS.each do |format|
-    context ".new(:format => '#{format}')" do
-      before do
-        @client = Desk::Client.new(:subdomain => "example", :format => format, :consumer_key => 'CK', :consumer_secret => 'CS', :oauth_token => 'OT', :oauth_token_secret => 'OS')
+  context "User" do
+
+    let(:endpoint) { "user" }
+    let(:id) { 1 }
+    let(:check_key) { "name" }
+    let(:check_value) { "John Doe" }
+
+    include_context "basic configuration"
+
+    it_behaves_like "a list endpoint"
+
+    it_behaves_like "a show endpoint"
+
+    context "Preference" do
+
+      let(:sub_endpoint) { "preference" }
+      let(:sub_id) { 1 }
+      let(:check_key) { "name" }
+      let(:check_value) { "enable_routing_filter_on_login" }
+
+      it_behaves_like "a sub list endpoint"
+
+      it_behaves_like "a sub show endpoint"
+
+      it_behaves_like "a sub update endpoint", { :value => true } do
+        let(:sub_id) { 3 }
+        let(:check_value) { "auto_accept_on_route" }
       end
 
-      describe ".user" do
-
-        context "with id passed" do
-
-            before do
-              stub_get("users/1.#{format}").
-                to_return(:body => fixture("user.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
-            end
-
-            it "should get the correct resource" do
-              @client.user(1)
-              a_get("users/1.#{format}").
-                should have_been_made
-            end
-
-            it "should return extended information of a given user" do
-              user = @client.user(1)
-              user.name.should == "Chris Warren"
-            end
-
-        end
-      end
-
-      describe ".users" do
-
-        context "lookup" do
-
-          before do
-            stub_get("users.#{format}").
-              to_return(:body => fixture("users.#{format}"), :headers => {:content_type => "application/#{format}; charset=utf-8"})
-          end
-
-          it "should get the correct resource" do
-            @client.users
-            a_get("users.#{format}").
-              should have_been_made
-          end
-
-          it "should return up to 100 users worth of extended information" do
-            users = @client.users
-            users.results.should be_a Array
-            users.results.first.user.name.should == "Test User"
-          end
-
-        end
-      end
     end
   end
 end

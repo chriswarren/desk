@@ -1,0 +1,50 @@
+{
+  "subject": "Awesome Subject",
+  "body": "<p>Awesome apples</p>",
+  "body_email": "Email for Awesome apples",
+  "body_email_auto": false,
+  "body_chat": "Awesome apples",
+  "body_chat_auto": true,
+  "body_web_callback": "<p>Awesome Apples</p>",
+  "body_web_callback_auto": false,
+  "body_twitter": "Awesome apples",
+  "body_twitter_auto": true,
+  "body_qna": "Awesome apples",
+  "body_qna_auto": true,
+  "body_phone": "Awesome apples",
+  "body_phone_auto": true,
+  "body_facebook": "Awesome apples",
+  "body_facebook_auto": true,
+  "rating": 75,
+  "rating_count": 4,
+  "rating_score": 3,
+  "position": 1,
+  "quickcode": "AWESOME",
+  "in_support_center": true,
+  "internal_notes": "Notes to the agent here",
+  "publish_at": "2013-11-12T18:07:34Z",
+  "created_at": "2013-11-12T18:02:34Z",
+  "updated_at": "2013-11-12T18:07:34Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/articles/1",
+      "class": "article"
+    },
+    "topic": {
+      "href": "/api/v2/topics/1",
+      "class": "topic"
+    },
+    "translations": {
+      "href": "/api/v2/articles/1/translations",
+      "class": "article_translation"
+    },
+    "created_by": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    },
+    "updated_by": {
+      "href": "/api/v2/users/1",
+      "class": "user"
+    }
+  }
+}

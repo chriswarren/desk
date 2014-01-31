@@ -1,0 +1,57 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/jobs?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/jobs?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/jobs?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "type": "bulk_case_update",
+        "status_message": "Completed",
+        "progress": 100,
+        "created_at": "2013-11-22T21:59:20Z",
+        "completed_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/jobs/1",
+            "class": "job"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      },
+      {
+        "type": "bulk_case_update",
+        "status_message": "Completed",
+        "progress": 100,
+        "created_at": "2013-11-22T21:59:20Z",
+        "completed_at": "2013-11-22T22:49:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/jobs/2",
+            "class": "job"
+          },
+          "user": {
+            "href": "/api/v2/users/1",
+            "class": "user"
+          }
+        }
+      }
+    ]
+  }
+}

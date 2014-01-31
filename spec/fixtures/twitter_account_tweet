@@ -1,0 +1,20 @@
+{
+  "body": "Example tweet",
+  "direction": "out",
+  "type": "mention",
+  "status": "sent",
+  "to": null,
+  "from": "desk_dev",
+  "created_at": "2013-11-22T17:59:20Z",
+  "updated_at": "2013-11-22T17:59:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/twitter_accounts/1/tweets/1",
+      "class": "tweet"
+    },
+    "twitter_account": {
+      "href": "/api/v2/twitter_accounts/1",
+      "class": "twitter_account"
+    }
+  }
+}

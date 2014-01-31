@@ -1,0 +1,23 @@
+{
+  "name": "Customer Support",
+  "description": null,
+  "position": 1,
+  "allow_questions": true,
+  "in_support_center": true,
+  "created_at": "2013-11-22T22:59:24Z",
+  "updated_at": "2013-11-22T22:59:24Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/topics/1",
+      "class": "topic"
+    },
+    "articles": {
+      "href": "/api/v2/topics/1/articles",
+      "class": "article"
+    },
+    "translations": {
+      "href": "/api/v2/topics/1/translations",
+      "class": "topic_translation"
+    }
+  }
+}

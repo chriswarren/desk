@@ -1,0 +1,29 @@
+{
+  "locale": "en",
+  "subject": "Awesome Subject",
+  "body": "<p>Awesome apples</p>",
+  "body_email": "Email for Awesome apples",
+  "body_email_auto": true,
+  "body_chat": "Awesome apples",
+  "body_chat_auto": true,
+  "body_web_callback": "<p>Awesome Apples</p>",
+  "body_web_callback_auto": true,
+  "body_twitter": "Awesome apples",
+  "body_twitter_auto": true,
+  "body_qna": "Awesome apples",
+  "body_qna_auto": true,
+  "body_phone": "Awesome apples",
+  "body_phone_auto": true,
+  "body_facebook": "Awesome apples",
+  "body_facebook_auto": true,
+  "outdated": false,
+  "publish_at": "2013-11-22T22:54:20Z",
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:54:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/articles/1/translations/en",
+      "class": "article"
+    }
+  }
+}

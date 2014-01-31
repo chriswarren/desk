@@ -1,92 +1,13 @@
 module Desk
   class Client
-    # Defines methods related to articles
     module Article
-      # Returns extended information of articles for a topic
-      #
-      #   @param id [Integer] a article ID
-      #   @option options [Boolean, String, Integer]
-      #   @example Return extended information for 12345
-      #     Desk.articles
-      #     Desk.articles(:count => 5)
-      #     Desk.articles(:count => 5, :page => 3)
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/topics/articles
-      def articles(id, *args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("topics/#{id}/articles",options)
-        response
+
+      def article_endpoints
+        [ :list, :show, :create, :update, :delete, :search,
+          :list_translations, :show_translation, :create_translation,
+          :update_translation, :delete_translation ]
       end
 
-      # Returns extended information on a single article
-      #
-      #   @param id [Integer] a article ID
-      #   @option options [Hash]
-      #   @example Return extended information for 12345
-      #     Desk.article(12345)
-      #     Desk.article(12345, :by => "external_id")
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/articles/show
-      def article(id, *args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("articles/#{id}",options)
-        response.article
-      end
-
-      # Creates a new article
-      #
-      #   @param id [Integer] a article ID
-      #   @param id [Integer] a article ID
-      #   @param id [Integer] a article ID
-      #   @option options [Hash]
-      #   @example Creates a new article
-      #     Desk.create_article(1, :subject => "API Tips", :main_content => "Tips on using our API")
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/articles/create
-      def create_article(topic_id, *args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        response = post("topics/#{topic_id}/articles",options)
-        if response['success']
-          return response['results']['article']
-        else
-          return response
-        end
-      end
-
-      # Updates a single article
-      #
-      #   @param id [Integer] a article ID
-      #   @option options [String]
-      #   @example Updates information for article 12345
-      #     Desk.update_article(12345, :subject => "New Subject")
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/articles/update
-      def update_article(id, *args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        response = put("articles/#{id}",options)
-        if response['success']
-          return response['results']['article']
-        else
-          return response
-        end
-      end
-
-      # Deletes a single article
-      #
-      #   @param id [Integer] a article ID
-      #   @example Deletes article 12345
-      #     Desk.update_article(12345, :subject => "New Subject")
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/articles/update
-      def delete_article(id)
-        response = delete("articles/#{id}")
-        response
-      end
     end
   end
 end

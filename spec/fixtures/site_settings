@@ -1,0 +1,43 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/site_settings?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/site_settings?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/site_settings?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "name": "company_name",
+        "value": "Cool Surfboard Co.",
+        "_links": {
+          "self": {
+            "href": "/api/v2/site_settings/1",
+            "class": "site_setting"
+          }
+        }
+      },
+      {
+        "name": "timezone",
+        "value": "Pacific Time (US & Canada)",
+        "_links": {
+          "self": {
+            "href": "/api/v2/site_settings/2",
+            "class": "site_setting"
+          }
+        }
+      }
+    ]
+  }
+}

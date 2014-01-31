@@ -1,0 +1,26 @@
+{
+  "subject": "Please help",
+  "body": "Help me with my issue!",
+  "direction": "in",
+  "status": "pending",
+  "to": "john.doe@example.com",
+  "from": "doe.john@example.com",
+  "cc": null,
+  "bcc": null,
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/cases/1/replies/1",
+      "class": "email"
+    },
+    "case": {
+      "href": "/api/v2/cases/1",
+      "class": "case"
+    },
+    "customer": {
+      "href": "/api/v2/customer/1",
+      "class": "customer"
+    }
+  }
+}

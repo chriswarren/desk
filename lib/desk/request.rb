@@ -1,34 +1,42 @@
 module Desk
   # Defines HTTP request methods
   module Request
-    # Perform an HTTP GET request
-    def get(path, options={}, raw=false)
-      request(:get, path, options, raw)
+    require 'json' unless defined?(::JSON)
+    REQUEST_METHODS = [
+      'get',
+      'patch',
+      'post',
+      'put',
+      'delete'
+    ].freeze
+
+    def method_missing(method_name, *args, &block)
+      if (REQUEST_METHODS.include? method_name.to_s) && (args.length > 0)
+        path = args[0]
+        options = args[1] ? args[1] : {}
+        raw = args[2] ? args[2] : false
+        request(method_name.to_sym, path, options, raw)
+      else
+        super
+      end
     end
 
-    # Perform an HTTP POST request
-    def post(path, options={}, raw=false)
-      request(:post, path, options, raw)
-    end
-
-    # Perform an HTTP PUT request
-    def put(path, options={}, raw=false)
-      request(:put, path, options, raw)
-    end
-
-    # Perform an HTTP DELETE request
-    def delete(path, options={}, raw=false)
-      request(:delete, path, options, raw)
+    def respond_to?(method_name, include_private = false)
+      if (REQUEST_METHODS.include? method_name.to_s)
+        true
+      else
+        super
+      end
     end
 
     private
-    
+
     def before_request
       if Desk.minute != Time.now.min
         Desk.minute = Time.now.min
         Desk.counter = 0
       end
-      
+
       Desk.counter += 1
       if Desk.use_max_requests
         if Desk.counter > Desk.max_requests
@@ -44,16 +52,21 @@ module Desk
         case method
         when :get, :delete
           request.url(formatted_path(path), options)
-        when :post, :put
+        when :patch, :post, :put
           request.path = formatted_path(path)
-          request.body = options unless options.empty?
+          request.headers['Content-Type'] = 'application/json'
+          request.body = options.to_json unless options.empty?
         end
       end
       raw ? response : response.body
     end
 
     def formatted_path(path)
-      [path, format].compact.join('.')
+      if(self.version == "v1")
+        [path, format].compact.join('.')
+      else
+        path
+      end
     end
   end
 end

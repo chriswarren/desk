@@ -1,0 +1,16 @@
+{
+  "image_url": "https://graph.facebook.com/zuck/picture?type=square",
+  "profile_url": "https://www.facebook.com/zuck",
+  "created_at": "2013-11-12T22:59:20Z",
+  "updated_at": "2013-11-17T22:59:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/facebook_users/1",
+      "class": "facebook_user"
+    },
+    "customer": {
+      "href": "/api/v2/customers/1",
+      "class": "customer"
+    }
+  }
+}

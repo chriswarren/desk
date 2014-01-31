@@ -2,53 +2,70 @@ module Desk
   class Client
     # Defines methods related to cases
     module Case
-      # Returns extended information of cases
-      #
-      #   @option options [Boolean, String, Integer]
-      #   @example Return extended information for 12345
-      #     Desk.cases(:case_id => 12345)
-      #     Desk.cases(:email => "customer@example.com", :count => 5)
-      #     Desk.cases(:since_id => 12345)
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/cases/show
-      def cases(*args)
-        options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("cases",options)
-        response
+
+      def case_endpoints
+        [ :list, :search, :create, :update, 
+          :list_replies, :show_reply, :create_reply, :update_reply,
+          :list_notes, :show_note, :create_note,
+          :list_attachments, :show_attachment, :create_attachment, :delete_attachment,
+          :list_history
+        ]
       end
 
-      # Returns extended information on a single case
-      #
-      #   @option options [String]
-      #   @example Return extended information for 12345
-      #     Desk.case(12345)
-      #     Desk.case(12345, :by => "external_id")
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/cases/show
-      def case(id, *args)
+      def show_case(case_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = get("cases/#{id}",options)
-        response.case
+        case_id = "e-#{case_id}" if options[:by] == "external_id"
+        get("cases/#{case_id}")
+      end
+      alias_method :case, :show_case
+
+      def show_case_message(case_id)
+        get("cases/#{case_id}/message")
+      end
+      alias_method :case_message, :show_case_message
+
+      def list_case_message_attachments(case_id, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        get("cases/#{case_id}/message/attachments", options)
+      end
+      alias_method :case_message_attachments, :list_case_message_attachments
+
+      def list_case_reply_attachments(case_id, reply_id, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        get("cases/#{case_id}/replies/#{reply_id}/attachments", options)
+      end
+      alias_method :case_reply_attachments, :list_case_reply_attachments
+
+      def show_case_message_attachment(case_id, attachment_id)
+        get("cases/#{case_id}/message/attachments/#{attachment_id}")
+      end
+      alias_method :case_message_attachment, :show_case_message_attachment
+
+      def show_case_reply_attachment(case_id, reply_id, attachment_id)
+        get("cases/#{case_id}/replies/#{reply_id}/attachments/#{attachment_id}")
+      end
+      alias_method :case_reply_attachment, :show_case_reply_attachment
+
+      def create_case_message_attachment(case_id, *args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        post("cases/#{case_id}/message/attachments", options)
       end
 
-      # Updates a single case
-      #
-      #   @option options [String]
-      #   @example Return extended information for 12345
-      #     Desk.update_case(12345, :subject => "New Subject")
-      # @format :json
-      # @authenticated true
-      # @see http://dev.desk.com/docs/api/cases/update
-      def update_case(id, *args)
+      def create_case_reply_attachment(case_id, reply_id, *args)
         options = args.last.is_a?(Hash) ? args.pop : {}
-        response = put("cases/#{id}",options)
-        response.case
+        post("cases/#{case_id}/replies/#{reply_id}/attachments", options)
       end
 
-      def case_url(id)
-        "https://#{subdomain}.desk.com/agent/case/#{id}"
+      def delete_case_message_attachment(case_id, attachment_id)
+        delete("cases/#{case_id}/message/attachments/#{attachment_id}")
+      end
+
+      def delete_case_reply_attachment(case_id, reply_id, attachment_id)
+        delete("cases/#{case_id}/replies/#{reply_id}/attachments/#{attachment_id}")
+      end
+
+      def case_url(case_id)
+        "https://#{subdomain}.desk.com/agent/case/#{case_id}"
       end
     end
   end

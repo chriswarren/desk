@@ -1,0 +1,11 @@
+{
+  "name": "Desk.com",
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/brands/1",
+      "class": "brand"
+    }
+  }
+}

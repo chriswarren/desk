@@ -1,0 +1,81 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/articles/1/translations?page=1&per_page=50",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/articles/1/translations?page=1&per_page=50",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/articles/1/translations?page=1&per_page=50",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "locale": "en",
+        "subject": "Awesome Subject",
+        "body": "<p>Awesome apples</p>",
+        "body_email": "Email for Awesome apples",
+        "body_email_auto": true,
+        "body_chat": "Awesome apples",
+        "body_chat_auto": true,
+        "body_web_callback": "<p>Awesome Apples</p>",
+        "body_web_callback_auto": true,
+        "body_twitter": "Awesome apples",
+        "body_twitter_auto": true,
+        "body_qna": "Awesome apples",
+        "body_qna_auto": true,
+        "body_phone": "Awesome apples",
+        "body_phone_auto": true,
+        "body_facebook": "Awesome apples",
+        "body_facebook_auto": true,
+        "outdated": false,
+        "publish_at": "2013-11-22T22:54:20Z",
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:54:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/articles/1/translations/en",
+            "class": "article"
+          }
+        }
+      },
+      {
+        "locale": "es",
+        "subject": "Spanish Translation",
+        "body": "Traducción español aquí",
+        "body_email": "Traducción español aquí",
+        "body_email_auto": true,
+        "body_chat": "Traducción español aquí",
+        "body_chat_auto": true,
+        "body_web_callback": "Traducción español aquí",
+        "body_web_callback_auto": true,
+        "body_twitter": "Traducción español aquí",
+        "body_twitter_auto": true,
+        "body_qna": "Traducción español aquí",
+        "body_qna_auto": true,
+        "body_phone": "Traducción español aquí",
+        "body_phone_auto": true,
+        "body_facebook": "Traducción español aquí",
+        "body_facebook_auto": true,
+        "outdated": false,
+        "publish_at": "2013-11-22T22:54:20Z",
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:54:20Z",
+        "_links": {
+          "self": {
+            "href": "/api/v2/articles/1/translations/es",
+            "class": "article"
+          }
+        }
+      }
+    ]
+  }
+}

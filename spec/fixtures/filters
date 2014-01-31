@@ -1,0 +1,55 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/filters?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/filters?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/filters?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "name": "My Active Cases",
+        "sort": "priority",
+        "sort_field": "priority",
+        "sort_direction": "desc",
+        "position": 1,
+        "active": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/filters/1",
+            "class": "filter"
+          },
+          "group": null,
+          "user": null
+        }
+      },
+      {
+        "name": "Spam Cases",
+        "sort": "priority",
+        "sort_field": "priority",
+        "sort_direction": "desc",
+        "position": 2,
+        "active": true,
+        "_links": {
+          "self": {
+            "href": "/api/v2/filters/2",
+            "class": "filter"
+          },
+          "group": null,
+          "user": null
+        }
+      }
+    ]
+  }
+}

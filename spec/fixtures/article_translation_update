@@ -1,0 +1,29 @@
+{
+  "locale": "es",
+  "subject": "Updated Spanish Translation",
+  "body": "Traducción español aquí",
+  "body_email": "Traducción español aquí",
+  "body_email_auto": true,
+  "body_chat": "Traducción español aquí",
+  "body_chat_auto": true,
+  "body_web_callback": "Traducción español aquí",
+  "body_web_callback_auto": true,
+  "body_twitter": "Traducción español aquí",
+  "body_twitter_auto": true,
+  "body_qna": "Traducción español aquí",
+  "body_qna_auto": true,
+  "body_phone": "Traducción español aquí",
+  "body_phone_auto": true,
+  "body_facebook": "Traducción español aquí",
+  "body_facebook_auto": true,
+  "outdated": false,
+  "publish_at": "2013-11-22T22:54:20Z",
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:54:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/articles/1/translations/es",
+      "class": "article"
+    }
+  }
+}

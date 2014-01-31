@@ -1,0 +1,17 @@
+{
+  "name": "MyLabel",
+  "description": "A Test Label",
+  "types": [
+    "case",
+    "macro"
+  ],
+  "active": true,
+  "color": "blue",
+  "position": 1,
+  "_links": {
+    "self": {
+      "href": "/api/v2/labels/1",
+      "class": "label"
+    }
+  }
+}

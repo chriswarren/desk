@@ -1,0 +1,15 @@
+{
+  "name": "frequent_buyer",
+  "label": "Frequent Buyer",
+  "type": "customer",
+  "active": true,
+  "data": {
+    "type": "boolean"
+  },
+  "_links": {
+    "self": {
+      "href": "/api/v2/custom_fields/1",
+      "class": "custom_field"
+    }
+  }
+}

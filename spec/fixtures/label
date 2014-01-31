@@ -1,0 +1,17 @@
+{
+  "name": "MyLabel",
+  "description": "My Label Description",
+  "types": [
+    "case",
+    "macro"
+  ],
+  "active": true,
+  "color": "green",
+  "position": 1,
+  "_links": {
+    "self": {
+      "href": "/api/v2/labels/1",
+      "class": "label"
+    }
+  }
+}

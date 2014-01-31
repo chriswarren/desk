@@ -1,0 +1,16 @@
+{
+  "name": "My Active Cases",
+  "sort": "priority",
+  "sort_field": "priority",
+  "sort_direction": "desc",
+  "position": 1,
+  "active": true,
+  "_links": {
+    "self": {
+      "href": "/api/v2/filters/1",
+      "class": "filter"
+    },
+    "group": null,
+    "user": null
+  }
+}

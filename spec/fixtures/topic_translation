@@ -1,0 +1,12 @@
+{
+  "name": "Customer Support",
+  "locale": "en_us",
+  "created_at": "2013-11-12T22:59:20Z",
+  "updated_at": "2013-11-17T22:59:20Z",
+  "_links": {
+    "self": {
+      "href": "/api/v2/topics/1/translations/en_us",
+      "class": "topic_translation"
+    }
+  }
+}

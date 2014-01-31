@@ -1,0 +1,9 @@
+{
+  "name": "Support Ninjas",
+  "_links": {
+    "self": {
+      "href": "/api/v2/groups/1",
+      "class": "group"
+    }
+  }
+}

@@ -64,7 +64,7 @@ module Desk
     DEFAULT_USER_AGENT = "Desk.com Ruby Gem #{Desk::VERSION}".freeze
 
     # The user agent that will be sent to the API endpoint if none is set
-    DEFAULT_VERSION = "v1".freeze
+    DEFAULT_VERSION = "v2".freeze
 
     # By default, don't set a support email address
     DEFAULT_SUPPORT_EMAIL = nil

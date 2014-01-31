@@ -1,0 +1,54 @@
+{
+  "first_name": "John",
+  "last_name": "Doe",
+  "company": null,
+  "title": null,
+  "external_id": null,
+  "background": null,
+  "language": "en_us",
+  "locked_until": null,
+  "created_at": "2013-11-22T22:49:20Z",
+  "updated_at": "2013-11-22T22:49:20Z",
+  "custom_fields": {
+    "level": "vip"
+  },
+  "emails": [
+    {
+      "type": "work",
+      "value": "john@acme.com"
+    },
+    {
+      "type": "home",
+      "value": "john@home.com"
+    }
+  ],
+  "phone_numbers": [
+
+  ],
+  "addresses": [
+
+  ],
+  "_links": {
+    "self": {
+      "href": "/api/v2/customers/1",
+      "class": "customer"
+    },
+    "cases": {
+      "href": "/api/v2/customers/1/cases",
+      "class": "case"
+    },
+    "company": {
+      "href": "/api/v2/companies/1",
+      "class": "company"
+    },
+    "facebook_user": {
+      "href": "/api/v2/facebook_users/1",
+      "class": "facebook_user"
+    },
+    "twitter_user": {
+      "href": "/api/v2/twitter_users/1",
+      "class": "twitter_user"
+    },
+    "locked_by": null
+  }
+}

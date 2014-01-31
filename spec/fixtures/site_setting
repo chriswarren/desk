@@ -1,0 +1,10 @@
+{
+  "name": "company_name",
+  "value": "Cool Surfboard Co.",
+  "_links": {
+    "self": {
+      "href": "/api/v2/site_settings/1",
+      "class": "site_setting"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "total_entries": 2,
+  "_links": {
+    "self": {
+      "href": "/api/v2/companies?page=1&per_page=30",
+      "class": "page"
+    },
+    "first": {
+      "href": "/api/v2/companies?page=1&per_page=30",
+      "class": "page"
+    },
+    "last": {
+      "href": "/api/v2/companies?page=1&per_page=30",
+      "class": "page"
+    },
+    "next": null,
+    "previous": null
+  },
+  "_embedded": {
+    "entries": [
+      {
+        "name": "Acme Inc",
+        "domains": [
+          "acmeinc.com",
+          "acmeinc.net"
+        ],
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "custom_fields": {
+          "employer_id": "123456789"
+        },
+        "_links": {
+          "self": {
+            "href": "/api/v2/companies/1",
+            "class": "company"
+          },
+          "customers": {
+            "href": "/api/v2/companies/1/customers",
+            "class": "customer"
+          },
+          "cases": {
+            "href": "/api/v2/companies/1/cases",
+            "class": "case"
+          }
+        }
+      },
+      {
+        "name": "Desk.com",
+        "domains": [
+          "desk.com",
+          "salesforce.com"
+        ],
+        "created_at": "2013-11-22T22:49:20Z",
+        "updated_at": "2013-11-22T22:49:20Z",
+        "custom_fields": {
+          "employer_id": "123456789"
+        },
+        "_links": {
+          "self": {
+            "href": "/api/v2/companies/2",
+            "class": "company"
+          },
+          "customers": {
+            "href": "/api/v2/companies/2/customers",
+            "class": "customer"
+          },
+          "cases": {
+            "href": "/api/v2/companies/2/cases",
+            "class": "case"
+          }
+        }
+      }
+    ]
+  }
+}

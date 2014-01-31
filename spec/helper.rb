@@ -10,6 +10,10 @@ require 'rspec'
 require 'webmock/rspec'
 require 'email_spec'
 require 'ruby-debug'
+
+require 'shared_context'
+require 'shared_examples'
+
 RSpec.configure do |config|
   config.include WebMock::API
 end
@@ -20,6 +24,10 @@ end
 
 def a_get(path)
   a_request(:get, Desk.endpoint + path)
+end
+
+def a_patch(path)
+  a_request(:patch, Desk.endpoint + path)
 end
 
 def a_post(path)
@@ -36,6 +44,10 @@ end
 
 def stub_get(path)
   stub_request(:get, Desk.endpoint + path)
+end
+
+def stub_patch(path)
+  stub_request(:patch, Desk.endpoint + path)
 end
 
 def stub_post(path)
