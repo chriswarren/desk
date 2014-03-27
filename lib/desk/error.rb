@@ -10,7 +10,7 @@ module Desk
     end
 
     def ratelimit_reset
-      Time.at(@http_headers.values_at('x-rate-limit-reset', 'X-Rate-Limit-Reset').detect {|value| value }.to_i)
+      @http_headers.values_at('x-rate-limit-reset', 'X-Rate-Limit-Reset').detect {|value| value }.to_i
     end
 
     def ratelimit_limit
@@ -22,7 +22,7 @@ module Desk
     end
 
     def retry_after
-      [(ratelimit_reset - Time.now).ceil, 0].max
+      ratelimit_reset
     end
   end
 
