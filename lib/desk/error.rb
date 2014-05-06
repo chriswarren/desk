@@ -10,19 +10,19 @@ module Desk
     end
 
     def ratelimit_reset
-      Time.at(@http_headers.values_at('x-ratelimit-reset', 'X-RateLimit-Reset').detect {|value| value }.to_i)
+      @http_headers.values_at('x-rate-limit-reset', 'X-Rate-Limit-Reset').detect {|value| value }.to_i
     end
 
     def ratelimit_limit
-      @http_headers.values_at('x-ratelimit-limit', 'X-RateLimit-Limit').detect {|value| value }.to_i
+      @http_headers.values_at('x-rate-limit-limit', 'X-Rate-Limit-Limit').detect {|value| value }.to_i
     end
 
     def ratelimit_remaining
-      @http_headers.values_at('x-ratelimit-limit', 'X-RateLimit-Limit').detect {|value| value }.to_i
+      @http_headers.values_at('x-rate-limit-remaining', 'X-Rate-Limit-Remaining').detect {|value| value }.to_i
     end
 
     def retry_after
-      [(ratelimit_reset - Time.now).ceil, 0].max
+      ratelimit_reset
     end
   end
 
@@ -41,15 +41,9 @@ module Desk
   # Raised when Desk returns the HTTP status code 406
   class NotAcceptable < Error; end
 
-  # Raised when Desk returns the HTTP status code 420
-  class EnhanceYourCalm < Error
-    # The number of seconds your application should wait before requesting date from the Search API again
-    #
-    # @see http://dev.desk.com/pages/rate-limiting
-    def retry_after
-      @http_headers.values_at('retry-after', 'Retry-After').detect {|value| value }.to_i
-    end
-  end
+  # Raised when Desk returns the HTTP status code 429
+  # Called EnhanceYourCalm because TooManyRequests is taken (see below)
+  class EnhanceYourCalm < Error; end
   
   # Raised when Desk max_requests is reached and use_max_requests is set to true
   class TooManyRequests < StandardError; end

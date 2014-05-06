@@ -16,7 +16,7 @@ module Faraday
         raise Desk::NotFound.new(error_message(env), env[:response_headers])
       when 406
         raise Desk::NotAcceptable.new(error_message(env), env[:response_headers])
-      when 420
+      when 429
         raise Desk::EnhanceYourCalm.new(error_message(env), env[:response_headers])
       end
     end
