@@ -25,8 +25,8 @@ module Desk
       client.send(method, *args, &block)
     end
 
-    def respond_to?(method)
-      client.respond_to?(method) || super
+    def respond_to?(method, include_private=false)
+      client.respond_to?(method, include_private) || super
     end
   end
 end
