@@ -1,3 +1,17 @@
+1.0.2
+------------------
+Completed handling of respond_to? (Thanks to @davidlibrera)
+
+1.0.1
+------------------
+Handle TooManyRequests Response (Thanks to @alexanderdean)
+Bumped Faraday (Thanks to Marcin Lewandowski)
+
+1.0.0 January 31, 2014
+------------------
+Total overhaul of code structure (Thanks to @colinc)
+Works with the new Desk.com API V2
+
 0.3.2 February 25, 2013
 ------------------
 Support for groups (Thanks to @tstachl)
