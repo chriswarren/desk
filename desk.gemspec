@@ -12,13 +12,13 @@ Gem::Specification.new do |s|
   s.add_development_dependency('webmock', '~> 1.6')
   s.add_development_dependency('yard', '~> 0.6')
   s.add_runtime_dependency('json', '~> 1.7')  if RUBY_VERSION < '1.9'
-  s.add_runtime_dependency('hashie', '~> 1.2.0')
+  s.add_runtime_dependency('hashie', '~> 2.0.0')
   s.add_runtime_dependency('faraday', '~> 0.9.0')
   s.add_runtime_dependency('faraday_middleware', '~> 0.9.0')
   s.add_runtime_dependency('jruby-openssl', '~> 0.7.2') if RUBY_PLATFORM == 'java'
   s.add_runtime_dependency('multi_json', '~> 1.6')
   s.add_runtime_dependency('multi_xml', '~> 0.5')
-  s.add_runtime_dependency('rash', '~> 0.3.1')
+  s.add_runtime_dependency('rash', '~> 0.4.0')
   s.add_runtime_dependency('simple_oauth', '~> 0.2.0')
   s.add_runtime_dependency('pony', '~> 1.1')
   s.authors = ["Chris Warren"]
