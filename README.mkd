@@ -262,10 +262,10 @@ Usage Examples
     # Update a customer
     Desk.update_customer(123,
       :first_name => "Johnny",
-      :emails => {
+      :emails => [
         { :type => "work", :value => "johnny@acme.com" },
         { :type => "other", :value => "johnny@other.com" }
-      },
+      ],
       :custom_fields => { :level => "super" }
     )
 
