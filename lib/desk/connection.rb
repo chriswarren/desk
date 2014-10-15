@@ -13,7 +13,7 @@ module Desk
       options = {
         :headers => {'Accept' => "application/#{format}", 'User-Agent' => user_agent},
         :proxy => proxy,
-        :ssl => {:verify => false},
+        :ssl => {:verify => false, :version => 'SSLv23'},
         :url => api_endpoint,
       }
 
