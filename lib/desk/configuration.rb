@@ -10,6 +10,7 @@ module Desk
       :consumer_key,
       :consumer_secret,
       :format,
+      :logger,
       :max_requests,
       :oauth_token,
       :oauth_token_secret,
@@ -41,7 +42,12 @@ module Desk
     #
     # @note JSON is preferred over XML because it is more concise and faster to parse.
     DEFAULT_FORMAT = :json
-    
+
+    # The logger that will be used to log all HTTP requests
+    #
+    # @note By default, don't set any logger
+    DEFAULT_LOGGER = nil
+
     # By default, set the max requests to 60 per minute
     DEFAULT_MAX_REQUESTS = 60
 
@@ -93,6 +99,7 @@ module Desk
       self.consumer_key       = DEFAULT_CONSUMER_KEY
       self.consumer_secret    = DEFAULT_CONSUMER_SECRET
       self.format             = DEFAULT_FORMAT
+      self.logger             = DEFAULT_LOGGER
       self.max_requests       = DEFAULT_MAX_REQUESTS
       self.oauth_token        = DEFAULT_OAUTH_TOKEN
       self.oauth_token_secret = DEFAULT_OAUTH_TOKEN_SECRET
