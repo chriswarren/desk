@@ -41,15 +41,24 @@ module Desk
   # Raised when Desk returns the HTTP status code 406
   class NotAcceptable < Error; end
 
+  # Raised when Desk returns the HTTP status code 409
+  class Conflict < Error; end
+
+  # Raised when Desk returns the HTTP status code 422
+  class Unprocessable < Error; end
+
   # Raised when Desk returns the HTTP status code 429
   # Called EnhanceYourCalm because TooManyRequests is taken (see below)
   class EnhanceYourCalm < Error; end
-  
+
   # Raised when Desk max_requests is reached and use_max_requests is set to true
   class TooManyRequests < StandardError; end
 
   # Raised when Desk returns the HTTP status code 500
   class InternalServerError < Error; end
+
+  # Raised when Desk returns the HTTP status code 501
+  class NotImplemented < Error; end
 
   # Raised when Desk returns the HTTP status code 502
   class BadGateway < Error; end

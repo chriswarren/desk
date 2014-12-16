@@ -11,8 +11,11 @@ describe Faraday::Response do
     403 => Desk::Forbidden,
     404 => Desk::NotFound,
     406 => Desk::NotAcceptable,
+    409 => Desk::Conflict,
+    422 => Desk::Unprocessable,
     429 => Desk::EnhanceYourCalm,
     500 => Desk::InternalServerError,
+    501 => Desk::NotImplemented,
     502 => Desk::BadGateway,
     503 => Desk::ServiceUnavailable,
   }.each do |status, exception|

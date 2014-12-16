@@ -8,6 +8,8 @@ module Faraday
       case env[:status].to_i
       when 500
         raise Desk::InternalServerError.new(error_message(env, "Something is technically wrong."), env[:response_headers])
+      when 501
+        raise Desk::NotImplemented.new(error_message(env, "Not implemented."), env[:response_headers])
       when 502
         raise Desk::BadGateway.new(error_message(env, "Desk.com is down or being upgraded."), env[:response_headers])
       when 503
