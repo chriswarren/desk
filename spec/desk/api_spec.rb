@@ -42,7 +42,8 @@ describe Desk::API do
           :support_email => 'help@zencoder.com',
           :use_max_requests => true,
           :user_agent => 'Custom User Agent',
-          :version => "amazing"
+          :version => "amazing",
+          :logger => double('logger')
         }
       end
 
