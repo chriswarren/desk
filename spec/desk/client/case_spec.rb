@@ -75,6 +75,8 @@ describe Desk::Client do
       let(:check_value) { "Updated" }
     end
 
+    it_behaves_like "a delete endpoint"
+
     context "Message" do
 
       let(:sub_endpoint) { "message" }
