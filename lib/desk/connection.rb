@@ -34,7 +34,7 @@ module Desk
         end
         builder.use Faraday::Response::RaiseHttp5xx
         builder.adapter(adapter)
-        builder.response :logger, logger unless logger.nil?
+        builder.response :logger, logger, :bodies => true unless logger.nil?
       end
     end
   end
