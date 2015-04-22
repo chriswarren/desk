@@ -4,7 +4,7 @@ module Desk
     module Case
 
       def case_endpoints
-        [ :list, :search, :create, :update, 
+        [ :list, :search, :create, :update, :delete,
           :list_replies, :show_reply, :create_reply, :update_reply,
           :list_notes, :show_note, :create_note,
           :list_attachments, :show_attachment, :create_attachment, :delete_attachment,
