@@ -93,7 +93,7 @@ module Hashie
     end
 
     def results
-      self._embedded['entries'] if key?('_embedded') && self._embedded.key?('entries')
+      self._embedded['entries'] if self.raw.key?('_embedded') && self._embedded.key?('entries')
     end
 
   end
