@@ -43,6 +43,8 @@ module Faraday
         else
           ": #{first.chomp}"
         end
+      elsif body['raw']
+        ": #{body['raw']['message']}"
       end
     end
   end
