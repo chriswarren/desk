@@ -44,8 +44,29 @@ module Faraday
           ": #{first.chomp}"
         end
       elsif body['raw']
-        ": #{body['raw']['message']}"
+        error_message = ": #{body['raw']['message']}"
+        if body.errors
+          field, code = body.errors.first
+          until code.nil? || (words = validation_error_code_in_words(field, code.first)).present? do
+            field, code = code.first
+          end
+          error_message += "#{words if words.present?}"
+        end
+        error_message
       end
+    end
+
+    def validation_error_code_in_words(field, code)
+      {
+        "blank" => ": #{field}: value has not been set and is required",
+        "existence" => ": #{field}: value does not exist",
+        "taken" => ": #{field}: value has already been taken and must be unique",
+        "inclusion" => ": #{field}: value is not an available choice",
+        "exclusion" => ": #{field}: value is reserved",
+        "too_short" => ": #{field}: string value is too short",
+        "too_long" => ": #{field}: string value is too long",
+        "invalid" => ": #{field}: value is invalid, please see documentation for resource specifics"
+      }[code].to_s
     end
   end
 end
