@@ -2,7 +2,6 @@ require 'desk/error'
 require 'desk/configuration'
 require 'desk/api'
 require 'desk/client'
-require 'pony'
 
 module Desk
   extend Configuration

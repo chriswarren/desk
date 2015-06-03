@@ -5,7 +5,6 @@ SimpleCov.start do
   add_group 'Specs', 'spec'
 end
 require 'desk'
-require 'pony'
 require 'rspec'
 require 'webmock/rspec'
 require 'email_spec'
