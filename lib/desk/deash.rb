@@ -17,7 +17,7 @@ module Hashie
   end
 
   class Deash < Mash
-    # Object#type is deprecated 
+    # Object#type is deprecated
     Mash.send :undef_method, :type
 
     def count
@@ -43,15 +43,29 @@ module Hashie
       # TODO: Make this DRY
       if includes_key_chain?("_links."+method.to_s)
         return nil if !self._links[method]
-        return Desk.get(self._links[method].href.sub(Desk.api_path, ""))
+        val = Desk.get(self._links[method].href.sub(Desk.api_path, ""))
+        dynamic_cached_method(method, val)
+        return val
       elsif includes_key_chain?("raw._links."+method.to_s)
         return nil if !self.raw._links[method]
-        return Desk.get(self.raw._links[method].href.sub(Desk.api_path, ""))
+        val = Desk.get(self.raw._links[method].href.sub(Desk.api_path, ""))
+        dynamic_cached_method(method, val)
+        return val
       elsif includes_key_chain?("raw."+method.to_s)
         return nil if !self.raw[method]
-        return self.raw[method]
+        val = self.raw[method]
+        dynamic_cached_method(method, val)
+        return val
       end
       return super
+    end
+
+    def dynamic_cached_method(meth, value)
+      (class << self; self; end).class_eval do
+        define_method meth do
+          instance_variable_set("@#{meth}", value)
+        end
+      end
     end
 
     def id(parent_id = false)
