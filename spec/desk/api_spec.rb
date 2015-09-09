@@ -86,7 +86,6 @@ describe Desk::API do
         end
 
         it 'should keep different configurations for each thread' do
-          # config on current thread
           Thread.new do
             api = Desk::API.new
             @configuration.each do |key, value|
