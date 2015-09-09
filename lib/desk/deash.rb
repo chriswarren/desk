@@ -43,19 +43,13 @@ module Hashie
       # TODO: Make this DRY
       if includes_key_chain?("_links."+method.to_s)
         return nil if !self._links[method]
-        val = Desk.get(self._links[method].href.sub(Desk.api_path, ""))
-        dynamic_cached_method(method, val)
-        return val
+        return Desk.get(self._links[method].href.sub(Desk.api_path, ""))
       elsif includes_key_chain?("raw._links."+method.to_s)
         return nil if !self.raw._links[method]
-        val = Desk.get(self.raw._links[method].href.sub(Desk.api_path, ""))
-        dynamic_cached_method(method, val)
-        return val
+        return Desk.get(self.raw._links[method].href.sub(Desk.api_path, ""))
       elsif includes_key_chain?("raw."+method.to_s)
         return nil if !self.raw[method]
-        val = self.raw[method]
-        dynamic_cached_method(method, val)
-        return val
+        return self.raw[method]
       end
       return super
     end
