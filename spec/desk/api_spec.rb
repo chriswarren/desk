@@ -87,50 +87,23 @@ describe Desk::API do
 
         it 'should keep different configurations for each thread' do
           # config on current thread
-          api_config = ->{
+          Thread.new do
             api = Desk::API.new
             @configuration.each do |key, value|
               api.send("#{key}=", value)
             end
-            api
-          }
-          api = api_config.call()
 
-          # get mutexes to ensure right execution steps
-          m1 = Mutex.new # will block main thread until thread config done
-          m2 = Mutex.new # will block thread until main thread asserts
-          m2.lock
-
-          # launch a new thread with new config
-          t = Thread.new do
-            m1.lock # make main thread wait for thread config
-            api2 = Desk::API.new
-            @alternative_configuration.each do |key, value|
-              api2.send("#{key}=", value)
-            end
-            m1.unlock
-
-            # Wait for main thread to finish assertions and reconfig
-            m2.synchronize{
+            Thread.new do
+              alt_api = Desk::API.new
               @alternative_configuration.each do |key, value|
-                api2.send("#{key}").should eq(value)
+                alt_api.send("#{key}=", value)
               end
-            }
-          end
+            end.join
 
-          # Wait for new thread to finish contfig
-          m1.synchronize{
-            # check if current thread keeps config
             @configuration.each do |key, value|
-              api.send("#{key}").should eq(value)
+              api.send(key).should eq(value)
             end
-
-            # reconfig to test if thread changes
-            api = api_config.call()
-
-            m2.unlock # allow new thread to assert
-          }
-          t.join
+          end.join
         end
       end
     end
