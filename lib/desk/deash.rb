@@ -17,7 +17,7 @@ module Hashie
   end
 
   class Deash < Mash
-    # Object#type is deprecated 
+    # Object#type is deprecated
     Mash.send :undef_method, :type
 
     def count
@@ -52,6 +52,14 @@ module Hashie
         return self.raw[method]
       end
       return super
+    end
+
+    def dynamic_cached_method(meth, value)
+      (class << self; self; end).class_eval do
+        define_method meth do
+          instance_variable_set("@#{meth}", value)
+        end
+      end
     end
 
     def id(parent_id = false)

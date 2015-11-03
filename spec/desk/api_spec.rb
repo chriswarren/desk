@@ -45,6 +45,23 @@ describe Desk::API do
           :version => "amazing",
           :logger => double('logger')
         }
+
+        @alternative_configuration = {
+          :consumer_key => 'Louie',
+          :consumer_secret => 'CounterStrike',
+          :oauth_token => 'plOT',
+          :oauth_token_secret => 'OperatingSystem',
+          :adapter => :sueohpyt,
+          :format => :json,
+          :max_requests => 5,
+          :proxy => 'http://tsuk:public@proxy.example.com:8080',
+          :subdomain => 'stresscoder',
+          :support_email => 'problem@stresscoder.com',
+          :use_max_requests => false,
+          :user_agent => 'Generic User Agent',
+          :version => "boring",
+          :logger => double('logger')
+        }
       end
 
       context "during initialization"
@@ -66,6 +83,26 @@ describe Desk::API do
           @keys.each do |key|
             api.send(key).should == @configuration[key]
           end
+        end
+
+        it 'should keep different configurations for each thread' do
+          Thread.new do
+            api = Desk::API.new
+            @configuration.each do |key, value|
+              api.send("#{key}=", value)
+            end
+
+            Thread.new do
+              alt_api = Desk::API.new
+              @alternative_configuration.each do |key, value|
+                alt_api.send("#{key}=", value)
+              end
+            end.join
+
+            @configuration.each do |key, value|
+              api.send(key).should eq(value)
+            end
+          end.join
         end
       end
     end

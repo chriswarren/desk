@@ -93,6 +93,118 @@ module Desk
       Hash[VALID_OPTIONS_KEYS.map {|key| [key, send(key)] }]
     end
 
+    def adapter
+      Thread.current[:adapter] ||= DEFAULT_ADAPTER
+    end
+
+    def adapter=(val)
+      Thread.current[:adapter] = val
+    end
+
+    def consumer_key
+      Thread.current[:consumer_key] ||= DEFAULT_CONSUMER_KEY
+    end
+
+    def consumer_key=(val)
+      Thread.current[:consumer_key] = val
+    end
+
+    def consumer_secret
+      Thread.current[:consumer_secret] ||= DEFAULT_CONSUMER_SECRET
+    end
+
+    def consumer_secret=(val)
+      Thread.current[:consumer_secret] = val
+    end
+
+    def format
+      Thread.current[:format] ||= DEFAULT_FORMAT
+    end
+
+    def format=(val)
+      Thread.current[:format] = val
+    end
+
+    def logger
+      Thread.current[:logger] ||= DEFAULT_LOGGER
+    end
+
+    def logger=(val)
+      Thread.current[:logger] = val
+    end
+
+    def max_requests
+      Thread.current[:max_requests] ||= DEFAULT_MAX_REQUESTS
+    end
+
+    def max_requests=(val)
+      Thread.current[:max_requests] = val
+    end
+
+    def oauth_token
+      Thread.current[:oauth_token] ||= DEFAULT_OAUTH_TOKEN
+    end
+
+    def oauth_token=(val)
+      Thread.current[:oauth_token] = val
+    end
+
+    def oauth_token_secret
+      Thread.current[:oauth_token_secret] ||= DEFAULT_OAUTH_TOKEN_SECRET
+    end
+
+    def oauth_token_secret=(val)
+      Thread.current[:oauth_token_secret] = val
+    end
+
+    def proxy
+      Thread.current[:proxy] ||= DEFAULT_PROXY
+    end
+
+    def proxy=(val)
+      Thread.current[:proxy] = val
+    end
+
+    def subdomain
+      Thread.current[:subdomain] ||= DEFAULT_SUBDOMAIN
+    end
+
+    def subdomain=(val)
+      Thread.current[:subdomain] = val
+    end
+
+    def support_email
+      Thread.current[:support_email] ||= DEFAULT_SUPPORT_EMAIL
+    end
+
+    def support_email=(val)
+      Thread.current[:support_email] = val
+    end
+
+    def use_max_requests
+      Thread.current[:use_max_requests] ||= DEFAULT_USE_MAX_REQUESTS
+    end
+
+    def use_max_requests=(val)
+      Thread.current[:use_max_requests] = val
+    end
+
+    def user_agent
+      Thread.current[:user_agent] ||= DEFAULT_USER_AGENT
+    end
+
+    def user_agent=(val)
+      Thread.current[:user_agent] = val
+    end
+
+    def version
+      Thread.current[:version] ||= DEFAULT_VERSION
+    end
+
+    def version=(val)
+      Thread.current[:version] = val
+    end
+
     # Reset all configuration options to defaults
     def reset
       self.adapter            = DEFAULT_ADAPTER
