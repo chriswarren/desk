@@ -19,7 +19,13 @@ module Desk
 
       Faraday.new(options) do |builder|
         builder.use Faraday::Request::MultipartWithFile
-        builder.use Faraday::Request::OAuth, authentication if authenticated?
+        if authenticated?
+          if auth_method == Desk::Authentication::Methods::BASIC
+            builder.use Faraday::Request::BasicAuthentication,basic_auth_username, basic_auth_password
+          else
+            builder.use Faraday::Request::OAuth, authentication
+          end
+        end
         builder.use Faraday::Request::Multipart
         builder.use Faraday::Request::UrlEncoded
         builder.use Faraday::Response::RaiseHttp4xx

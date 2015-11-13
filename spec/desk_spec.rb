@@ -45,6 +45,22 @@ describe Desk do
     end
   end
 
+  describe ".auth_method" do
+    it "should return the default auth method" do
+      Desk.auth_method = Desk::Configuration::DEFAULT_AUTH_METHOD
+    end
+  end
+
+  describe ".auth_method=" do
+    it "should set the auth_method for all auth types" do
+      valid_methods = Desk::Authentication::Methods::ALL*5
+      valid_methods.each do |method|
+        Desk.auth_method = method
+        Desk.auth_method.should == method
+      end
+    end
+  end
+
   describe ".domain" do
     it "should return the default domain" do
       Desk.domain.should == Desk::Configuration::DEFAULT_DOMAIN

@@ -1,5 +1,6 @@
 require 'faraday'
 require 'desk/version'
+require 'desk/authentication'
 
 module Desk
   # Defines constants and methods related to configuration
@@ -7,6 +8,9 @@ module Desk
     # An array of valid keys in the options hash when configuring a {Twitter::API}
     VALID_OPTIONS_KEYS = [
       :adapter,
+      :auth_method,
+      :basic_auth_username,
+      :basic_auth_password,
       :consumer_key,
       :consumer_secret,
       :domain,
@@ -32,6 +36,15 @@ module Desk
     #
     # @note The default faraday adapter is Net::HTTP.
     DEFAULT_ADAPTER = Faraday.default_adapter
+
+    # By default, OAUTH is selected
+    DEFAULT_AUTH_METHOD = Desk::Authentication::Methods::OAUTH
+
+    # By default, don't set a username
+    DEFAULT_BASIC_AUTH_USERNAME = nil
+
+    # By default, don't set a password
+    DEFAULT_BASIC_AUTH_PASSWORD = nil
 
     # By default, use the desk.com hosted domain
     DEFAULT_DOMAIN = "desk.com"
@@ -79,6 +92,7 @@ module Desk
     # By default, don't set a support email address
     DEFAULT_SUPPORT_EMAIL = nil
 
+    attr_reader :DEFAULT_ADAPTER
     # @private
     attr_accessor *VALID_OPTIONS_KEYS
 
@@ -103,6 +117,14 @@ module Desk
 
     def adapter=(val)
       Thread.current[:adapter] = val
+    end
+
+    def auth_method
+      Thread.current[:auth_method] ||= DEFAULT_ADAPTER
+    end
+
+    def auth_method=(val)
+      Thread.current[:auth_method] = val
     end
 
     def consumer_key
@@ -220,6 +242,9 @@ module Desk
     # Reset all configuration options to defaults
     def reset
       self.adapter            = DEFAULT_ADAPTER
+      self.auth_method        = DEFAULT_AUTH_METHOD
+      self.basic_auth_username= DEFAULT_BASIC_AUTH_USERNAME
+      self.basic_auth_password= DEFAULT_BASIC_AUTH_PASSWORD
       self.consumer_key       = DEFAULT_CONSUMER_KEY
       self.consumer_secret    = DEFAULT_CONSUMER_SECRET
       self.domain             = DEFAULT_DOMAIN
