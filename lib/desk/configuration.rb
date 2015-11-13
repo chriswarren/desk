@@ -9,6 +9,7 @@ module Desk
       :adapter,
       :consumer_key,
       :consumer_secret,
+      :domain,
       :format,
       :logger,
       :max_requests,
@@ -31,6 +32,9 @@ module Desk
     #
     # @note The default faraday adapter is Net::HTTP.
     DEFAULT_ADAPTER = Faraday.default_adapter
+
+    # By default, use the desk.com hosted domain
+    DEFAULT_DOMAIN = "desk.com"
 
     # By default, don't set an application key
     DEFAULT_CONSUMER_KEY = nil
@@ -115,6 +119,14 @@ module Desk
 
     def consumer_secret=(val)
       Thread.current[:consumer_secret] = val
+    end
+
+    def domain
+      Thread.current[:domain] ||= DEFAULT_DOMAIN
+    end
+
+    def domain=(val)
+      Thread.current[:domain] = val
     end
 
     def format
@@ -210,6 +222,7 @@ module Desk
       self.adapter            = DEFAULT_ADAPTER
       self.consumer_key       = DEFAULT_CONSUMER_KEY
       self.consumer_secret    = DEFAULT_CONSUMER_SECRET
+      self.domain             = DEFAULT_DOMAIN
       self.format             = DEFAULT_FORMAT
       self.logger             = DEFAULT_LOGGER
       self.max_requests       = DEFAULT_MAX_REQUESTS

@@ -32,6 +32,7 @@ describe Desk::API do
         @configuration = {
           :consumer_key => 'CK',
           :consumer_secret => 'CS',
+          :domain => 'example.com',
           :oauth_token => 'OT',
           :oauth_token_secret => 'OS',
           :adapter => :typhoeus,

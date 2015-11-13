@@ -45,6 +45,26 @@ describe Desk do
     end
   end
 
+  describe ".domain" do
+    it "should return the default domain" do
+      Desk.domain.should == Desk::Configuration::DEFAULT_DOMAIN
+    end
+  end
+
+  describe ".domain=" do
+    before do
+      Desk.domain = "example.org"
+    end
+
+    it "should set the domain" do
+      Desk.domain.should == "example.org"
+    end
+
+    it "should change the endpoint" do
+      Desk.endpoint.should == "https://#{Desk::Configuration::DEFAULT_SUBDOMAIN}.example.org/api/#{Desk::Configuration::DEFAULT_VERSION}/"
+    end
+  end
+
   describe ".subdomain=" do
     before do
       Desk.subdomain = "zencoder"
@@ -55,7 +75,7 @@ describe Desk do
     end
 
     it "should change the endpoint" do
-      Desk.endpoint.should == "https://zencoder.desk.com/api/#{Desk::Configuration::DEFAULT_VERSION}/"
+      Desk.endpoint.should == "https://zencoder.#{Desk::Configuration::DEFAULT_DOMAIN}/api/#{Desk::Configuration::DEFAULT_VERSION}/"
     end
   end
 
