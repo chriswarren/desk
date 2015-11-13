@@ -77,7 +77,7 @@ describe Desk do
       Desk.version = "v4"
     end
 
-    it "should set the subdomain" do
+    it "should set the version" do
       Desk.version.should == "v4"
     end
 
