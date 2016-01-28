@@ -30,8 +30,12 @@ describe Desk::API do
 
       before do
         @configuration = {
+          :auth_method => Desk::Authentication::Methods::BASIC,
+          :basic_auth_username => 'UN',
+          :basic_auth_password => 'PW',
           :consumer_key => 'CK',
           :consumer_secret => 'CS',
+          :domain => 'example.com',
           :oauth_token => 'OT',
           :oauth_token_secret => 'OS',
           :adapter => :typhoeus,

@@ -18,7 +18,7 @@ module Desk
     end
 
     def endpoint
-      "https://#{self.subdomain}.desk.com"+api_path
+      "https://#{self.subdomain}.#{self.domain}"+api_path
     end
 
     def api_path

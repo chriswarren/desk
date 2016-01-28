@@ -65,7 +65,7 @@ module Desk
       end
 
       def case_url(case_id)
-        "https://#{subdomain}.desk.com/agent/case/#{case_id}"
+        "https://#{subdomain}.#{domain}/agent/case/#{case_id}"
       end
     end
   end

@@ -389,6 +389,19 @@ Usage Examples
     # Show the daily system message
     Desk.system_message
 
+    # Basic authentication with username and password; not recommended
+
+    Desk.configure do |config|
+      config.support_email = "help@example.com"
+      config.subdomain = YOUR_DESK_SUBDOMAIN
+      config.consumer_key = YOUR_CONSUMER_KEY
+      config.consumer_secret = YOUR_CONSUMER_SECRET
+      config.auth_method = Desk::Authentication::Methods:BASIC
+      config.basic_auth_username = YOUR_USERNAME
+      config.basic_auth_password = YOUR_PASSWORD
+    end
+
+
 Contributing
 ------------
 In the spirit of [free software](http://www.fsf.org/licensing/essays/free-sw.html), **everyone** is encouraged to help improve this project.
