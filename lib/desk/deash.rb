@@ -17,8 +17,7 @@ module Hashie
   end
 
   class Deash < Mash
-    # Object#type is deprecated
-    Mash.send :undef_method, :type
+    disable_warnings if respond_to?(:disable_warnings)
 
     def count
       if includes_key_chain?("raw._embedded.entries")
