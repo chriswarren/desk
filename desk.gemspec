@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.files = `git ls-files`.split("\n")
   s.homepage = 'https://github.com/zencoder/desk'
   s.name = 'desk'
+  s.license = 'MIT'
   s.platform = Gem::Platform::RUBY
   s.require_paths = ['lib']
   s.required_rubygems_version = Gem::Requirement.new('>= 1.3.6') if s.respond_to? :required_rubygems_version=
