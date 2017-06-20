@@ -16,7 +16,8 @@ describe Desk::Client do
 
     it_behaves_like "a create endpoint", {
       :first_name => "John",
-      :last_name => "Doe"
+      :last_name => "Doe",
+      :emails => [{:type => "work", :value => "joe.user@example.org"}]
     }
 
     it_behaves_like "an update endpoint", { :first_name => "Johnny" } do
