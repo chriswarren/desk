@@ -24,6 +24,7 @@ module Desk
       :support_email,
       :use_max_requests,
       :user_agent,
+      :timeout,
       :version].freeze
 
     # An array of valid request/response formats
@@ -91,6 +92,9 @@ module Desk
 
     # By default, don't set a support email address
     DEFAULT_SUPPORT_EMAIL = nil
+
+    # By default, don't set a default timeout
+    DEFAULT_TIMEOUT = nil
 
     attr_reader :DEFAULT_ADAPTER
     # @private
@@ -239,6 +243,14 @@ module Desk
       Thread.current[:version] = val
     end
 
+    def timeout
+      Thread.current[:timeout] ||= DEFAULT_TIMEOUT
+    end
+
+    def timeout=(val)
+      Thread.current[:timeout] = val
+    end
+
     # Reset all configuration options to defaults
     def reset
       self.adapter            = DEFAULT_ADAPTER
@@ -259,6 +271,7 @@ module Desk
       self.use_max_requests   = DEFAULT_USE_MAX_REQUESTS
       self.user_agent         = DEFAULT_USER_AGENT
       self.version            = DEFAULT_VERSION
+      self.timeout            = DEFAULT_TIMEOUT
       self
     end
   end
