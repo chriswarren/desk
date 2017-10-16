@@ -108,6 +108,19 @@ describe Desk do
     end
   end
 
+  describe ".timeout" do
+    it "should return the default timeout" do
+      Desk.timeout.should == Desk::Configuration::DEFAULT_TIMEOUT
+    end
+  end
+
+  describe ".timeout=" do
+    it "should set the timeout" do
+      Desk.timeout = 30
+      Desk.timeout.should == 30
+    end
+  end
+
   describe ".version=" do
     before do
       Desk.version = "v4"
@@ -134,7 +147,7 @@ describe Desk do
       Desk.format.should == 'xml'
     end
   end
-  
+
   describe ".max_requests" do
     it "should return the default max requests" do
       Desk.max_requests.should == Desk::Configuration::DEFAULT_MAX_REQUESTS
@@ -186,30 +199,30 @@ describe Desk do
       end
     end
   end
-  
+
   describe ".counter" do
     before do
       Desk.counter = 0
       stub_get("cases").
         to_return(:body => fixture("cases"), :headers => {:content_type => "application/json; charset=utf-8"})
     end
-    
+
     it "should be 0 in the beginning" do
       Desk.counter.should == 0
     end
-    
+
     it "should count the requests" do
       5.times {
         Desk.cases
       }
       Desk.counter.should == 5
     end
-    
+
     context "max requests enabled" do
       before do
         Desk.use_max_requests = true
       end
-      
+
       it "should only allow 60 requests" do
         expect {
           70.times {
@@ -217,7 +230,7 @@ describe Desk do
           }
         }.to raise_error
       end
-      
+
       it "should only allow defined requests" do
         Desk.max_requests = 50
         expect {
@@ -226,14 +239,14 @@ describe Desk do
           }
         }.to raise_error
       end
-      
+
       def make_request
         Desk.cases
       rescue Desk::TooManyRequests
         sleep(5)
         make_request
       end
-      
+
       xit "should allow more requests after minute has passed" do
         70.times {
           make_request
@@ -242,12 +255,12 @@ describe Desk do
       end
     end
   end
-  
+
   describe ".minute" do
     before do
       Desk.minute = Time.now.min
     end
-    
+
     it "should be the current minute" do
       Desk.minute.should == Time.now.min
     end
