@@ -15,7 +15,10 @@ module Desk
         :proxy => proxy,
         :ssl => {:verify => false, :version => 'SSLv23'},
         :url => api_endpoint,
+        :request => {},
       }
+
+      options[:request][:timeout] = timeout if timeout
 
       Faraday.new(options) do |builder|
         builder.use Faraday::Request::MultipartWithFile
