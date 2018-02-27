@@ -47,6 +47,7 @@ describe Desk::API do
           :use_max_requests => true,
           :user_agent => 'Custom User Agent',
           :version => "amazing",
+          :timeout => nil,
           :logger => double('logger')
         }
 
