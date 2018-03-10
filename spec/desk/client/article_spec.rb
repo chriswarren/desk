@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'helper'
 
 describe Desk::Client do
