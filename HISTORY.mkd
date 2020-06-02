@@ -1,3 +1,47 @@
+1.2.0
+------------------
+Stop skipping SSL verification ([#75](https://github.com/chriswarren/desk/pull/75) @jonahwh)
+
+1.1.1
+------------------
+Allow newer versions of Faraday ([#74](https://github.com/chriswarren/desk/pull/74) @nevernormal1)
+
+1.1.0
+------------------
+Support for TLS v1.1 ([#73](https://github.com/chriswarren/desk/pull/73) @jmolina91)
+
+1.0.10
+------------------
+Add timeout to Desk configuration ([#72](https://github.com/chriswarren/desk/pull/72) @kunna)
+
+1.0.9
+------------------
+Loosen Hashie version constraints to allow newer versions ([#70](https://github.com/chriswarren/desk/pull/70) @saverio-kantox)
+Support for Insights v3 ([#67](https://github.com/chriswarren/desk/pull/67) @Cb-James)
+Support Basic Auth and custom addresses ([#63](https://github.com/chriswarren/desk/pull/63) @raymondberg)
+Add license to gemspec ([#71](https://github.com/chriswarren/desk/pull/71) @reiz)
+
+1.0.8
+------------------
+Make class variables thread-safe ([#62](https://github.com/chriswarren/desk/pull/62) Afonso Tsukamoto)
+Freeze Hashie at 4.4.1 (same as above)
+
+1.0.7
+------------------
+Check correct Hashie for key when returning Deash results ([#52](https://github.com/chriswarren/desk/pull/52) @parhamfh)
+Support Case deletion ([#54](https://github.com/chriswarren/desk/pull/54) @carlos4ndre)
+Log request body when logger set ([#58](https://github.com/chriswarren/desk/pull/58) @ryanfelton)
+
+1.0.3 & 1.0.6
+------------------
+Raise new error codes for non-200 responses ([#46](https://github.com/chriswarren/desk/pull/46) @stim371)
+Specify SSL version SSLv23 ([#41](https://github.com/chriswarren/desk/pull/41) @pitr)
+Remove rash and upgrade hashie ([#38](https://github.com/chriswarren/desk/pull/38) @caseylang)
+Upgrade hashie and fix at ~>3.3.2 ([#49](https://github.com/chriswarren/desk/pull/49) @PericlesTheo)
+Add logger option to configuration ([#39](https://github.com/chriswarren/desk/pull/39) @paulRbr)
+Clean up Customer Update example ([#40](https://github.com/chriswarren/desk/pull/40) @mbuckbee)
+Add timeout option to specs ([#48](https://github.com/chriswarren/desk/pull/48) @PericlesTheo)
+
 1.0.2
 ------------------
 Completed handling of respond_to? (Thanks to @davidlibrera)
